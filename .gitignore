@@ -1,0 +1,12 @@
+.DS_Store
+
+node_modules/
+.pnpm-debug.log*
+.pnpm-store/
+
+# jest
+coverage
+
+# turbo
+.turbo/
+dist

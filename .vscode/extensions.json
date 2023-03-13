@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "amazonwebservices.aws-toolkit-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "Orta.vscode-jest",
+    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig",
+    "christian-kohler.npm-intellisense",
+    "DavidAnson.vscode-markdownlint"
+  ]
+}

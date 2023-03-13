@@ -1,0 +1,35 @@
+{
+  "name": "DevContainer",
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+  "postCreateCommand": "sh /usr/local/install.sh",
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localEnv:HOME}/.aws,target=/home/node/.aws,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "amazonwebservices.aws-toolkit-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "Orta.vscode-jest",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig",
+        "christian-kohler.npm-intellisense",
+        "DavidAnson.vscode-markdownlint"
+      ]
+    }
+  }
+}
