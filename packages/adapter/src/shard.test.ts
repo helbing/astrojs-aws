@@ -49,8 +49,6 @@ describe("Test createBody", () => {
     const image = fs.readFileSync(
       path.join(__dirname, "../tests//testdata/test.png"),
     )
-    expect(createBody("POST", true, image.toString("base64"))).toStrictEqual(
-      image,
-    )
+    expect(createBody("POST", true, image.toString("base64"))).toEqual(image)
   })
 })
