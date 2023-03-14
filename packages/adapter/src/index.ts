@@ -7,7 +7,7 @@ export default function createIntegration(args?: Options): AstroIntegration {
     hooks: {
       "astro:config:done": ({ config, setAdapter }) => {
         if (config.output != "server") {
-          throw new Error(
+          console.warn(
             '[@astrojs-aws/adapter] `output: "server"` is required to use this adapter',
           )
         }
