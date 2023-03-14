@@ -1,3 +1,5 @@
+import middy, { MiddyfiedHandler } from "@middy/core"
+import { SSRManifest } from "astro"
 import { App } from "astro/app"
 import {
   APIGatewayProxyEventV2,
@@ -6,11 +8,9 @@ import {
   CloudFrontRequestResult,
   Context,
 } from "aws-lambda"
-import middy, { MiddyfiedHandler } from "@middy/core"
-import { SSRManifest } from "astro"
 
-import lambdaHandler from "./handler-lambda"
 import edgeLambda from "./handler-edge"
+import lambdaHandler from "./handler-lambda"
 
 export type Options = {
   /**

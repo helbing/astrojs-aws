@@ -13,22 +13,36 @@
     "plugin:import/typescript"
   ],
   "rules": {
+    "sort-imports": ["error", {
+        "ignoreDeclarationSort": true
+      }
+    ],
     "import/order": ["error", {
       "groups": [
         "builtin",
         "external",
-        "internal",
-        "parent",
-        "sibling",
-        "index",
-        "object",
+        [
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ],
         "type"
       ],
+      "distinctGroup": true,
       "newlines-between": "always",
-      "warnOnUnassignedImports": true
+      "warnOnUnassignedImports": true,
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": false
+      }
     }]
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true

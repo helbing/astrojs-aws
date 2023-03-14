@@ -1,6 +1,6 @@
-import { Options } from "./exports"
+import { AstroIntegration } from "astro"
 
-import type { AstroIntegration } from "astro"
+import { Options } from "./exports"
 
 export default function createIntegration(args?: Options): AstroIntegration {
   return {

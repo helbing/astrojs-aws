@@ -1,23 +1,23 @@
 import { STATUS_CODES } from "http"
 
-import {
-  Request,
-  Response,
-  RequestInit,
-  Headers,
-  HeadersInit,
-} from "node-fetch"
 import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import {
+  CloudFrontHeaders,
+  CloudFrontRequest,
   CloudFrontRequestHandler,
   CloudFrontRequestResult,
-  CloudFrontRequest,
-  CloudFrontHeaders,
 } from "aws-lambda"
 import { StatusCodes } from "http-status-codes"
+import {
+  Headers,
+  HeadersInit,
+  Request,
+  RequestInit,
+  Response,
+} from "node-fetch"
 
-import { createURL, createBody } from "./shared"
+import { createBody, createURL } from "./shared"
 
 polyfill(globalThis, {
   exclude: "window document",
