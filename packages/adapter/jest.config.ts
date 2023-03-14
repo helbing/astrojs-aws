@@ -1,13 +1,21 @@
-import { Config } from "jest"
-import { defaults } from "jest-config"
+import type { JestConfigWithTsJest } from "ts-jest"
 
-const config: Config = {
-  moduleFileExtensions: [...defaults.moduleFileExtensions, "mts"],
-  preset: "ts-jest",
-  testRunner: "jest-circus/runner",
+const config: JestConfigWithTsJest = {
   testEnvironment: "node",
   testTimeout: 60000,
-  snapshotResolver: "<rootDir>/snapshotResolver.ts",
+  testRunner: "jest-circus",
+  // https://github.com/facebook/jest/issues/11167
+  // snapshotResolver: "<rootDir>/snapshotResolver.ts",
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        useESM: true,
+      },
+    ],
+    "<rootDir>/snapshotResolver.ts": "ts-jest",
+  },
 }
 
 export default config

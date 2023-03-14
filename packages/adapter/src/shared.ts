@@ -1,4 +1,5 @@
 import { Headers } from "node-fetch"
+import { URL } from "url"
 
 /**
  * @param headers

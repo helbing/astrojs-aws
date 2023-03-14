@@ -39,7 +39,7 @@ export default function handler(
     // 2. astro render
     const response = await app.render(request, routeData)
 
-    // // 3. aws response -> astro response
+    // 3. aws response -> astro response
     return createResponse(app, response, knownBinaryMediaTypes)
   }
 }
