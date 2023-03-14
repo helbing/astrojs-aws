@@ -10,6 +10,6 @@
     },
   ],
   "settings": {
-    "jest.disabledWorkspaceFolders": ["root"]
+    "vitest.disabledWorkspaceFolders": ["root"]
   }
 }

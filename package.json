@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "lint": "eslint"
   },
   "keywords": [
     "aws",

@@ -12,6 +12,22 @@
     "plugin:import/recommended",
     "plugin:import/typescript"
   ],
+  "rules": {
+    "import/order": ["error", {
+      "groups": [
+        "builtin",
+        "external",
+        "internal",
+        "parent",
+        "sibling",
+        "index",
+        "object",
+        "type"
+      ],
+      "newlines-between": "always",
+      "warnOnUnassignedImports": true
+    }]
+  },
   "settings": {
     "import/resolver": {
       "typescript": {

@@ -1,4 +1,3 @@
-import type { SSRManifest } from "astro"
 import { App } from "astro/app"
 import {
   APIGatewayProxyEventV2,
@@ -8,6 +7,8 @@ import {
   Context,
 } from "aws-lambda"
 import middy, { MiddyfiedHandler } from "@middy/core"
+import { SSRManifest } from "astro"
+
 import lambdaHandler from "./handler-lambda"
 import edgeLambda from "./handler-edge"
 

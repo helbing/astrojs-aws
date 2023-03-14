@@ -1,6 +1,8 @@
 import { URL } from "url"
+
 import { Headers } from "node-fetch"
-import { describe, test, expect } from "vitest"
+import { describe, expect, test } from "vitest"
+
 import { createURL } from "./shared"
 
 describe("Test createURL", () => {
