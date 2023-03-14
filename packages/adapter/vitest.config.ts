@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     testTimeout: 60000,
     resolveSnapshotPath(path, extension) {
-      return path+extension
-    }
+      return path + extension
+    },
   },
 })

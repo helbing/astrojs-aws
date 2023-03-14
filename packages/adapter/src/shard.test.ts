@@ -15,5 +15,3 @@ describe("Test createURL", () => {
     expect(createURL(headers, rawPath, rawQueryString)).toStrictEqual(url)
   })
 })
-
-
