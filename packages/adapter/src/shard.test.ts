@@ -1,3 +1,6 @@
+import { Buffer } from "buffer"
+import fs from "fs"
+import path from "path"
 import { URL } from "url"
 
 import { Headers } from "node-fetch"
@@ -29,5 +32,25 @@ describe("Test createURL", () => {
       "https://www.google.com",
     )
     expect(createURL(headers, rawPath, rawQueryString)).toStrictEqual(url)
+  })
+})
+
+describe("Test createBody", () => {
+  test("Expect undefined with method GET", () => {
+    expect(createBody("GET", true, undefined)).toBeUndefined()
+  })
+
+  test("Expect success with text", () => {
+    const text = "test data"
+    expect(createBody("POST", false, text)).toEqual(Buffer.from(text, "utf-8"))
+  })
+
+  test("Expect succes with buffer", () => {
+    const image = fs.readFileSync(
+      path.join(__dirname, "../tests//testdata/test.png"),
+    )
+    expect(createBody("POST", true, image.toString("base64"))).toStrictEqual(
+      image,
+    )
   })
 })

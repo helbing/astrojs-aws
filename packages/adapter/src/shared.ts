@@ -1,3 +1,4 @@
+import { Buffer } from "buffer"
 import { URL } from "url"
 
 import { Headers } from "node-fetch"
