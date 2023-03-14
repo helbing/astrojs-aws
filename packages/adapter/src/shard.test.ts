@@ -1,6 +1,6 @@
 import { URL } from "url"
 import { Headers } from "node-fetch"
-import { describe, test, expect } from "@jest/globals"
+import { describe, test, expect } from "vitest"
 import { createURL } from "./shared"
 
 describe("Test createURL", () => {
@@ -15,3 +15,5 @@ describe("Test createURL", () => {
     expect(createURL(headers, rawPath, rawQueryString)).toStrictEqual(url)
   })
 })
+
+
