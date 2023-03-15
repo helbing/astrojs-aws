@@ -1,0 +1,39 @@
+{
+  "name": "@astrojs-aws/constructs",
+  "version": "0.0.0",
+  "description": "The aws constructs of astrojs-aws",
+  "type": "module",
+  "scripts": {
+    "build": "",
+    "test": "vitest --run"
+  },
+  "keywords": [
+    "aws",
+    "aws-constructs",
+    "astro"
+  ],
+  "bugs": "https://github.com/withastro/astro/issues",
+  "homepage": "https://astro-aws.org/",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/helbing/astrojs-aws.git",
+    "directory": "packages/adapter"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "helbing",
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs-aws/adapter": "workspace:^0.0.0",
+    "@types/node": "^18.15.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.11",
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
+  },
+  "engines": {
+    "node": "16.x || 18.x"
+  }
+}

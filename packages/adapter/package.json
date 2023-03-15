@@ -13,12 +13,12 @@
     "withastro",
     "astro-adapter"
   ],
-  "bugs": "https://github.com/withastro/astro/issues",
-  "homepage": "https://astro-aws.org/",
+  "bugs": "https://github.com/helbing/astrojs-aws/issues",
+  "homepage": "https://github.com/helbing/astrojs-aws/",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/helbing/astrojs-aws.git",
-    "directory": "packages/adapter"
+    "directory": "packages/constructs"
   },
   "files": [
     "dist"
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.111",
+    "autoprefixer": "^10.4.14",
     "esbuild": "^0.17.11",
     "typescript": "^4.9.5",
     "vitest": "^0.29.2"

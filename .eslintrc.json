@@ -9,6 +9,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:vitest/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:astro/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript"
   ],
@@ -48,5 +50,15 @@
         "alwaysTryTypes": true
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
+    }
+  ]
 }

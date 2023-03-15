@@ -8,6 +8,14 @@
       "name": "adapter",
       "path": "../packages/adapter/"
     },
+    {
+      "name": "constructs",
+      "path": "../packages/constructs/"
+    },
+    {
+      "name": "docs",
+      "path": "../docs/"
+    }
   ],
   "settings": {
     "vitest.disabledWorkspaceFolders": ["root"]

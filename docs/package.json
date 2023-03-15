@@ -1,0 +1,39 @@
+{
+  "name": "@astrojs-aws/docs",
+  "version": "0.0.0",
+  "description": "The aws constructs of astrojs-aws",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "keywords": [
+    "aws",
+    "aws-constructs",
+    "astro"
+  ],
+  "bugs": "https://github.com/withastro/astro/issues",
+  "homepage": "https://astro-aws.org/",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/helbing/astrojs-aws.git",
+    "directory": "packages/adapter"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "helbing",
+  "license": "MIT",
+  "engines": {
+    "node": "16.x || 18.x"
+  },
+  "dependencies": {
+    "astro": "^2.1.3"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^0.18.1",
+    "@astrojs/react": "^2.1.0",
+    "@astrojs/tailwind": "^3.1.1",
+    "tailwindcss": "^3.2.7"
+  }
+}

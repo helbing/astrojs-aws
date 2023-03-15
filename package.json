@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
+    "build": "turbo run build",
     "test": "turbo run test",
     "lint": "eslint"
   },
@@ -20,11 +21,14 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "astro-eslint-parser": "^0.12.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-astro": "^0.24.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-vitest": "^0.0.54",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
