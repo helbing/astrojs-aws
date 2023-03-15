@@ -11,7 +11,8 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "dockerDashComposeVersion": "v2"
     },
-    "ghcr.io/devcontainers/features/aws-cli:1": {}
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/hugo:1": {}
   },
   "postCreateCommand": "sh /usr/local/install.sh",
   "remoteUser": "node",

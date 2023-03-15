@@ -11,6 +11,9 @@
     },
     "test": {
       "cache": false
+    },
+    "hugo": {
+      "cache": false
     }
   }
 }
