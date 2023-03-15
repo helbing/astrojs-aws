@@ -44,7 +44,7 @@ jobs:
     - uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: 'latest'
-    - run: cd docs && hugo --minify
+    - run: cd docs && hugo --minify && cd ..
 
     - uses: amondnet/vercel-action@v20
       with:
