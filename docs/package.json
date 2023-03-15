@@ -2,6 +2,7 @@
   "name": "@astrojs-aws/docs",
   "private": true,
   "scripts": {
+    "build": "hugo --minify",
     "hugo": "hugo"
   },
   "author": "helbing",

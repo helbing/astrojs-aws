@@ -1,0 +1,41 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'astrojs-aws'
+theme = "hugo-book"
+
+disablePathToLower = true
+enableGitInfo = true
+
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+startLevel = 1
+
+[languages]
+[languages.en]
+languageName = 'English'
+contentDir = 'content.en'
+weight = 1
+
+[languages.zh]
+languageName = '简体中文'
+contentDir = 'content.zh'
+weight = 2
+
+[menu]
+[[menu.after]]
+name = "Github"
+url = "https://github.com/helbing/astrojs-aws"
+weight = 10
+
+[param]
+BookTheme = 'auto'
+BookToC = true
+BookSection = 'docs'
+BookRepo = 'https://github.com/helbing/astrojs-aws'
+BookEditPath = 'edit/main/docs'
+BookDateFormat = 'January 2, 2006'
+BookSearch = true
+BookComments = false

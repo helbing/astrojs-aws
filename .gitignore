@@ -4,14 +4,17 @@ node_modules/
 .pnpm-debug.log*
 .pnpm-store/
 
-# jest
-coverage
+# vitest
+coverage/
 
 # output
-dist
+dist/
 
 # turbo
 .turbo/
 
 # astro
-.astro
+.astro/
+
+# hugo
+docs/public/
