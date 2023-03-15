@@ -19,8 +19,11 @@ jobs:
     - uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: 'latest'
+    - uses: pnpm/action-setup@v2
+      with:
+        run_install: false
     - uses: actions/setup-node@v3
       with:
-        node-version: 18
-        cache: pnpm
+        node-version-file: '.nvmrc'
+        cache: 'pnpm'
     - run: pnpm run build --filter @astrojs-aws/docs
