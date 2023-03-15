@@ -2,6 +2,11 @@ name: auto-merge
 
 on:
   pull_request:
+    branches:
+    - main
+  push:
+    branches:
+    - main
 
 jobs:
   dependabot:
