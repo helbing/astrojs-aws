@@ -42,13 +42,9 @@ jobs:
         submodules: true
         fetch-depth: 0
 
-    - uses: peaceiris/actions-hugo@v2
+    - uses: actions/setup-node@v3
       with:
-        hugo-version: 'latest'
-
-    # - uses: actions/setup-node@v3
-    #   with:
-    #     node-version-file: '.nvmrc'
+        node-version-file: '.nvmrc'
 
     - uses: amondnet/vercel-action@v20
       with:
