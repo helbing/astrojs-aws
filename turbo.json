@@ -6,8 +6,7 @@
         "^build"
       ],
       "outputs": [
-        "dist/**",
-        "public/**"
+        "dist/**"
       ]
     },
     "test": {
