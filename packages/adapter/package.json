@@ -1,9 +1,10 @@
 {
   "name": "@astrojs-aws/adapter",
   "version": "0.0.0",
-  "description": "",
+  "description": "The astrojs adapter of AWS Lambda",
   "type": "module",
   "scripts": {
+    "build": "",
     "test": "vitest --run"
   },
   "keywords": [
@@ -12,9 +13,15 @@
     "withastro",
     "astro-adapter"
   ],
+  "bugs": "https://github.com/withastro/astro/issues",
+  "homepage": "https://astro-aws.org/",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/helbing/astrojs-aws.git",
+    "directory": "packages/adapter"
+  },
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "author": "helbing",
   "license": "MIT",
@@ -28,7 +35,11 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.111",
+    "esbuild": "^0.17.11",
     "typescript": "^4.9.5",
     "vitest": "^0.29.2"
+  },
+  "engines": {
+    "node": "16.x || 18.x"
   }
 }

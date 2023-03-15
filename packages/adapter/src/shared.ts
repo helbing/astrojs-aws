@@ -8,6 +8,7 @@ import { Headers } from "node-fetch"
  * @param rawPath
  * @param rawQueryString
  * @returns
+ * @throws {Error} Invalid x-forwarded-*
  */
 export function createURL(
   headers: Headers,
@@ -16,6 +17,10 @@ export function createURL(
 ) {
   const scheme = headers.get("x-forwarded-protocol") ?? "https"
   const host = headers.get("x-forwarded-host") ?? headers.get("host") ?? ""
+  // refer: https://nodejs.org/api/url.html#new-urlinput-base
+  if (host == "") {
+    throw new Error("Invalid x-forwarded-host")
+  }
   return new URL(
     rawQueryString?.length ? `${rawPath}?${rawQueryString}` : rawPath,
     `${scheme}://${host}`,

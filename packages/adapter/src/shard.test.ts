@@ -47,7 +47,7 @@ describe("Test createBody", () => {
 
   test("Expect succes with buffer", () => {
     const image = fs.readFileSync(
-      path.join(__dirname, "../tests//testdata/test.png"),
+      path.join(__dirname, "../tests/testdata/test.png"),
     )
     expect(createBody("POST", true, image.toString("base64"))).toEqual(image)
   })
