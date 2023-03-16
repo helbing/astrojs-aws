@@ -72,7 +72,6 @@ export function createRequest(event: APIGatewayProxyEventV2) {
 }
 
 /**
- *
  * @param app astro app
  * @param response astro response
  * @param knownBinaryMediaTypes
