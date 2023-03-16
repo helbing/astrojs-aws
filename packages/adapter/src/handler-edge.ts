@@ -1,6 +1,5 @@
 import { STATUS_CODES } from "http"
 
-import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import {
   CloudFrontHeaders,
@@ -18,10 +17,6 @@ import {
 } from "node-fetch"
 
 import { createBody, createURL } from "./shared"
-
-polyfill(globalThis, {
-  exclude: "window document",
-})
 
 export default function handler(
   app: App,

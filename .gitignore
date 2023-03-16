@@ -4,6 +4,9 @@ node_modules/
 .pnpm-debug.log*
 .pnpm-store/
 
+*.js
+*.d.ts
+
 # vitest
 coverage/
 
