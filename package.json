@@ -7,7 +7,7 @@
     "preinstall": "npx -y only-allow pnpm",
     "build": "turbo run build",
     "test": "turbo run test",
-    "lint": "eslint",
+    "lint": "eslint .",
     "hugo": "turbo run hugo --filter @astrojs-aws/docs"
   },
   "keywords": [

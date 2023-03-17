@@ -8,9 +8,6 @@ export default defineConfig({
       entry: ["./src/index.ts", "./src/exports.ts"],
       formats: ["es"],
     },
-    terserOptions: {
-      compress: true
-    },
     outDir: "dist",
     minify: "terser",
     emptyOutDir: true,
