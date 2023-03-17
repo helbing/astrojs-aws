@@ -8,9 +8,15 @@ export default defineConfig({
       entry: ["./src/index.ts", "./src/exports.ts"],
       formats: ["es"],
     },
+    terserOptions: {
+      compress: true
+    },
     outDir: "dist",
-    minify: true,
+    minify: "terser",
     emptyOutDir: true,
   },
-  plugins: [dts(), nodePolyfills({ protocolImports: true })],
+  plugins: [
+    dts({ tsConfigFilePath: "tsconfig.build.json" }),
+    nodePolyfills({ protocolImports: true }),
+  ],
 })
