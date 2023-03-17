@@ -20,7 +20,7 @@ export type Options = {
    * - lambda mode: APIGatewayProxyHandlerV2
    * - edge mode: CloudFrontRequestHandler
    */
-  isEdge: boolean
+  isEdge?: boolean
 
   /**
    * Addition binary media type
@@ -30,7 +30,7 @@ export type Options = {
   /**
    * use middly middlewares
    */
-  withMiddlewares: middy.MiddlewareObj[]
+  withMiddlewares?: middy.MiddlewareObj[]
 }
 
 /**
@@ -92,8 +92,10 @@ export function createExports(manifest: SSRManifest, options: Options) {
     handler = middy(edgeLambda(app, knownBinaryMediaTypes))
   }
 
-  for (const middleware of options.withMiddlewares) {
-    handler.use(middleware)
+  if (options.withMiddlewares) {
+    for (const middleware of options.withMiddlewares) {
+      handler.use(middleware)
+    }
   }
 
   return { handler }

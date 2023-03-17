@@ -9,9 +9,7 @@
         "dist/**"
       ]
     },
-    "test": {
-      "cache": false
-    },
+    "test": {},
     "hugo": {
       "cache": false
     }

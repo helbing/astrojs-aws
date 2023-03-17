@@ -18,19 +18,5 @@
   "remoteUser": "node",
   "mounts": [
     "source=${localEnv:HOME}/.aws,target=/home/node/.aws,type=bind,consistency=cached"
-  ],
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "amazonwebservices.aws-toolkit-vscode",
-        "ms-vscode.vscode-typescript-next",
-        "esbenp.prettier-vscode",
-        "EditorConfig.EditorConfig",
-        "ZixuanChen.vitest-explorer",
-        "christian-kohler.npm-intellisense",
-        "DavidAnson.vscode-markdownlint"
-      ]
-    }
-  }
+  ]
 }

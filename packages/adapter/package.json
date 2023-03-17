@@ -4,6 +4,20 @@
   "description": "The astrojs adapter of AWS Lambda",
   "type": "module",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index",
+      "types": "./dist/index.d.ts"
+    },
+    "./exports": {
+      "import": "./dist/exports",
+      "types": "./dist/exports.d.ts"
+    },
+    "./exports.js": {
+      "import": "./dist/exports",
+      "types": "./dist/exports.d.ts"
+    }
+  },
   "scripts": {
     "build": "vite build",
     "build:types": "tsc -p tsconfig.build.json",

@@ -1,3 +1,7 @@
 {
-  "eslint.packageManager": "pnpm"
+  "eslint.packageManager": "pnpm",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }
