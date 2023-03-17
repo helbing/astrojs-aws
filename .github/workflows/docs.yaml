@@ -30,7 +30,7 @@ jobs:
       with:
         node-version-file: '.nvmrc'
 
-    - uses: amondnet/vercel-action@v20
+    - uses: amondnet/vercel-action@v25
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
@@ -56,7 +56,7 @@ jobs:
       with:
         node-version-file: '.nvmrc'
 
-    - uses: amondnet/vercel-action@v20
+    - uses: amondnet/vercel-action@v25
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         vercel-args: '--prod'
