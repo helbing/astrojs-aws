@@ -12,8 +12,5 @@ export default defineConfig({
     minify: "terser",
     emptyOutDir: true,
   },
-  plugins: [
-    dts({ tsConfigFilePath: "tsconfig.build.json" }),
-    nodePolyfills({ protocolImports: true }),
-  ],
+  plugins: [dts(), nodePolyfills({ protocolImports: true })],
 })

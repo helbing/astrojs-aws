@@ -1,0 +1,101 @@
+{
+  "author": {
+    "name": "helbing",
+    "roles": [
+      "author"
+    ]
+  },
+  "description": "The aws constructs of astrojs-aws",
+  "homepage": "https://astro-aws.org/",
+  "jsiiVersion": "1.78.1 (build 878761e)",
+  "keywords": [
+    "aws",
+    "aws-constructs",
+    "astro"
+  ],
+  "license": "MIT",
+  "metadata": {
+    "jsii": {
+      "pacmak": {
+        "hasDefaultInterfaces": true
+      }
+    }
+  },
+  "name": "@astrojs-aws/constructs",
+  "readme": {
+    "markdown": ""
+  },
+  "repository": {
+    "directory": "packages/constructs",
+    "type": "git",
+    "url": "ssh://git@github.com/helbing/astrojs-aws.git"
+  },
+  "schema": "jsii/0.10.0",
+  "targets": {
+    "js": {
+      "npm": "@astrojs-aws/constructs"
+    },
+    "python": {
+      "distName": "aws-jsiisamples.jsii-code-samples",
+      "module": "aws_jsiisamples.jsii_code_samples"
+    }
+  },
+  "types": {
+    "@astrojs-aws/constructs.HelloWorld": {
+      "assembly": "@astrojs-aws/constructs",
+      "fqn": "@astrojs-aws/constructs.HelloWorld",
+      "initializer": {},
+      "kind": "class",
+      "locationInModule": {
+        "filename": "lib/index.ts",
+        "line": 1
+      },
+      "methods": [
+        {
+          "locationInModule": {
+            "filename": "lib/index.ts",
+            "line": 6
+          },
+          "name": "fibonacci",
+          "parameters": [
+            {
+              "name": "num",
+              "type": {
+                "primitive": "number"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "number"
+            }
+          }
+        },
+        {
+          "locationInModule": {
+            "filename": "lib/index.ts",
+            "line": 2
+          },
+          "name": "sayHello",
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "string"
+            }
+          }
+        }
+      ],
+      "name": "HelloWorld",
+      "symbolId": "lib/index:HelloWorld"
+    }
+  },
+  "version": "0.0.0",
+  "fingerprint": "zx5ecg99hv9a8iGrXmpOsAldGXxN6Y1WvX2HtxEZPhg="
+}
