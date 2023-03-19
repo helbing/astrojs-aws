@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.111",
+    "@types/babel__traverse": "7.17.1",
     "@types/node-fetch": "^2.6.2",
     "vite": "^4.1.4",
     "vite-plugin-dts": "^2.1.0",

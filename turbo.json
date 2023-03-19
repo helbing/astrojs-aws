@@ -10,6 +10,7 @@
       ]
     },
     "test": {},
+    "package": {},
     "hugo": {
       "cache": false
     }

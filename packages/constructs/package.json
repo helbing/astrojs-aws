@@ -1,16 +1,18 @@
 {
   "name": "@astrojs-aws/constructs",
   "version": "0.0.0",
-  "description": "The aws constructs of astrojs-aws",
+  "description": "The AWS Constructs of AstroSite",
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "jsii -vvv",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "package": "jsii-pacmak -vvv"
   },
   "keywords": [
     "aws",
+    "aws-cdk",
     "aws-constructs",
     "astro"
   ],
@@ -22,16 +24,17 @@
     "directory": "packages/constructs"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "author": "helbing",
   "license": "MIT",
-  "dependencies": {
-  },
   "devDependencies": {
-    "@types/node": "18.11.18",
+    "@types/node": "18.11.19",
+    "aws-cdk-lib": "^2.69.0",
+    "constructs": "^10.1.281",
     "jsii": "^1.78.1",
-    "jsii-pacmak": "^1.78.1"
+    "jsii-pacmak": "^1.78.1",
+    "vitest": "^0.29.2"
   },
   "engines": {
     "node": ">=16.x"
@@ -44,5 +47,9 @@
         "module": "aws_jsiisamples.jsii_code_samples"
       }
     }
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.69.0",
+    "constructs": "^10.1.281"
   }
 }
