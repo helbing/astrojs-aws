@@ -6,6 +6,8 @@
     ]
   },
   "dependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
     "aws-cdk-lib": "^2.69.0",
     "constructs": "^10.1.281"
   },
@@ -85,6 +87,68 @@
         "python": {
           "distName": "aws-cdk.asset-node-proxy-agent-v5",
           "module": "aws_cdk.asset_node_proxy_agent_v5"
+        }
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-alpha": {
+      "targets": {
+        "dotnet": {
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/main/logo/default-256-dark.png",
+          "namespace": "Amazon.CDK.AWS.Apigatewayv2.Alpha",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2.Alpha"
+        },
+        "go": {
+          "moduleName": "github.com/aws/aws-cdk-go",
+          "packageName": "awscdkapigatewayv2alpha"
+        },
+        "java": {
+          "maven": {
+            "artifactId": "apigatewayv2-alpha",
+            "groupId": "software.amazon.awscdk"
+          },
+          "package": "software.amazon.awscdk.services.apigatewayv2.alpha"
+        },
+        "js": {
+          "npm": "@aws-cdk/aws-apigatewayv2-alpha"
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 2"
+          ],
+          "distName": "aws-cdk.aws-apigatewayv2-alpha",
+          "module": "aws_cdk.aws_apigatewayv2_alpha"
+        }
+      }
+    },
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": {
+      "targets": {
+        "dotnet": {
+          "iconUrl": "https://raw.githubusercontent.com/aws/aws-cdk/main/logo/default-256-dark.png",
+          "namespace": "Amazon.CDK.AWS.Apigatewayv2.Integrations.Alpha",
+          "packageId": "Amazon.CDK.AWS.APIGatewayv2.Integrations.Alpha"
+        },
+        "go": {
+          "moduleName": "github.com/aws/aws-cdk-go",
+          "packageName": "awscdkapigatewayv2integrationsalpha"
+        },
+        "java": {
+          "maven": {
+            "artifactId": "apigatewayv2-integrations-alpha",
+            "groupId": "software.amazon.awscdk"
+          },
+          "package": "software.amazon.awscdk.services.apigatewayv2.integrations.alpha"
+        },
+        "js": {
+          "npm": "@aws-cdk/aws-apigatewayv2-integrations-alpha"
+        },
+        "python": {
+          "classifiers": [
+            "Framework :: AWS CDK",
+            "Framework :: AWS CDK :: 2"
+          ],
+          "distName": "aws-cdk.aws-apigatewayv2-integrations-alpha",
+          "module": "aws_cdk.aws_apigatewayv2_integrations_alpha"
         }
       }
     },
@@ -3385,19 +3449,19 @@
       "kind": "interface",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 5
+        "line": 7
       },
       "name": "ILambdaAstroSiteProps",
       "properties": [
         {
           "abstract": true,
           "docs": {
-            "summary": "Path of entry file (built of Lambda)."
+            "summary": "Path of entry file (built with astrojs-aws)."
           },
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 16
+            "line": 18
           },
           "name": "entry",
           "type": {
@@ -3413,7 +3477,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 23
+            "line": 25
           },
           "name": "handler",
           "optional": true,
@@ -3430,7 +3494,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 11
+            "line": 13
           },
           "name": "runtime",
           "optional": true,
@@ -3448,7 +3512,7 @@
       "initializer": {
         "locationInModule": {
           "filename": "lib/lambda.ts",
-          "line": 32
+          "line": 38
         },
         "parameters": [
           {
@@ -3474,10 +3538,24 @@
       "kind": "class",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 26
+        "line": 28
       },
       "name": "LambdaAstroSite",
       "properties": [
+        {
+          "docs": {
+            "summary": "HTTP API."
+          },
+          "immutable": true,
+          "locationInModule": {
+            "filename": "lib/lambda.ts",
+            "line": 32
+          },
+          "name": "api",
+          "type": {
+            "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpApi"
+          }
+        },
         {
           "docs": {
             "summary": "Lambda function handler."
@@ -3485,7 +3563,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 30
+            "line": 36
           },
           "name": "handler",
           "type": {
@@ -3497,5 +3575,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "t0zR3P6v9VlacSpCWfZa+1euSr5In2dL/r5vhAdqm90="
+  "fingerprint": "SVsRBeOOcnuvt+d6zCsrAr1aNOek6Rjqjlpo01HhNpY="
 }

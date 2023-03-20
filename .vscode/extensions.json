@@ -3,7 +3,6 @@
     "dbaeumer.vscode-eslint",
     "amazonwebservices.aws-toolkit-vscode",
     "ms-vscode.vscode-typescript-next",
-    "esbenp.prettier-vscode",
     "EditorConfig.EditorConfig",
     "ZixuanChen.vitest-explorer",
     "christian-kohler.npm-intellisense",

@@ -29,6 +29,8 @@
   "author": "helbing",
   "license": "MIT",
   "devDependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
     "@types/node": "18.11.19",
     "aws-cdk-lib": "^2.69.0",
     "constructs": "^10.1.281",
@@ -49,6 +51,8 @@
     }
   },
   "peerDependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
     "aws-cdk-lib": "^2.69.0",
     "constructs": "^10.1.281"
   }
