@@ -17,7 +17,6 @@
     "isolatedModules": true
   },
   "include": [
-    "packages/",
-    "examples/"
+    "packages/"
   ]
 }

@@ -2,7 +2,7 @@
   "name": "@astrojs-aws/constructs-examples-helloworld",
   "private": true,
   "scripts": {
-    "build": ""
+    "build": "astro build"
   },
   "dependencies": {
     "@astrojs-aws/adapter": "workspace:^0.0.0",
