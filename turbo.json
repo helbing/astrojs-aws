@@ -10,6 +10,9 @@
       ]
     },
     "test": {},
+    "cdk": {
+      "cache": false
+    },
     "package": {},
     "hugo": {
       "cache": false
