@@ -105,6 +105,7 @@ importers:
       '@astrojs/react': ^2.1.0
       '@types/source-map-support': ^0.5.6
       astro: ^2.1.2
+      aws-cdk: ^2.69.0
       aws-cdk-lib: ^2.69.0
       constructs: ^10.1.281
       source-map-support: ^0.5.21
@@ -117,6 +118,7 @@ importers:
       astro: 2.1.3_@types+node@18.15.3
     devDependencies:
       '@types/source-map-support': 0.5.6
+      aws-cdk: 2.69.0
       aws-cdk-lib: 2.69.0_constructs@10.1.281
       constructs: 10.1.281
       source-map-support: 0.5.21
@@ -2076,6 +2078,14 @@ packages:
       - punycode
       - semver
       - yaml
+
+  /aws-cdk/2.69.0:
+    resolution: {integrity: sha512-wsocwG6gFpPq4WZhLc77khuD35qtDuSphV4kquirlPE7wBmXh7XKoC60sRJvz8IHjv5dvqygaoNL4HH2fLonaQ==}
+    engines: {node: '>= 14.15.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
 
   /aws-lambda/1.0.7:
     resolution: {integrity: sha512-9GNFMRrEMG5y3Jvv+V4azWvc+qNWdWLTjDdhf/zgMlz8haaaLWv0xeAIWxz9PuWUBawsVxy0zZotjCdR3Xq+2w==}

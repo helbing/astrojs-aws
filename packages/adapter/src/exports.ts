@@ -82,17 +82,17 @@ export function createExports(manifest: SSRManifest, options: Options) {
     "video/ogg",
     "video/x-msvideo",
     "video/webm",
-    ...(options.binaryMediaTypes ?? []),
+    ...(options?.binaryMediaTypes ?? []),
   ])
 
   let handler: Handler
-  if (!options.isEdge) {
+  if (options?.isEdge ?? false) {
     handler = middy(lambdaHandler(app, knownBinaryMediaTypes))
   } else {
     handler = middy(edgeLambda(app, knownBinaryMediaTypes))
   }
 
-  if (options.withMiddlewares) {
+  if (options?.withMiddlewares) {
     for (const middleware of options.withMiddlewares) {
       handler.use(middleware)
     }

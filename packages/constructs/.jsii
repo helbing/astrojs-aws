@@ -3449,7 +3449,7 @@
       "kind": "interface",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 7
+        "line": 12
       },
       "name": "ILambdaAstroSiteProps",
       "properties": [
@@ -3461,7 +3461,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 18
+            "line": 23
           },
           "name": "entry",
           "type": {
@@ -3477,7 +3477,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 25
+            "line": 30
           },
           "name": "handler",
           "optional": true,
@@ -3494,7 +3494,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 13
+            "line": 18
           },
           "name": "runtime",
           "optional": true,
@@ -3512,7 +3512,7 @@
       "initializer": {
         "locationInModule": {
           "filename": "lib/lambda.ts",
-          "line": 38
+          "line": 43
         },
         "parameters": [
           {
@@ -3538,7 +3538,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 28
+        "line": 33
       },
       "name": "LambdaAstroSite",
       "properties": [
@@ -3549,7 +3549,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 32
+            "line": 37
           },
           "name": "api",
           "type": {
@@ -3563,7 +3563,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 36
+            "line": 41
           },
           "name": "handler",
           "type": {
@@ -3575,5 +3575,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "SVsRBeOOcnuvt+d6zCsrAr1aNOek6Rjqjlpo01HhNpY="
+  "fingerprint": "/cyGhEjGLtnOxIJ7h1PCxSm+Ws+VwYx5qvCncv3Im1U="
 }

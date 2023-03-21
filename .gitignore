@@ -6,6 +6,7 @@ node_modules/
 
 *.js
 *.d.ts
+tsconfig.tsbuildinfo
 
 # vitest
 coverage/
@@ -18,6 +19,11 @@ dist/
 
 # astro
 .astro/
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out/
+cdk-integ.out.*
 
 # hugo
 docs/public/

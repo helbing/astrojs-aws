@@ -1,5 +1,10 @@
-import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
+import {
+  CorsHttpMethod,
+  HttpApi,
+  HttpMethod,
+} from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
+import { CfnOutput } from "aws-cdk-lib"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 import { Construct } from "constructs"
@@ -39,7 +44,7 @@ export class LambdaAstroSite extends Construct {
     super(scope, id)
 
     this.handler = new NodejsFunction(this, "Handler", {
-      runtime: new Runtime(props?.runtime || "nodejs18.x"),
+      runtime: Runtime.NODEJS_18_X,
       entry: props.entry,
       handler: props?.handler || "handler",
     })
@@ -49,12 +54,22 @@ export class LambdaAstroSite extends Construct {
       this.handler,
     )
 
-    this.api = new HttpApi(this, "HttpApi", {})
+    this.api = new HttpApi(this, "HttpApi", {
+      corsPreflight: {
+        allowMethods: [CorsHttpMethod.ANY],
+        allowOrigins: ["*"],
+      },
+    })
 
     this.api.addRoutes({
       path: "/",
       methods: [HttpMethod.ANY],
       integration: integration,
+    })
+
+    new CfnOutput(this, "APIEndpoint", {
+      description: "API Endpoint",
+      value: this.api.apiEndpoint,
     })
   }
 }

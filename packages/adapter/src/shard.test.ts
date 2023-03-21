@@ -1,12 +1,14 @@
 import { Buffer } from "buffer"
 import fs from "fs"
 import path from "path"
-import { URL } from "url"
+import { URL, fileURLToPath } from "url"
 
 import { Headers } from "node-fetch"
 import { describe, expect, test } from "vitest"
 
 import { createBody, createURL } from "./shared"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 describe("Test createURL", () => {
   test("Expect success without rawQueryString", () => {
