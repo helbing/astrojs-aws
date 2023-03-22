@@ -13,3 +13,5 @@ new ExampleStack(app, "ExampleHelloWorld", {
     region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
   },
 })
+
+app.synth()

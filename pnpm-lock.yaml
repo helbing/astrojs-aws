@@ -58,6 +58,7 @@ importers:
       aws-lambda: ^1.0.7
       http-status-codes: ^2.2.0
       node-fetch: ^2.6.9
+      typescript: ^5.0.2
       vite: ^4.1.4
       vite-plugin-dts: ^2.1.0
       vite-plugin-node-polyfills: ^0.7.0
@@ -73,6 +74,7 @@ importers:
       '@types/aws-lambda': 8.10.114
       '@types/babel__traverse': 7.17.1
       '@types/node-fetch': 2.6.2
+      typescript: 5.0.2
       vite: 4.2.0_@types+node@18.15.3
       vite-plugin-dts: 2.1.0_55j2zwyrixw4q2c2olnaswzcha
       vite-plugin-node-polyfills: 0.7.0_vite@4.2.0
@@ -83,11 +85,12 @@ importers:
       '@aws-cdk/aws-apigatewayv2-alpha': 2.69.0-alpha.0
       '@aws-cdk/aws-apigatewayv2-integrations-alpha': 2.69.0-alpha.0
       '@types/node': 18.11.19
-      aws-cdk-lib: ^2.69.0
-      constructs: ^10.1.281
+      aws-cdk-lib: 2.69.0
+      constructs: 10.1.281
       jsii: ^1.78.1
       jsii-pacmak: ^1.78.1
-      vitest: ^0.29.2
+      typescript: ^4.9.5
+      vitest: ^0.29.3
     devDependencies:
       '@aws-cdk/aws-apigatewayv2-alpha': 2.69.0-alpha.0_keh3rxcgnalyymmjefdo7jjuvu
       '@aws-cdk/aws-apigatewayv2-integrations-alpha': 2.69.0-alpha.0_xww2crkv53yb2rb4rgoooswbte
@@ -96,6 +99,7 @@ importers:
       constructs: 10.1.281
       jsii: 1.78.1
       jsii-pacmak: 1.78.1
+      typescript: 4.9.5
       vitest: 0.29.3
 
   packages/constructs/examples/helloworld:
@@ -777,13 +781,13 @@ packages:
       '@types/node': 18.15.3
       chalk: 4.1.2
       cosmiconfig: 8.1.2
-      cosmiconfig-typescript-loader: 4.3.0_vx65isuoqyfjk2ldr52zhqeiz4
+      cosmiconfig-typescript-loader: 4.3.0_kpxsywhbgzx5buqgdnmsfobuwi
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
       ts-node: 10.9.1_sxidjv3cojnrggmso45tj7hldi
-      typescript: 4.8.4
+      typescript: 4.9.5
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -2658,7 +2662,7 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /cosmiconfig-typescript-loader/4.3.0_vx65isuoqyfjk2ldr52zhqeiz4:
+  /cosmiconfig-typescript-loader/4.3.0_kpxsywhbgzx5buqgdnmsfobuwi:
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2670,7 +2674,7 @@ packages:
       '@types/node': 18.15.3
       cosmiconfig: 8.1.2
       ts-node: 10.9.1_sxidjv3cojnrggmso45tj7hldi
-      typescript: 4.8.4
+      typescript: 4.9.5
     dev: true
 
   /cosmiconfig/8.1.2:
@@ -7086,6 +7090,12 @@ packages:
 
   /typescript/4.8.4:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
+  /typescript/4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true

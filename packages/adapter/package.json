@@ -41,6 +41,9 @@
   ],
   "author": "helbing",
   "license": "MIT",
+  "engines": {
+    "node": "14.x || 16.x || 18.x"
+  },
   "dependencies": {
     "@middy/core": "^4.2.6",
     "@types/node": "^18.15.1",
@@ -53,12 +56,10 @@
     "@types/aws-lambda": "^8.10.111",
     "@types/babel__traverse": "7.17.1",
     "@types/node-fetch": "^2.6.2",
+    "typescript": "^5.0.2",
     "vite": "^4.1.4",
     "vite-plugin-dts": "^2.1.0",
     "vite-plugin-node-polyfills": "^0.7.0",
     "vitest": "^0.29.2"
-  },
-  "engines": {
-    "node": ">=16.x"
   }
 }

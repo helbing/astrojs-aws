@@ -9,10 +9,12 @@ import { Runtime } from "aws-cdk-lib/aws-lambda"
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 import { Construct } from "constructs"
 
+import Utils from "./utils"
+
 export interface ILambdaAstroSiteProps {
   /**
    * Nodejs Runtime
-   *
+
    * @default nodejs18.x
    */
   readonly runtime?: "nodejs14.x" | "nodejs16.x" | "nodejs18.x"
@@ -21,13 +23,6 @@ export interface ILambdaAstroSiteProps {
    * Path of entry file (built with astrojs-aws)
    */
   readonly entry: string
-
-  /**
-   * The handler function name of entry file
-   *
-   * @default handler
-   */
-  readonly handler?: string
 }
 
 export class LambdaAstroSite extends Construct {
@@ -42,11 +37,11 @@ export class LambdaAstroSite extends Construct {
 
   constructor(scope: Construct, id: string, props: ILambdaAstroSiteProps) {
     super(scope, id)
+    const utils = new Utils()
 
     this.handler = new NodejsFunction(this, "Handler", {
-      runtime: Runtime.NODEJS_18_X,
+      runtime: utils.stringToRuntime(props?.runtime || "nodejs18.x"),
       entry: props.entry,
-      handler: props?.handler || "handler",
     })
 
     const integration = new HttpLambdaIntegration(
@@ -71,5 +66,25 @@ export class LambdaAstroSite extends Construct {
       description: "API Endpoint",
       value: this.api.apiEndpoint,
     })
+  }
+}
+
+/**
+ * Transform runtime string to Rumtime
+ *
+ * @param s
+ * @returns
+ */
+export function stringToRuntime(s: string): Runtime {
+  switch (s) {
+    case "nodejs14.x": {
+      return Runtime.NODEJS_14_X
+    }
+    case "nodejs16.x": {
+      return Runtime.NODEJS_16_X
+    }
+    default: {
+      return Runtime.NODEJS_18_X
+    }
   }
 }

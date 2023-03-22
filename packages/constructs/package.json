@@ -14,6 +14,7 @@
     "aws",
     "aws-cdk",
     "aws-constructs",
+    "jsii",
     "astro"
   ],
   "bugs": "https://github.com/withastro/astro/issues",
@@ -28,22 +29,15 @@
   ],
   "author": "helbing",
   "license": "MIT",
-  "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
-    "@types/node": "18.11.19",
-    "aws-cdk-lib": "^2.69.0",
-    "constructs": "^10.1.281",
-    "jsii": "^1.78.1",
-    "jsii-pacmak": "^1.78.1",
-    "vitest": "^0.29.2"
-  },
   "engines": {
-    "node": ">=16.x"
+    "node": "14.x || 16.x || 18.x"
   },
   "jsii": {
     "excludeTypescript": [
-      "examples"
+      "examples",
+      "tests",
+      "vitest.config.ts",
+      "**/*.test.ts"
     ],
     "outdir": "dist",
     "targets": {
@@ -53,10 +47,21 @@
       }
     }
   },
+  "devDependencies": {
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
+    "@types/node": "18.11.19",
+    "aws-cdk-lib": "2.69.0",
+    "constructs": "10.1.281",
+    "jsii": "^1.78.1",
+    "jsii-pacmak": "^1.78.1",
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.3"
+  },
   "peerDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
-    "aws-cdk-lib": "^2.69.0",
-    "constructs": "^10.1.281"
+    "aws-cdk-lib": "2.69.0",
+    "constructs": "10.1.281"
   }
 }

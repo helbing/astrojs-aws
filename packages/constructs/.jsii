@@ -8,8 +8,8 @@
   "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.69.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.69.0-alpha.0",
-    "aws-cdk-lib": "^2.69.0",
-    "constructs": "^10.1.281"
+    "aws-cdk-lib": "2.69.0",
+    "constructs": "10.1.281"
   },
   "dependencyClosure": {
     "@aws-cdk/asset-awscli-v1": {
@@ -3413,6 +3413,7 @@
     "aws",
     "aws-cdk",
     "aws-constructs",
+    "jsii",
     "astro"
   ],
   "license": "MIT",
@@ -3471,23 +3472,6 @@
         {
           "abstract": true,
           "docs": {
-            "default": "handler",
-            "summary": "The handler function name of entry file."
-          },
-          "immutable": true,
-          "locationInModule": {
-            "filename": "lib/lambda.ts",
-            "line": 30
-          },
-          "name": "handler",
-          "optional": true,
-          "type": {
-            "primitive": "string"
-          }
-        },
-        {
-          "abstract": true,
-          "docs": {
             "default": "nodejs18.x",
             "summary": "Nodejs Runtime."
           },
@@ -3512,7 +3496,7 @@
       "initializer": {
         "locationInModule": {
           "filename": "lib/lambda.ts",
-          "line": 43
+          "line": 36
         },
         "parameters": [
           {
@@ -3538,7 +3522,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 33
+        "line": 26
       },
       "name": "LambdaAstroSite",
       "properties": [
@@ -3549,7 +3533,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 37
+            "line": 30
           },
           "name": "api",
           "type": {
@@ -3563,7 +3547,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 41
+            "line": 34
           },
           "name": "handler",
           "type": {
@@ -3575,5 +3559,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "/cyGhEjGLtnOxIJ7h1PCxSm+Ws+VwYx5qvCncv3Im1U="
+  "fingerprint": "xTwIl2rZkH5xEhkXTxxRjH9NFSV96LFbqhJtgWxLiIQ="
 }
