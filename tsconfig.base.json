@@ -15,8 +15,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true
-  },
-  "include": [
-    "packages/"
-  ]
+  }
 }
