@@ -3450,7 +3450,7 @@
       "kind": "interface",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 14
+        "line": 13
       },
       "name": "ILambdaAstroSiteProps",
       "properties": [
@@ -3462,7 +3462,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 25
+            "line": 24
           },
           "name": "entry",
           "type": {
@@ -3478,7 +3478,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 20
+            "line": 19
           },
           "name": "runtime",
           "optional": true,
@@ -3496,7 +3496,7 @@
       "initializer": {
         "locationInModule": {
           "filename": "lib/lambda.ts",
-          "line": 38
+          "line": 37
         },
         "parameters": [
           {
@@ -3522,7 +3522,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "lib/lambda.ts",
-        "line": 28
+        "line": 27
       },
       "name": "LambdaAstroSite",
       "properties": [
@@ -3533,7 +3533,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 32
+            "line": 31
           },
           "name": "api",
           "type": {
@@ -3547,7 +3547,7 @@
           "immutable": true,
           "locationInModule": {
             "filename": "lib/lambda.ts",
-            "line": 36
+            "line": 35
           },
           "name": "handler",
           "type": {
@@ -3559,5 +3559,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "sHAP7v+bvtTt3Fzpzf4/huJs2qrSfjABLM/Jslz+XYg="
+  "fingerprint": "GLfTq8UDFkFEEGzU2vHZ9LLwEplbIi1Kp4A96rlzw88="
 }

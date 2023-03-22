@@ -62,7 +62,6 @@ export class LambdaAstroSite extends Construct {
     })
 
     new CfnOutput(this, "APIEndpoint", {
-      description: "API Endpoint",
       value: this.api.apiEndpoint,
     })
   }

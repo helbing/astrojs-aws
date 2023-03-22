@@ -20,8 +20,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "build:types": "tsc -p tsconfig.build.json",
-    "test": "vitest --run"
+    "test": "vitest run --no-threads"
   },
   "keywords": [
     "aws",

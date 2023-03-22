@@ -2,12 +2,11 @@
   "name": "@astrojs-aws/constructs",
   "version": "0.0.0",
   "description": "The AWS Constructs of AstroSite",
-  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "jsii -vvv",
-    "test": "vitest --run",
+    "test": "vitest run --no-threads",
     "package": "jsii-pacmak -vvv"
   },
   "keywords": [
