@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "@unocss/eslint-config": "^0.50.6",
-    "astro-eslint-parser": "^0.12.0",
+    "astro-eslint-parser": "^0.13.1",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-import-resolver-typescript": "^3.5.3",
