@@ -18,6 +18,6 @@
     }
   ],
   "settings": {
-    "vitest.disabledWorkspaceFolders": ["root"]
+    "vitest.disabledWorkspaceFolders": ["root", "docs"]
   }
 }
