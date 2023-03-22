@@ -4,5 +4,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
+  // link: https://github.com/aws/aws-cdk/issues/20873
   "vitest.commandLine": "npx vitest --no-threads"
 }
