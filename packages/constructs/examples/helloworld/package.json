@@ -13,15 +13,16 @@
     "astro": "^2.1.2"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^3.1.1",
     "@types/source-map-support": "^0.5.6",
+    "@unocss/astro": "^0.50.6",
+    "@unocss/preset-uno": "^0.50.6",
     "aws-cdk": "^2.69.0",
     "aws-cdk-lib": "^2.69.0",
     "constructs": "^10.1.281",
     "source-map-support": "^0.5.21",
-    "tailwindcss": "^3.2.7",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "unocss": "^0.50.6"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.69.0",

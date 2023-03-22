@@ -6,10 +6,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: ["./src/index.ts", "./src/exports.ts"],
-      formats: ["es"],
+      formats: ["es", "cjs"],
     },
     outDir: "dist",
-    minify: "terser",
     emptyOutDir: true,
   },
   plugins: [dts(), nodePolyfills({ protocolImports: true })],

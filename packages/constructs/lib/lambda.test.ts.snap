@@ -29,7 +29,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "77796e4c6fc903c39ad9f3e8b74b27353b461b4413a4b3b1879e094144c630b5.zip",
+          "S3Key": "b4349d2e7ca08ef1b005e6e30b06256ff57aeab10edeb70ad5b5be5cf9ad45d1.zip",
         },
         "Environment": {
           "Variables": {

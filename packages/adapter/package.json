@@ -3,21 +3,23 @@
   "version": "0.0.0",
   "description": "The astrojs adapter of AWS Lambda",
   "type": "module",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index",
+      "require": "./dist/index",
       "types": "./dist/index.d.ts"
     },
     "./exports": {
       "import": "./dist/exports",
-      "types": "./dist/exports.d.ts"
-    },
-    "./exports.js": {
-      "import": "./dist/exports",
+      "require": "./dist/exports",
       "types": "./dist/exports.d.ts"
     }
   },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build",
     "test": "vitest run --no-threads"
@@ -35,9 +37,6 @@
     "url": "https://github.com/helbing/astrojs-aws.git",
     "directory": "packages/constructs"
   },
-  "files": [
-    "dist"
-  ],
   "author": "helbing",
   "license": "MIT",
   "engines": {
