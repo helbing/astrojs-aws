@@ -2,6 +2,7 @@ import {
   CorsHttpMethod,
   HttpApi,
   HttpMethod,
+  RestApi,
 } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
 import { CfnOutput } from "aws-cdk-lib"

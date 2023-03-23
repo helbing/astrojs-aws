@@ -16,7 +16,7 @@ import {
   Response,
 } from "node-fetch"
 
-import { createBody, createURL } from "./shared"
+import { createBody, createURL } from "./utils"
 
 export default function handler(
   app: App,
@@ -26,7 +26,7 @@ export default function handler(
     // 1. aws event -> astro request
     if (event.Records.length == 0 || event.Records.length > 1) {
       throw new Error(
-        "Illegal record size, cloudfront event records = 0 or records > 1",
+        "Illegal record size, cloudfront event records equal 0 or records greater than 1",
       )
     }
 

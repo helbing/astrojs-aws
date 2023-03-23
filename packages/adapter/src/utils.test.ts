@@ -6,7 +6,7 @@ import { URL, fileURLToPath } from "url"
 import { Headers } from "node-fetch"
 import { describe, expect, test } from "vitest"
 
-import { createBody, createURL } from "./shared"
+import { createBody, createURL } from "./utils"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -34,6 +34,15 @@ describe("Test createURL", () => {
       "https://www.google.com",
     )
     expect(createURL(headers, rawPath, rawQueryString)).toStrictEqual(url)
+  })
+
+  test("Expect throw Error", () => {
+    const headers = new Headers()
+    const rawPath = "/path/to"
+    const rawQueryString = ""
+    expect(() => createURL(headers, rawPath, rawQueryString)).toThrowError(
+      new Error("Invalid empty host"),
+    )
   })
 })
 

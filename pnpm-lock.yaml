@@ -109,6 +109,8 @@ importers:
       '@astrojs/react': ^2.1.0
       '@types/source-map-support': ^0.5.6
       '@unocss/astro': ^0.50.6
+      '@unocss/preset-attributify': ^0.50.6
+      '@unocss/preset-icons': ^0.50.6
       '@unocss/preset-uno': ^0.50.6
       astro: ^2.1.2
       aws-cdk: ^2.69.0
@@ -126,6 +128,8 @@ importers:
     devDependencies:
       '@types/source-map-support': 0.5.6
       '@unocss/astro': 0.50.6_vite@4.2.0
+      '@unocss/preset-attributify': 0.50.6
+      '@unocss/preset-icons': 0.50.6
       '@unocss/preset-uno': 0.50.6
       aws-cdk: 2.69.0
       aws-cdk-lib: 2.69.0_constructs@10.1.281

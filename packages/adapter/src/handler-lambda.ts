@@ -15,7 +15,7 @@ import {
   Response,
 } from "node-fetch"
 
-import { createBody, createURL } from "./shared"
+import { createBody, createURL } from "./utils"
 
 export default function handler(
   app: App,

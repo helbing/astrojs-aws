@@ -15,6 +15,8 @@
   "devDependencies": {
     "@types/source-map-support": "^0.5.6",
     "@unocss/astro": "^0.50.6",
+    "@unocss/preset-attributify": "^0.50.6",
+    "@unocss/preset-icons": "^0.50.6",
     "@unocss/preset-uno": "^0.50.6",
     "aws-cdk": "^2.69.0",
     "aws-cdk-lib": "^2.69.0",
