@@ -1,7 +1,7 @@
 node_modules/
 dist/
-lib/**/*.js
-lib/**/*.d.ts
+*.js
+*.d.ts
 cdk.out/
 docs/public/
 docs/themes/

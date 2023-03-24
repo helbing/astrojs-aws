@@ -47,6 +47,43 @@ importers:
   docs:
     specifiers: {}
 
+  examples/helloworld:
+    specifiers:
+      '@astrojs-aws/adapter': workspace:^0.0.0
+      '@astrojs-aws/constructs': workspace:^0.0.0
+      '@astrojs/react': ^2.1.0
+      '@types/source-map-support': ^0.5.6
+      '@unocss/astro': ^0.50.6
+      '@unocss/preset-attributify': ^0.50.6
+      '@unocss/preset-icons': ^0.50.6
+      '@unocss/preset-uno': ^0.50.6
+      astro: ^2.1.2
+      aws-cdk: ^2.69.0
+      aws-cdk-lib: ^2.69.0
+      constructs: ^10.1.281
+      source-map-support: ^0.5.21
+      ts-node: ^10.9.1
+      typescript: ^5.0.2
+      unocss: ^0.50.6
+    dependencies:
+      '@astrojs-aws/adapter': link:../../packages/adapter
+      '@astrojs-aws/constructs': link:../../packages/constructs
+      '@astrojs/react': 2.1.0_3xleytyzprlgycb2ded54tx72i
+      astro: 2.1.3_@types+node@18.15.3
+    devDependencies:
+      '@types/source-map-support': 0.5.6
+      '@unocss/astro': 0.50.6_vite@4.2.0
+      '@unocss/preset-attributify': 0.50.6
+      '@unocss/preset-icons': 0.50.6
+      '@unocss/preset-uno': 0.50.6
+      aws-cdk: 2.69.0
+      aws-cdk-lib: 2.69.0_constructs@10.1.281
+      constructs: 10.1.281
+      source-map-support: 0.5.21
+      ts-node: 10.9.1_sxidjv3cojnrggmso45tj7hldi
+      typescript: 5.0.2
+      unocss: 0.50.6_postcss@8.4.21+vite@4.2.0
+
   packages/adapter:
     specifiers:
       '@middy/core': ^4.2.6
@@ -101,43 +138,6 @@ importers:
       jsii-pacmak: 1.78.1
       typescript: 4.9.5
       vitest: 0.29.3
-
-  packages/constructs/examples/helloworld:
-    specifiers:
-      '@astrojs-aws/adapter': workspace:^0.0.0
-      '@astrojs-aws/constructs': workspace:^0.0.0
-      '@astrojs/react': ^2.1.0
-      '@types/source-map-support': ^0.5.6
-      '@unocss/astro': ^0.50.6
-      '@unocss/preset-attributify': ^0.50.6
-      '@unocss/preset-icons': ^0.50.6
-      '@unocss/preset-uno': ^0.50.6
-      astro: ^2.1.2
-      aws-cdk: ^2.69.0
-      aws-cdk-lib: ^2.69.0
-      constructs: ^10.1.281
-      source-map-support: ^0.5.21
-      ts-node: ^10.9.1
-      typescript: ^5.0.2
-      unocss: ^0.50.6
-    dependencies:
-      '@astrojs-aws/adapter': link:../../../adapter
-      '@astrojs-aws/constructs': link:../..
-      '@astrojs/react': 2.1.0_3xleytyzprlgycb2ded54tx72i
-      astro: 2.1.3_@types+node@18.15.3
-    devDependencies:
-      '@types/source-map-support': 0.5.6
-      '@unocss/astro': 0.50.6_vite@4.2.0
-      '@unocss/preset-attributify': 0.50.6
-      '@unocss/preset-icons': 0.50.6
-      '@unocss/preset-uno': 0.50.6
-      aws-cdk: 2.69.0
-      aws-cdk-lib: 2.69.0_constructs@10.1.281
-      constructs: 10.1.281
-      source-map-support: 0.5.21
-      ts-node: 10.9.1_sxidjv3cojnrggmso45tj7hldi
-      typescript: 5.0.2
-      unocss: 0.50.6_postcss@8.4.21+vite@4.2.0
 
 packages:
 

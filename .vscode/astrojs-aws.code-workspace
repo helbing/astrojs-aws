@@ -13,6 +13,10 @@
       "path": "../packages/constructs/"
     },
     {
+      "name": "examples",
+      "path": "../examples/"
+    },
+    {
       "name": "docs",
       "path": "../docs/"
     }

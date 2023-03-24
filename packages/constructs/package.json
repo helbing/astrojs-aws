@@ -2,10 +2,8 @@
   "name": "@astrojs-aws/constructs",
   "version": "0.0.0",
   "description": "The AWS Constructs of AstroSite",
-  "type": "module",
-  "exports": {},
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "build": "jsii -vvv",
     "test": "vitest run --no-threads",
@@ -13,8 +11,8 @@
   },
   "keywords": [
     "aws",
-    "aws-cdk",
-    "aws-constructs",
+    "cdk",
+    "constructs",
     "jsii",
     "astro"
   ],
@@ -41,6 +39,7 @@
       "**/*.test.ts"
     ],
     "outdir": "dist",
+    "projectReferences": true,
     "targets": {
       "python": {
         "distName": "aws-jsiisamples.jsii-code-samples",

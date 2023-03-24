@@ -2,7 +2,6 @@ import {
   CorsHttpMethod,
   HttpApi,
   HttpMethod,
-  RestApi,
 } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
 import { CfnOutput } from "aws-cdk-lib"
@@ -11,7 +10,7 @@ import { Construct } from "constructs"
 
 import Utils from "./utils"
 
-export interface ILambdaAstroSiteProps {
+export interface LambdaAstroSiteProps {
   /**
    * Nodejs Runtime
 
@@ -35,7 +34,7 @@ export class LambdaAstroSite extends Construct {
    */
   public readonly handler: NodejsFunction
 
-  constructor(scope: Construct, id: string, props: ILambdaAstroSiteProps) {
+  constructor(scope: Construct, id: string, props: LambdaAstroSiteProps) {
     super(scope, id)
     const utils = new Utils()
 
