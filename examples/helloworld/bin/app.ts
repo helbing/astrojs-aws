@@ -1,7 +1,8 @@
 #!/usr/bin/env ts-node
 
-import { App } from "aws-cdk-lib"
 import "source-map-support/register"
+// eslint-disable-next-line
+import { App } from "aws-cdk-lib"
 
 import ExampleStack from "../lib/index"
 

@@ -1,7 +1,7 @@
 {
   "name": "@astrojs-aws/constructs",
   "version": "0.0.0",
-  "description": "The AWS Constructs of AstroSite",
+  "description": "The CDK Construct Library of Astro",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -33,7 +33,6 @@
   },
   "jsii": {
     "excludeTypescript": [
-      "examples",
       "tests",
       "vitest.config.ts",
       "**/*.test.ts"

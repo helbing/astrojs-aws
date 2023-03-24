@@ -1,11 +1,8 @@
 import path from "path"
-import { fileURLToPath } from "url"
 
 import { LambdaAstroSite } from "@astrojs-aws/constructs"
 import { Stack, StackProps } from "aws-cdk-lib"
 import { Construct } from "constructs"
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default class ExampleStack extends Stack {
   public readonly site: LambdaAstroSite

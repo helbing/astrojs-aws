@@ -1,7 +1,6 @@
 {
   "name": "@astrojs-aws/constructs-examples-helloworld",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "astro build",
     "cdk": "cdk"
