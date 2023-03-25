@@ -1,7 +1,7 @@
 {
   "name": "@astrojs-aws/adapter",
   "version": "0.0.0",
-  "description": "The astrojs adapter of AWS Lambda",
+  "description": "The Astro adapter of AWS Serverless",
   "type": "module",
   "exports": {
     ".": {

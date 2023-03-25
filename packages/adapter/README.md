@@ -1,6 +1,6 @@
 # @astrojs-aws/adapter
 
-The astrojs adapter of AWS Lambda for building SSR application and deploying it to AWS.
+The [Astro](https://astro.build/) adapter of [AWS Serverless](https://aws.amazon.com/serverless/) for building SSR application and deploying it to AWS.
 
 ## Installation
 
@@ -30,4 +30,12 @@ After `astro build`, you will get two directories, `dist/server` and `dist/clien
 
 A recommended way is to use this [AWS Constructs Library](../constructs) to deploy.
 
-## Configuration
+## Options
+
+### isEdge
+
+The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `isEdge` is seted to true, it means the adapter will use [Lambda@Edge](https://aws.amazon.com/lambda/edge/), and meanwhile, you need to knows [limitations of edge functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html).
+
+### binaryMediaTypes
+
+### withMiddlewares
