@@ -38,7 +38,7 @@ The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `is
 
 ### binaryMediaTypes
 
-The adapter handle body base64 encode automatically based on the `Content-Type` header which in `binaryMediaTypes`. The default binaryMediaTypes values are:
+The adapter handle body base64 encode automatically based on the `Content-Type` header which in `binaryMediaTypes`. The default `binaryMediaTypes` values are:
 
 ```json
 [
@@ -75,7 +75,7 @@ The adapter handle body base64 encode automatically based on the `Content-Type` 
 
 ### withMiddlewares
 
-You can add [middy](https://middy.js.org/) middlewares via the withMiddlewares option.
+You can add [middy](https://middy.js.org/) middlewares via the `withMiddlewares` option.
 
 ## Contributing
 
