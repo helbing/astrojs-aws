@@ -82,7 +82,7 @@ export function createExports(manifest: SSRManifest, options: Options) {
     "video/ogg",
     "video/x-msvideo",
     "video/webm",
-    ...(options?.binaryMediaTypes ?? []),
+    ...(options?.binaryMediaTypes ?? []).map((s) => s.toLowerCase()),
   ])
 
   let handler: Handler

@@ -86,7 +86,9 @@ export async function createResponse(
     response.headers.append("set-cookie", setCookieHeader)
   }
   const headers = Object.fromEntries(response.headers.entries())
-  const isBase64Encoded = knownBinaryMediaTypes.has(headers["content-type"])
+  const isBase64Encoded = knownBinaryMediaTypes.has(
+    headers["content-type"].toLowerCase(),
+  )
   const body = isBase64Encoded
     ? Buffer.from(await response.arrayBuffer()).toString("base64")
     : await response.text()

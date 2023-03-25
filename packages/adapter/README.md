@@ -30,7 +30,7 @@ After `astro build`, you will get two directories, `dist/server` and `dist/clien
 
 A recommended way is to use this [AWS Constructs Library](../constructs) to deploy.
 
-## Options
+## Configuration
 
 ### isEdge
 
@@ -38,4 +38,45 @@ The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `is
 
 ### binaryMediaTypes
 
+The adapter handle body base64 encode automatically based on the `Content-Type` header which in `binaryMediaTypes`. The default binaryMediaTypes values are:
+
+```json
+[
+  "audio/3gpp",
+  "audio/3gpp2",
+  "audio/aac",
+  "audio/midi",
+  "audio/mpeg",
+  "audio/ogg",
+  "audio/opus",
+  "audio/wav",
+  "audio/webm",
+  "audio/x-midi",
+  "image/avif",
+  "image/bmp",
+  "image/gif",
+  "image/vnd.microsoft.icon",
+  "image/heif",
+  "image/jpeg",
+  "image/png",
+  "image/svg+xml",
+  "image/tiff",
+  "image/webp",
+  "video/3gpp",
+  "video/3gpp2",
+  "video/mp2t",
+  "video/mp4",
+  "video/mpeg",
+  "video/ogg",
+  "video/x-msvideo",
+  "video/webm",
+]
+```
+
 ### withMiddlewares
+
+You can add [middy](https://middy.js.org/) middlewares via the withMiddlewares option.
+
+## Contributing
+
+## Changelog
