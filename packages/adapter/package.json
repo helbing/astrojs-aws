@@ -13,11 +13,6 @@
       "import": "./dist/exports",
       "require": "./dist/exports",
       "types": "./dist/exports.d.ts"
-    },
-    "./exports.js": {
-      "import": "./dist/exports",
-      "require": "./dist/exports",
-      "types": "./dist/exports.d.ts"
     }
   },
   "main": "./dist/index.cjs",
