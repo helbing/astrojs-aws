@@ -5,6 +5,14 @@ The [Astro](https://astro.build/) adapter of [AWS Serverless](https://aws.amazon
 ## Installation
 
 ```shell
+npx astro add @astrojs-aws/adapter
+yarn astro add @astrojs-aws/adapter
+pnpm astro add @astrojs-aws/adapter
+```
+
+or
+
+```shell
 npm install -D @astrojs-aws/adapter
 yarn add -D @astrojs-aws/adapter
 pnpm install -D @astrojs-aws/adapter
@@ -74,7 +82,5 @@ The adapter handle body base64 encode automatically based on the `Content-Type` 
 ```
 
 ## Contributing
-
-
 
 ## Changelog
