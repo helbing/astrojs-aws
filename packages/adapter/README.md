@@ -73,10 +73,6 @@ The adapter handle body base64 encode automatically based on the `Content-Type` 
 ]
 ```
 
-### withMiddlewares
-
-You can add [middy](https://middy.js.org/) middlewares via the `withMiddlewares` option.
-
 ## Contributing
 
 

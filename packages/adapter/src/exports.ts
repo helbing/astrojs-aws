@@ -26,11 +26,6 @@ export type Options = {
    * Addition binary media type
    */
   binaryMediaTypes?: string[]
-
-  /**
-   * use middly middlewares
-   */
-  withMiddlewares?: middy.MiddlewareObj[]
 }
 
 /**
@@ -90,12 +85,6 @@ export function createExports(manifest: SSRManifest, options: Options) {
     handler = middy(lambdaHandler(app, knownBinaryMediaTypes))
   } else {
     handler = middy(edgeLambda(app, knownBinaryMediaTypes))
-  }
-
-  if (options?.withMiddlewares) {
-    for (const middleware of options.withMiddlewares) {
-      handler.use(middleware)
-    }
   }
 
   return { handler }
