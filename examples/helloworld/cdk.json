@@ -1,4 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/cdk.json",
-  "app": "npx ts-node --esm --prefer-ts-exts --experimentalSpecifierResolution node bin/app.ts"
+  "app": "npx ts-node --esm --prefer-ts-exts --experimentalSpecifierResolution node bin/app.ts",
+  "requireApproval": "never"
 }

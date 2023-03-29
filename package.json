@@ -7,6 +7,7 @@
     "preinstall": "npx -y only-allow pnpm",
     "build": "turbo run build",
     "test": "turbo run test",
+    "testu": "turbo run testu",
     "lint": "eslint .",
     "cdk": "turbo run cdk --",
     "package": "turbo run package",
@@ -40,5 +41,5 @@
     "turbo": "^1.8.3",
     "typescript": "^5.0.2"
   },
-  "engine": ">=16.x"
+  "engine": "16.x || 18.x"
 }

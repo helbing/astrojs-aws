@@ -7,6 +7,7 @@
   "scripts": {
     "build": "jsii -vvv",
     "test": "vitest run --no-threads",
+    "testu": "vitest run --no-threads --update",
     "package": "jsii-pacmak -vvv"
   },
   "keywords": [
@@ -29,7 +30,7 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "14.x || 16.x || 18.x"
+    "node": "16.x || 18.x"
   },
   "jsii": {
     "excludeTypescript": [

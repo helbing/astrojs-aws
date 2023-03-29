@@ -2,6 +2,7 @@ import path from "path"
 
 import { LambdaAstroSite } from "@astrojs-aws/constructs"
 import { Stack, StackProps } from "aws-cdk-lib"
+import { Runtime } from "aws-cdk-lib/aws-lambda"
 import { Construct } from "constructs"
 
 export default class ExampleStack extends Stack {
@@ -11,7 +12,11 @@ export default class ExampleStack extends Stack {
     super(scope, id, props)
 
     this.site = new LambdaAstroSite(this, "AstroSite", {
-      entry: path.join(__dirname, "../dist/server/entry.mjs"),
+      serverEntry: path.join(__dirname, "../dist/server/entry.mjs"),
+      client: path.join(__dirname, "../dist/client/"),
+      serverOptions: {
+        runtime: Runtime.NODEJS_18_X,
+      },
     })
   }
 }
