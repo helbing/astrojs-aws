@@ -3,7 +3,9 @@
     "target": "ES2021",
     "module": "ESNext",
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
     ],
     "strict": true,
     "noImplicitAny": true,

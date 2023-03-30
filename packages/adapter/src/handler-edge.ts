@@ -8,13 +8,6 @@ import {
   CloudFrontRequestResult,
 } from "aws-lambda"
 import { StatusCodes } from "http-status-codes"
-import {
-  Headers,
-  HeadersInit,
-  Request,
-  RequestInit,
-  Response,
-} from "node-fetch"
 
 import { createBody, createURL } from "./utils"
 
