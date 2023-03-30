@@ -1,7 +1,6 @@
 import { HttpApiProps } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { FunctionOptions, Runtime } from "aws-cdk-lib/aws-lambda"
 import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
-import {} from "aws-cdk-lib/aws-s3"
 
 export interface AstroSiteProps {
   /**
