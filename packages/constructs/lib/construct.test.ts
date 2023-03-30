@@ -13,4 +13,12 @@ describe("Test strToRuntime", () => {
   test("Expect returns NODEJS_18_X by default", () => {
     expect(cst["strToRuntime"]()).toBe(Runtime.NODEJS_18_X)
   })
+
+  test("Expect returns NODEJS_18_X when input is nodejs18.x", () => {
+    expect(cst["strToRuntime"]("nodejs18.x")).toBe(Runtime.NODEJS_18_X)
+  })
+
+  test("Expect returns NODEJS_16_X when input is nodejs16.x", () => {
+    expect(cst["strToRuntime"]("nodejs16.x")).toBe(Runtime.NODEJS_16_X)
+  })
 })
