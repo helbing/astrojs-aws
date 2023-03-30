@@ -11,6 +11,9 @@
     },
     "test": {},
     "testu": {},
+    "clean": {
+      "cache": false
+    },
     "cdk": {
       "cache": false
     },

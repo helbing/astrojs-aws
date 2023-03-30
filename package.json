@@ -9,6 +9,7 @@
     "test": "turbo run test",
     "testu": "turbo run testu",
     "lint": "eslint .",
+    "clean": "turbo run clean",
     "cdk": "turbo run cdk --",
     "package": "turbo run package",
     "hugo": "turbo run hugo --filter @astrojs-aws/docs"
@@ -19,7 +20,9 @@
   ],
   "author": "helbing",
   "license": "MIT",
-  "packageManager": "pnpm@7.29.2",
+  "engines": {
+    "node": "16.x || 18.x"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "^17.4.4",
@@ -40,6 +43,5 @@
     "prettier": "^2.8.4",
     "turbo": "^1.8.3",
     "typescript": "^5.0.2"
-  },
-  "engine": "16.x || 18.x"
+  }
 }

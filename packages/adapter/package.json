@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "build": "vite build",
-    "test": "vitest run --no-threads"
+    "test": "vitest run --no-threads",
+    "clean": "rimraf dist"
   },
   "keywords": [
     "aws",
@@ -40,22 +41,19 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "14.x || 16.x || 18.x"
-  },
-  "dependencies": {
-    "@middy/core": "^4.2.6",
-    "@types/node": "^18.15.1",
-    "astro": "^2.1.2",
-    "aws-lambda": "^1.0.7",
-    "http-status-codes": "^2.2.0"
+    "node": "16.x || 18.x"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.111",
-    "@types/babel__traverse": "7.17.1",
+    "@middy/core": "^4.2.8",
+    "@types/aws-lambda": "^8.10.114",
+    "@types/node": "^18.15.11",
+    "astro": "^2.1.8",
+    "http-status-codes": "^2.2.0",
+    "rimraf": "^4.4.1",
     "typescript": "^5.0.2",
-    "vite": "^4.1.4",
+    "vite": "^4.2.1",
     "vite-plugin-dts": "^2.1.0",
     "vite-plugin-node-polyfills": "^0.7.0",
-    "vitest": "^0.29.2"
+    "vitest": "^0.29.8"
   }
 }
