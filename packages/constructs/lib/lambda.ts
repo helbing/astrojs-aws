@@ -5,7 +5,7 @@ import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 // import { BucketDeployment } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
 
-import { AstroSiteConstruct } from "./shared"
+import AstroSiteConstruct from "./construct"
 import { AstroSiteProps } from "./types"
 
 export class LambdaAstroSite extends AstroSiteConstruct {

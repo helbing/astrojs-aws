@@ -9,7 +9,7 @@
     "test": "vitest run --no-threads",
     "testu": "vitest run --no-threads --update",
     "package": "jsii-pacmak -vvv",
-    "clean": "rimraf dist lib/*.js lib.*.d.ts"
+    "clean": "rimraf dist lib/*.js lib/*.d.ts"
   },
   "keywords": [
     "aws",

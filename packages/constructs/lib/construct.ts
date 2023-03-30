@@ -13,7 +13,7 @@ import { AstroSiteProps } from "./types"
 /**
  * The base class for all constructs.
  */
-export class AstroSiteConstruct extends Construct {
+export default class AstroSiteConstruct extends Construct {
   private props: AstroSiteProps
 
   constructor(scope: Construct, id: string, props: AstroSiteProps) {

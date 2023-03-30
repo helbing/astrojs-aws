@@ -3,7 +3,6 @@ import fs from "fs"
 import path from "path"
 import { URL, fileURLToPath } from "url"
 
-import { Headers } from "node-fetch"
 import { describe, expect, test } from "vitest"
 
 import { createBody, createURL } from "./utils"

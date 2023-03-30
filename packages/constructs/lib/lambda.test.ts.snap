@@ -29,7 +29,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b4349d2e7ca08ef1b005e6e30b06256ff57aeab10edeb70ad5b5be5cf9ad45d1.zip",
+          "S3Key": "7e85a1754135af7cdee21a50650668251865eedf5c495a9afa8644e0ebd91bda.zip",
         },
         "Environment": {
           "Variables": {
@@ -91,7 +91,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
             [
               "integrations/",
               {
-                "Ref": "TestConstructHttpApiANYAstroIntegration557C532A",
+                "Ref": "TestConstructHttpApiANYHttpLambdaIntegration5E9941DF",
               },
             ],
           ],
@@ -99,7 +99,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
       },
       "Type": "AWS::ApiGatewayV2::Route",
     },
-    "TestConstructHttpApiANYAstroIntegration557C532A": {
+    "TestConstructHttpApiANYHttpLambdaIntegration5E9941DF": {
       "Properties": {
         "ApiId": {
           "Ref": "TestConstructHttpApiDD05EA19",
@@ -115,7 +115,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
       },
       "Type": "AWS::ApiGatewayV2::Integration",
     },
-    "TestConstructHttpApiANYAstroIntegrationPermissionCF7F49A3": {
+    "TestConstructHttpApiANYHttpLambdaIntegrationPermissionD83508C3": {
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
@@ -154,14 +154,6 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
     },
     "TestConstructHttpApiDD05EA19": {
       "Properties": {
-        "CorsConfiguration": {
-          "AllowMethods": [
-            "*",
-          ],
-          "AllowOrigins": [
-            "*",
-          ],
-        },
         "Name": "HttpApi",
         "ProtocolType": "HTTP",
       },
