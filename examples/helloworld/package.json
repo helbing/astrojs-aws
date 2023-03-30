@@ -17,8 +17,8 @@
     "@unocss/preset-attributify": "^0.50.6",
     "@unocss/preset-icons": "^0.50.6",
     "@unocss/preset-uno": "^0.50.6",
-    "aws-cdk": "^2.72.0",
-    "aws-cdk-lib": "^2.72.0",
+    "aws-cdk": "^2.70.0",
+    "aws-cdk-lib": "^2.70.0",
     "constructs": "^10.1.296",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1",
@@ -26,7 +26,7 @@
     "unocss": "^0.50.6"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.69.0",
-    "constructs": "^10.1.281"
+    "aws-cdk-lib": "^2.70.0",
+    "constructs": "^10.1.296"
   }
 }
