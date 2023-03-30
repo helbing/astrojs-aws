@@ -1,5 +1,5 @@
 import { HttpApiProps } from "@aws-cdk/aws-apigatewayv2-alpha"
-import { FunctionOptions, Runtime } from "aws-cdk-lib/aws-lambda"
+import { FunctionOptions } from "aws-cdk-lib/aws-lambda"
 import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
 
 export interface AstroSiteProps {
@@ -28,9 +28,9 @@ export interface AstroSiteServerProps extends FunctionOptions {
   /**
    * The Nodejs Runtime
    *
-   * @default Runtime.NODEJS_14_X
+   * @default nodejs18.x
    */
-  readonly runtime?: Runtime
+  readonly runtime?: "nodejs16.x" | "nodejs18.x"
 
   /**
    * Bundling options

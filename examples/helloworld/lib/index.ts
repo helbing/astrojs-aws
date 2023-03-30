@@ -14,9 +14,6 @@ export default class ExampleStack extends Stack {
     this.site = new LambdaAstroSite(this, "AstroSite", {
       serverEntry: path.join(__dirname, "../dist/server/entry.mjs"),
       client: path.join(__dirname, "../dist/client/"),
-      serverOptions: {
-        runtime: Runtime.NODEJS_18_X,
-      },
     })
   }
 }

@@ -1,7 +1,11 @@
 import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
 // import { CloudFrontWebDistribution } from "aws-cdk-lib/aws-cloudfront"
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
+import { Runtime } from "aws-cdk-lib/aws-lambda"
+import {
+  NodejsFunction,
+  NodejsFunctionProps,
+} from "aws-cdk-lib/aws-lambda-nodejs"
 import { Construct } from "constructs"
 
 import { AstroSiteProps } from "./types"
@@ -24,10 +28,13 @@ export class AstroSiteConstruct extends Construct {
    * @returns
    */
   createNodejsFunction() {
-    return new NodejsFunction(this, "Handler", {
+    const runtime = this.strToRuntime(this.props.serverOptions?.runtime)
+    const props: NodejsFunctionProps = {
       ...this.props.serverOptions,
       entry: this.props.serverEntry,
-    })
+      runtime: runtime,
+    }
+    return new NodejsFunction(this, "Handler", props)
   }
 
   /**
@@ -66,4 +73,15 @@ export class AstroSiteConstruct extends Construct {
   //     ],
   //   })
   // }
+
+  /**
+   * Transform string to Runtime
+   *
+   * @param str
+   * @returns
+   */
+  private strToRuntime(str?: string): Runtime {
+    if (str == "nodejs16.x") return Runtime.NODEJS_16_X
+    else return Runtime.NODEJS_18_X
+  }
 }
