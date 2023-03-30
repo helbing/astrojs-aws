@@ -48,12 +48,14 @@
       }
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.70.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.70.0-alpha.0",
-    "@types/node": "18.11.9",
     "aws-cdk-lib": "2.70.0",
-    "constructs": "10.1.296",
+    "constructs": "10.1.296"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.9",
     "jsii": "^1.79.0",
     "jsii-pacmak": "^1.79.0",
     "rimraf": "^4.4.1",

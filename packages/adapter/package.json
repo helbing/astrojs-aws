@@ -43,12 +43,14 @@
   "engines": {
     "node": "16.x || 18.x"
   },
-  "devDependencies": {
+  "dependencies": {
     "@middy/core": "^4.2.8",
+    "astro": "^2.1.8",
+    "http-status-codes": "^2.2.0"
+  },
+  "devDependencies": {
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "^18.15.11",
-    "astro": "^2.1.8",
-    "http-status-codes": "^2.2.0",
     "rimraf": "^4.4.1",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
