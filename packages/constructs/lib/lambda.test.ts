@@ -13,11 +13,10 @@ describe("Test LambdaAstroSite", () => {
   test("Expect match snapshot", () => {
     const stack = new Stack(new App(), "TestStack")
     new LambdaAstroSite(stack, "TestConstruct", {
-      serverEntry: path.join(__dirname, "../tests/testdata/fake.ts"),
+      serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
       client: "",
     })
     const template = Template.fromStack(stack).toJSON()
     expect(template).toMatchSnapshot()
-    expect(1).toBe(1)
   })
 })

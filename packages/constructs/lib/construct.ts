@@ -1,6 +1,9 @@
 import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
-// import { CloudFrontWebDistribution } from "aws-cdk-lib/aws-cloudfront"
+import {
+  CloudFrontWebDistribution,
+  SourceConfiguration,
+} from "aws-cdk-lib/aws-cloudfront"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
 import {
   NodejsFunction,
@@ -13,7 +16,7 @@ import { AstroSiteProps } from "./types"
 /**
  * The base class for all constructs.
  */
-export default class AstroSiteConstruct extends Construct {
+export class AstroSiteConstruct extends Construct {
   private props: AstroSiteProps
 
   constructor(scope: Construct, id: string, props: AstroSiteProps) {
@@ -23,7 +26,7 @@ export default class AstroSiteConstruct extends Construct {
   }
 
   /**
-   * create nodejs function
+   * Create nodejs function
    *
    * @returns
    */
@@ -38,7 +41,8 @@ export default class AstroSiteConstruct extends Construct {
   }
 
   /**
-   * create Http Api Gateway
+   * Create Http Api Gateway
+   *
    * @param handler
    * @returns
    */
@@ -61,18 +65,22 @@ export default class AstroSiteConstruct extends Construct {
     return api
   }
 
-  // createCloudFrontDistribution(handler: NodejsFunction) {
-  //   new CloudFrontWebDistribution(this, "Distribution", {
-  //     originConfigs: [
-  //       {
-  //         customOriginSource: {
-  //           domainName: "",
-  //         },
-  //         behaviors: [],
-  //       },
-  //     ],
-  //   })
-  // }
+  /**
+   * Create cloudfront
+   *
+   * @param sources
+   * @returns
+   */
+  createCloudFrontDistribution(sources: SourceConfiguration[]) {
+    const originConfigs = (
+      this.props.distributionOptions?.originConfigs ?? []
+    ).concat(sources)
+
+    return new CloudFrontWebDistribution(this, "Distribution", {
+      ...this.props.distributionOptions,
+      originConfigs: originConfigs,
+    })
+  }
 
   /**
    * Transform string to Runtime

@@ -1,4 +1,5 @@
 import { HttpApiProps } from "@aws-cdk/aws-apigatewayv2-alpha"
+import { CloudFrontWebDistributionProps } from "aws-cdk-lib/aws-cloudfront"
 import { FunctionOptions } from "aws-cdk-lib/aws-lambda"
 import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
 
@@ -22,6 +23,11 @@ export interface AstroSiteProps {
    * Http Api options
    */
   readonly httpApiOptions?: HttpApiProps
+
+  /**
+   * CloudFront distribution
+   */
+  readonly distributionOptions?: CloudFrontWebDistributionProps
 }
 
 export interface AstroSiteServerProps extends FunctionOptions {
