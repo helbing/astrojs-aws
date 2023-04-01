@@ -9,8 +9,8 @@ import {
   Context,
 } from "aws-lambda"
 
-import edgeLambda from "./handler-edge"
-import lambdaHandler from "./handler-lambda"
+import edgeHandler from "./handlers/edge"
+import lambdaHandler from "./handlers/lambda"
 
 export type Options = {
   /**
@@ -56,7 +56,7 @@ export function createExports(manifest: SSRManifest, options: Options) {
   if (!(options?.isEdge ?? false)) {
     handler = middy(lambdaHandler(app, knownBinaryMediaTypes))
   } else {
-    handler = middy(edgeLambda(app, knownBinaryMediaTypes))
+    handler = middy(edgeHandler(app, knownBinaryMediaTypes))
   }
 
   return { handler }

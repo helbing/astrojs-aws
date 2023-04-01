@@ -1,5 +1,10 @@
+import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import { APIGatewayProxyHandlerV2, APIGatewayProxyResultV2 } from "aws-lambda"
+
+polyfill(globalThis, {
+  exclude: "window document",
+})
 
 export default function handler(
   app: App,

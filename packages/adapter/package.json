@@ -4,24 +4,18 @@
   "description": "The Astro adapter of AWS Serverless",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./dist/index",
-      "require": "./dist/index",
-      "types": "./dist/index.d.ts"
-    },
-    "./exports": {
-      "import": "./dist/exports",
-      "require": "./dist/exports",
-      "types": "./dist/exports.d.ts"
-    }
+    ".": "./dist/index.js",
+    "./exports": "./dist/exports.js",
+    "./handlers/lambda": "./dist/handlers/lambda.js",
+    "./handlers/edge": "./dist/handlers/edge.js",
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "pnpm run clean && tsc",
     "clean": "rimraf dist"
   },
   "keywords": [
@@ -42,16 +36,18 @@
   "engines": {
     "node": "16.x || 18.x"
   },
+  "dependencies": {
+    "@astrojs/webapi": "^2.1.0",
+    "@middy/core": "^4.2.8"
+  },
   "devDependencies": {
-    "@middy/core": "^4.2.8",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "^18.15.11",
-    "astro": "^2.1.9",
+    "astro": "2.1.9",
     "rimraf": "^4.4.1",
-    "typescript": "^5.0.3",
-    "vite": "^4.2.1",
-    "vite-plugin-dts": "^2.1.0",
-    "vite-plugin-node-polyfills": "^0.7.0",
-    "vitest": "^0.29.8"
+    "typescript": "^5.0.3"
+  },
+  "peerDependencies": {
+    "astro": "2.1.9"
   }
 }

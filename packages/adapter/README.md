@@ -34,8 +34,6 @@ export default defineConfig({
 
 After `astro build`, you will get two directories, `dist/server` and `dist/client`. You should deploy them with the following architecture.
 
-![architecture](./images/architecture.png)
-
 A recommended way is to use this [AWS Constructs Library](../constructs) to deploy.
 
 ## Configuration

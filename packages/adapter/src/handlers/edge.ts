@@ -1,9 +1,14 @@
+import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import {
   CloudFrontHeaders,
   CloudFrontRequestHandler,
   CloudFrontRequestResult,
 } from "aws-lambda"
+
+polyfill(globalThis, {
+  exclude: "window document",
+})
 
 export default function handler(
   app: App,
