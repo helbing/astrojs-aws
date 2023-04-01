@@ -22,7 +22,6 @@
   ],
   "scripts": {
     "build": "vite build",
-    "test": "vitest run --no-threads",
     "clean": "rimraf dist"
   },
   "keywords": [
@@ -43,16 +42,13 @@
   "engines": {
     "node": "16.x || 18.x"
   },
-  "dependencies": {
-    "@middy/core": "^4.2.8",
-    "astro": "^2.1.8",
-    "http-status-codes": "^2.2.0"
-  },
   "devDependencies": {
+    "@middy/core": "^4.2.8",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "^18.15.11",
+    "astro": "^2.1.9",
     "rimraf": "^4.4.1",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1",
     "vite-plugin-dts": "^2.1.0",
     "vite-plugin-node-polyfills": "^0.7.0",

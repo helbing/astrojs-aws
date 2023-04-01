@@ -1,95 +1,46 @@
-import { STATUS_CODES } from "http"
-
 import { App } from "astro/app"
-import {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyHandlerV2,
-  APIGatewayProxyResultV2,
-} from "aws-lambda"
-import { StatusCodes } from "http-status-codes"
-
-import { createBody, createURL } from "./utils"
+import { APIGatewayProxyHandlerV2, APIGatewayProxyResultV2 } from "aws-lambda"
 
 export default function handler(
   app: App,
   knownBinaryMediaTypes: Set<string>,
 ): APIGatewayProxyHandlerV2 {
   return async function (event): Promise<APIGatewayProxyResultV2> {
-    // 1. aws event -> astro request
-    const request = createRequest(event)
-    const routeData = app.match(request, { matchNotFound: true })
+    const {
+      body,
+      headers,
+      rawPath,
+      rawQueryString,
+      requestContext,
+      isBase64Encoded,
+    } = event
 
-    if (!routeData) {
-      return {
-        statusCode: StatusCodes.NOT_FOUND,
-        body: STATUS_CODES[StatusCodes.NOT_FOUND],
-      }
+    // convert aws apigateway event to node request
+    const scheme = headers["x-forwarded-protocol"] || "https"
+    const host = headers["x-forwarded-host"] || headers.host
+    const qs = rawQueryString.length > 0 ? `?${rawQueryString}` : ""
+    const url = new URL(`${rawPath}${qs}`, `${scheme}://${host}`)
+    const encoding = isBase64Encoded ? "base64" : "utf8"
+    const request = new Request(url.toString(), {
+      method: requestContext.http.method,
+      headers: new Headers(headers as HeadersInit),
+      body: typeof body === "string" ? Buffer.from(body, encoding) : body,
+    })
+
+    // astro render
+    const rendered = await app.render(request)
+
+    // convert node response to apigateway response
+    const contentType = rendered.headers.get("content-type") ?? ""
+    const responseIsBase64Encoded = knownBinaryMediaTypes.has(contentType)
+    return {
+      statusCode: rendered.status,
+      headers: Object.fromEntries(rendered.headers.entries()),
+      cookies: Array.from(app.setCookieHeaders(rendered)),
+      body: responseIsBase64Encoded
+        ? Buffer.from(await rendered.arrayBuffer()).toString("base64")
+        : await rendered.text(),
+      isBase64Encoded: responseIsBase64Encoded,
     }
-
-    // 2. astro render
-    const response = await app.render(request, routeData)
-
-    // 3. aws response -> astro response
-    return createResponse(app, response, knownBinaryMediaTypes)
-  }
-}
-
-/**
- * Create Request from lambda APIGatewayProxyEventV2
- *
- * @param event
- * @returns
- */
-export function createRequest(event: APIGatewayProxyEventV2) {
-  const {
-    rawPath,
-    rawQueryString,
-    headers: eventHeaders,
-    body: requestBody,
-    isBase64Encoded,
-    requestContext: {
-      http: { method },
-    },
-  } = event
-
-  const headers = new Headers(eventHeaders as HeadersInit)
-  const url = createURL(headers, rawPath, rawQueryString)
-  const body = createBody(method, isBase64Encoded, requestBody)
-  const init: RequestInit = {
-    body,
-    headers,
-    method,
-  }
-
-  return new Request(url, init)
-}
-
-/**
- * @param app astro app
- * @param response astro response
- * @param knownBinaryMediaTypes
- * @returns
- */
-export async function createResponse(
-  app: App,
-  response: Response,
-  knownBinaryMediaTypes: Set<string>,
-): Promise<APIGatewayProxyResultV2> {
-  for (const setCookieHeader of app.setCookieHeaders(response)) {
-    response.headers.append("set-cookie", setCookieHeader)
-  }
-  const headers = Object.fromEntries(response.headers.entries())
-  const isBase64Encoded = knownBinaryMediaTypes.has(
-    headers["content-type"].toLowerCase(),
-  )
-  const body = isBase64Encoded
-    ? Buffer.from(await response.arrayBuffer()).toString("base64")
-    : await response.text()
-
-  return {
-    statusCode: response.status,
-    headers,
-    body,
-    isBase64Encoded,
   }
 }
