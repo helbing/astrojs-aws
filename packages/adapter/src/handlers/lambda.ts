@@ -32,8 +32,16 @@ export default function handler(
       body: typeof body === "string" ? Buffer.from(body, encoding) : body,
     })
 
+    const routeData = app.match(request, { matchNotFound: true })
+    if (!routeData) {
+      return {
+        statusCode: 404,
+        body: "Not found",
+      }
+    }
+
     // astro render
-    const rendered = await app.render(request)
+    const rendered = await app.render(request, routeData)
 
     // convert node response to apigateway response
     const contentType = rendered.headers.get("content-type") ?? ""

@@ -46,8 +46,16 @@ export default function handler(
         : undefined,
     })
 
+    const routeData = app.match(request, { matchNotFound: true })
+    if (!routeData) {
+      return {
+        status: "404",
+        statusDescription: "Not found",
+      }
+    }
+
     // astro render
-    const rendered = await app.render(request)
+    const rendered = await app.render(request, routeData)
 
     // build cookies
     const responseHeaders: CloudFrontHeaders = {}
