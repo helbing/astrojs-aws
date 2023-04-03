@@ -1,5 +1,5 @@
 import { HttpApiProps } from "@aws-cdk/aws-apigatewayv2-alpha"
-import { CloudFrontWebDistributionProps } from "aws-cdk-lib/aws-cloudfront"
+import { DistributionProps } from "aws-cdk-lib/aws-cloudfront"
 import { FunctionOptions } from "aws-cdk-lib/aws-lambda"
 import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
 
@@ -10,9 +10,9 @@ export interface AstroSiteProps {
   readonly serverEntry: string
 
   /**
-   * The directory of client, e.g. path.join(__dirname, "../dist/client")
+   * The directory of static files, e.g. path.join(__dirname, "../dist/client")
    */
-  readonly client: string
+  readonly staticDir: string
 
   /**
    * The server options
@@ -27,7 +27,7 @@ export interface AstroSiteProps {
   /**
    * CloudFront distribution
    */
-  readonly distributionOptions?: CloudFrontWebDistributionProps
+  readonly distributionOptions?: DistributionProps
 }
 
 export interface AstroSiteServerProps extends FunctionOptions {

@@ -1,6 +1,6 @@
 import { HttpApi } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { CfnOutput } from "aws-cdk-lib"
-// import { CloudFrontWebDistribution } from "aws-cdk-lib/aws-cloudfront"
+import { Distribution } from "aws-cdk-lib/aws-cloudfront"
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 // import { Bucket } from "aws-cdk-lib/aws-s3"
 // import { BucketDeployment } from "aws-cdk-lib/aws-s3-deployment"
@@ -23,7 +23,7 @@ export class LambdaAstroSite extends AstroSiteConstruct {
   /**
    * CloudFront distribution
    */
-  // public readonly distrubtion: CloudFrontWebDistribution
+  public readonly distribution: Distribution
 
   constructor(scope: Construct, id: string, props: AstroSiteProps) {
     super(scope, id, props)
@@ -35,21 +35,10 @@ export class LambdaAstroSite extends AstroSiteConstruct {
 
     this.handler = this.createNodejsFunction()
     this.api = this.createHttpApi(this.handler)
-    // this.distrubtion = this.createCloudFrontDistribution([
-    //   {
-    //     customOriginSource: {
-    //       domainName: `${this.api.httpApiId}.execute-api.ap-northeast-1.amazonaws.com`,
-    //     },
-    //     behaviors: [
-    //       {
-    //         isDefaultBehavior: true,
-    //       },
-    //     ],
-    //   },
-    // ])
+    this.distribution = this.createCloudFrontDistribution(this.api)
 
-    new CfnOutput(this, "APIEndpoint", {
-      value: this.api.apiEndpoint,
+    new CfnOutput(this, "CloudFrontDomainName", {
+      value: this.distribution.distributionDomainName,
     })
   }
 }

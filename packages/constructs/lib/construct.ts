@@ -1,9 +1,8 @@
 import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
-import {
-  CloudFrontWebDistribution,
-  SourceConfiguration,
-} from "aws-cdk-lib/aws-cloudfront"
+import { Fn } from "aws-cdk-lib"
+import { Distribution } from "aws-cdk-lib/aws-cloudfront"
+import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
 import {
   NodejsFunction,
@@ -68,17 +67,17 @@ export class AstroSiteConstruct extends Construct {
   /**
    * Create cloudfront
    *
-   * @param sources
    * @returns
    */
-  createCloudFrontDistribution(sources: SourceConfiguration[]) {
-    const originConfigs = (
-      this.props.distributionOptions?.originConfigs ?? []
-    ).concat(sources)
-
-    return new CloudFrontWebDistribution(this, "Distribution", {
+  createCloudFrontDistribution(api: HttpApi) {
+    return new Distribution(this, "Distribution", {
       ...this.props.distributionOptions,
-      originConfigs: originConfigs,
+      defaultBehavior: {
+        origin: new HttpOrigin(
+          Fn.select(1, Fn.split("://", api.apiEndpoint ?? "")),
+        ),
+      },
+      additionalBehaviors: {},
     })
   }
 

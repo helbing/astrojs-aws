@@ -16,7 +16,7 @@ describe("Test createNodejsFunction", () => {
       "TestConstruct",
       {
         serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
-        client: "",
+        staticDir: "",
       },
     )
     expect(cst.createNodejsFunction().runtime).toBe(Runtime.NODEJS_18_X)
@@ -28,7 +28,7 @@ describe("Test createNodejsFunction", () => {
       "TestConstruct",
       {
         serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
-        client: "",
+        staticDir: "",
         serverOptions: {
           runtime: "nodejs16.x",
         },
@@ -44,7 +44,7 @@ describe("Test strToRuntime", () => {
     "TestConstruct",
     {
       serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
-      client: "",
+      staticDir: "",
     },
   )
 
