@@ -8,6 +8,7 @@
     "build": "jsii -vvv",
     "test": "vitest run --no-threads",
     "testu": "vitest run --no-threads --update",
+    "test:integ": "integ-runner --directory tests -l typescript --update-on-failed -v",
     "package": "jsii-pacmak -vvv",
     "clean": "rimraf dist lib/*.js lib/*.d.ts"
   },
@@ -49,20 +50,23 @@
     }
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "2.70.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.70.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.72.1-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.72.1-alpha.0",
+    "@aws-cdk/integ-runner": "^2.72.1",
+    "@aws-cdk/integ-tests-alpha": "2.72.1-alpha.0",
+    "@aws-sdk/fetch-http-handler": "^3.303.0",
     "@types/node": "18.11.9",
-    "aws-cdk-lib": "2.70.0",
-    "constructs": "10.1.296",
+    "aws-cdk-lib": "2.72.1",
+    "constructs": "10.1.301",
     "jsii": "^1.79.0",
     "jsii-pacmak": "^1.79.0",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "2.70.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.70.0-alpha.0",
-    "aws-cdk-lib": "2.70.0",
-    "constructs": "10.1.296"
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.72.1-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.72.1-alpha.0",
+    "aws-cdk-lib": "2.72.1",
+    "constructs": "10.1.301"
   }
 }

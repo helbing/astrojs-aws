@@ -11,6 +11,11 @@
     },
     "test": {},
     "testu": {},
+    "test:integ": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
     "clean": {
       "cache": false
     },

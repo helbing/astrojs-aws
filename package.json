@@ -8,6 +8,7 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "testu": "turbo run testu",
+    "test:integ": "turbo run test:integ",
     "lint": "eslint .",
     "clean": "turbo run clean",
     "cdk": "turbo run cdk --",

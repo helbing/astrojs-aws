@@ -1,0 +1,10 @@
+{
+  "name": "@astrojs-aws/constructs-fixures-static",
+  "private": true,
+  "scripts": {
+    "build": "astro build"
+  },
+  "devDependencies": {
+    "astro": "^2.1.9"
+  }
+}
