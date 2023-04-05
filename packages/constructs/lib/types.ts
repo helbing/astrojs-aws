@@ -71,6 +71,33 @@ export interface LambdaAstroSiteProps {
   readonly distributionOptions?: DistributionProps
 }
 
+export interface EdgeAstroSiteProps {
+  /**
+   * The server entry file, e.g. path.join(__dirname, "../server/entry.mjs")
+   */
+  readonly serverEntry: string
+  /**
+   * The directory of static files, e.g. path.join(__dirname, "../dist/client")
+   */
+  readonly staticDir: string
+  /**
+   * The server options
+   */
+  readonly serverOptions?: ServerOptions
+  /**
+   * Bucket options
+   */
+  readonly bucketOptions?: BucketProps
+  /**
+   * Bucket deployment options
+   */
+  readonly bucketDeploymentOptions?: BucketDeploymentProps
+  /**
+   * CloudFront distribution options
+   */
+  readonly distributionOptions?: DistributionProps
+}
+
 export interface ServerOptions extends FunctionOptions {
   /**
    * The Nodejs Runtime

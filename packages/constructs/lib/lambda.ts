@@ -1,10 +1,19 @@
-import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
+import {
+  AddRoutesOptions,
+  HttpApi,
+  HttpMethod,
+  HttpRoute,
+  HttpStage,
+  HttpStageOptions,
+} from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
 import { CfnOutput, Fn } from "aws-cdk-lib"
 import {
   AddBehaviorOptions,
+  AllowedMethods,
   Distribution,
   IOrigin,
+  ViewerProtocolPolicy,
 } from "aws-cdk-lib/aws-cloudfront"
 import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
@@ -39,7 +48,6 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     this.bucket = new Bucket(this, "LambdaAstroSiteBucket", {
       ...props.bucketOptions,
     })
-
     new BucketDeployment(this, "LambdaAstroSiteBucketDeployment", {
       ...props.bucketDeploymentOptions,
       sources: [Source.asset(props.staticDir)],
@@ -72,13 +80,16 @@ export class LambdaAstroSite extends AstroSiteConstruct {
         origin: new HttpOrigin(
           Fn.select(1, Fn.split("://", this.httpApi.apiEndpoint ?? "")),
         ),
-      },
-      additionalBehaviors: {
-        "/*": {
-          origin: new S3Origin(this.bucket),
-        },
+        allowedMethods: AllowedMethods.ALLOW_ALL,
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
     })
+    const routes = this.parseRoutesFromDir(props.staticDir)
+    for (const route of routes) {
+      this.distribution.addBehavior(route, new S3Origin(this.bucket), {
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+      })
+    }
 
     new CfnOutput(this, "CloudFrontDomainName", {
       value: this.distribution.domainName,
@@ -105,5 +116,18 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     behaviorOptions?: AddBehaviorOptions,
   ) {
     this.distribution?.addBehavior(pathPattern, origin, behaviorOptions)
+  }
+  /**
+   * Add a new stage.
+   */
+  addHttpApiStage(id: string, options: HttpStageOptions): HttpStage {
+    return this.httpApi.addStage(id, options)
+  }
+  /**
+   * Add multiple routes that uses the same configuration. The routes all go to the same path, but for different
+   * methods.
+   */
+  addHttpApiRoutes(options: AddRoutesOptions): HttpRoute[] {
+    return this.httpApi.addRoutes(options)
   }
 }
