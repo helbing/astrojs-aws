@@ -7,6 +7,8 @@ import { describe, expect, test } from "vitest"
 
 import { AstroSiteConstruct } from "./construct"
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
 describe("Test strToRuntime", () => {
   const cst = new AstroSiteConstruct(
     new Stack(new App(), "TestStack"),
@@ -24,4 +26,15 @@ describe("Test strToRuntime", () => {
   test("Expect returns NODEJS_16_X when input is nodejs16.x", () => {
     expect(cst.strToRuntime("nodejs16.x")).toBe(Runtime.NODEJS_16_X)
   })
+})
+
+describe("Test parseRoutesFromDir", () => {
+  const cst = new AstroSiteConstruct(
+    new Stack(new App(), "TestStack"),
+    "TestConstruct",
+  )
+
+  // test("", () => {
+  //   // expect(cst.parseRoutesFromDir())
+  // })
 })

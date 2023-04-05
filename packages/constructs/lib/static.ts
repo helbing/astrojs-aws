@@ -35,13 +35,21 @@ export class StaticAstroSite extends AstroSiteConstruct {
       destinationBucket: this.bucket,
     })
 
+    // set default root object
+    let defaultRootObject = props.distributionOptions?.defaultRootObject
+    if (defaultRootObject == undefined) {
+      defaultRootObject = "index.html"
+    }
     this.distribution = new Distribution(this, "StaticAstroSiteDistribution", {
       ...props.distributionOptions,
+      defaultRootObject,
       defaultBehavior: {
         origin: new S3Origin(this.bucket),
       },
     })
 
+    new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
+    new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
     new CfnOutput(this, "CloudFrontDomainName", {
       value: this.distribution.domainName,
     })

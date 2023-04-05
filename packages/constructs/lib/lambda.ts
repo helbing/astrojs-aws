@@ -91,6 +91,13 @@ export class LambdaAstroSite extends AstroSiteConstruct {
       })
     }
 
+    new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
+    new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
+    new CfnOutput(this, "FunctionArn", { value: this.handler.functionArn })
+    new CfnOutput(this, "FunctionName", { value: this.handler.functionName })
+    new CfnOutput(this, "HttpApiName", {
+      value: this.httpApi.httpApiName ?? "",
+    })
     new CfnOutput(this, "CloudFrontDomainName", {
       value: this.distribution.domainName,
     })

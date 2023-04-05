@@ -25,20 +25,20 @@ export class AstroSiteConstruct extends Construct {
 
   /**
    * Parse routes from directory
-   * if the file of directroy is directory will parse to /subfile/*
-   * if the file of directroy is file will parse to /subfile
+   * if the item is directory will parse to /item/*
+   * if the item is file will parse to /item
    *
    * @param dir
    * @returns
    */
   parseRoutesFromDir(dir: string): string[] {
     const routes: string[] = []
-    const files = fs.readdirSync(dir)
-    for (const file of files) {
-      if (fs.lstatSync(path.join(dir, file)).isDirectory()) {
-        routes.push(`/${file}/*`)
+    const items = fs.readdirSync(dir)
+    for (const item of items) {
+      if (fs.lstatSync(path.join(dir, item)).isDirectory()) {
+        routes.push(`/${item}/*`)
       } else {
-        routes.push(`/${file}`)
+        routes.push(`/${item}`)
       }
     }
     return routes
