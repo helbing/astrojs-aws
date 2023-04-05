@@ -5,7 +5,7 @@ import { defineConfig } from "astro/config"
 import { presetAttributify, presetIcons, presetUno } from "unocss"
 
 export default defineConfig({
-  output: "static",
+  output: "server",
   adapter: aws(),
   integrations: [
     react(),
