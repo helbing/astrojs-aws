@@ -13,6 +13,8 @@ import {
   AllowedMethods,
   Distribution,
   IOrigin,
+  OriginRequestPolicy,
+  ResponseHeadersPolicy,
   ViewerProtocolPolicy,
 } from "aws-cdk-lib/aws-cloudfront"
 import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
@@ -81,6 +83,9 @@ export class LambdaAstroSite extends AstroSiteConstruct {
           Fn.select(1, Fn.split("://", this.httpApi.apiEndpoint ?? "")),
         ),
         allowedMethods: AllowedMethods.ALLOW_ALL,
+        originRequestPolicy: OriginRequestPolicy.USER_AGENT_REFERER_HEADERS,
+        responseHeadersPolicy:
+          ResponseHeadersPolicy.CORS_ALLOW_ALL_ORIGINS_WITH_PREFLIGHT_AND_SECURITY_HEADERS,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
     })
