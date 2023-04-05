@@ -13,7 +13,6 @@ import {
 import { IVpc, SubnetSelection } from "aws-cdk-lib/aws-ec2"
 import { IRole } from "aws-cdk-lib/aws-iam"
 import { FunctionOptions } from "aws-cdk-lib/aws-lambda"
-import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
 import { BucketAccessControl, BucketProps, IBucket } from "aws-cdk-lib/aws-s3"
 import {
   CacheControl,
@@ -42,9 +41,9 @@ export interface StaticAstroSiteProps {
 
 export interface LambdaAstroSiteProps {
   /**
-   * The server entry file, e.g. path.join(__dirname, "../server/entry.mjs")
+   * The directory of server files which are built with esbuild, e.g. path.join(__dirname, "../dist/esbuild")
    */
-  readonly serverEntry: string
+  readonly serverDir: string
   /**
    * The directory of static files, e.g. path.join(__dirname, "../dist/client")
    */
@@ -73,9 +72,9 @@ export interface LambdaAstroSiteProps {
 
 export interface EdgeAstroSiteProps {
   /**
-   * The server entry file, e.g. path.join(__dirname, "../server/entry.mjs")
+   * The directory of server files which are built with esbuild, e.g. path.join(__dirname, "../dist/esbuild")
    */
-  readonly serverEntry: string
+  readonly serverDir: string
   /**
    * The directory of static files, e.g. path.join(__dirname, "../dist/client")
    */
@@ -106,9 +105,14 @@ export interface ServerOptions extends FunctionOptions {
    */
   readonly runtime?: "nodejs16.x" | "nodejs18.x"
   /**
-   * Bundling options
+   * The name of the method within your code that Lambda calls to execute
+   * your function. The format includes the file name. It can also include
+   * namespaces and other qualifiers, depending on the runtime.
+   * For more information, see https://docs.aws.amazon.com/lambda/latest/dg/foundation-progmodel.html.
+   *
+   * @default index.handler
    */
-  readonly bundling?: BundlingOptions
+  readonly handler?: string
 }
 
 export interface BucketDeploymentProps {

@@ -2,7 +2,9 @@
   "name": "@astrojs-aws/constructs-examples-helloworld",
   "private": true,
   "scripts": {
-    "build": "astro build",
+    "build": "pnpm run clean && astro build && pnpm run esbuild",
+    "esbuild": "esbuild dist/server/entry.mjs --bundle --minify --platform=node --target=node18 --log-level=error --outfile=dist/esbuild/index.js",
+    "clean": "rimraf dist",
     "cdk": "cdk"
   },
   "engines": {
@@ -28,6 +30,8 @@
     "@unocss/preset-uno": "^0.50.6",
     "aws-cdk-lib": "^2.70.0",
     "constructs": "^10.1.296",
+    "esbuild": "^0.17.15",
+    "rimraf": "^4.4.1",
     "typescript": "^5.0.3",
     "unocss": "^0.50.6"
   }

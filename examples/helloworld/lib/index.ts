@@ -11,8 +11,8 @@ export default class ExampleStack extends Stack {
     super(scope, id, props)
 
     this.site = new LambdaAstroSite(this, "AstroSite", {
-      serverEntry: path.join(__dirname, "../dist/server/entry.mjs"),
-      staticDir: path.join(__dirname, "../dist/client/"),
+      serverDir: path.join(__dirname, "../dist/esbuild"),
+      staticDir: path.join(__dirname, "../dist/client"),
     })
   }
 }

@@ -8,10 +8,10 @@ import {
   OriginRequestPolicy,
   ResponseHeadersPolicy,
   ViewerProtocolPolicy,
+  experimental,
 } from "aws-cdk-lib/aws-cloudfront"
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
-import { Version } from "aws-cdk-lib/aws-lambda"
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
+import { Code } from "aws-cdk-lib/aws-lambda"
 import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
@@ -25,9 +25,9 @@ export class EdgeAstroSite extends AstroSiteConstruct {
    */
   readonly bucket: Bucket
   /**
-   * Lambda function handler
+   * Lambda Edge function
    */
-  readonly handler: NodejsFunction
+  readonly function: experimental.EdgeFunction
   /**
    * CloudFront distribution
    */
@@ -46,15 +46,18 @@ export class EdgeAstroSite extends AstroSiteConstruct {
     })
 
     const runtime = this.strToRuntime(props.serverOptions?.runtime)
-    this.handler = new NodejsFunction(this, "EdgeAstroSiteHandler", {
-      ...props.serverOptions,
-      entry: props.serverEntry,
-      runtime: runtime,
-    })
+    const handler = props.serverOptions?.handler ?? "index.handler"
+    this.function = new experimental.EdgeFunction(
+      this,
+      "EdgeAstroSiteHandler",
+      {
+        ...props.serverOptions,
+        runtime,
+        handler,
+        code: Code.fromAsset(props.serverDir),
+      },
+    )
 
-    const functionVersion = new Version(this, "EdgeAstroSiteHandlerVersion", {
-      lambda: this.handler,
-    })
     this.distribution = new Distribution(this, "EdgeAstroSiteDistribution", {
       ...props.distributionOptions,
       defaultBehavior: {
@@ -67,7 +70,7 @@ export class EdgeAstroSite extends AstroSiteConstruct {
         edgeLambdas: [
           {
             eventType: LambdaEdgeEventType.ORIGIN_REQUEST,
-            functionVersion,
+            functionVersion: this.function.currentVersion,
             includeBody: true,
           },
         ],
@@ -76,8 +79,8 @@ export class EdgeAstroSite extends AstroSiteConstruct {
 
     new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
     new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
-    new CfnOutput(this, "FunctionArn", { value: this.handler.functionArn })
-    new CfnOutput(this, "FunctionName", { value: this.handler.functionName })
+    new CfnOutput(this, "FunctionArn", { value: this.function.functionArn })
+    new CfnOutput(this, "FunctionName", { value: this.function.functionName })
     new CfnOutput(this, "CloudFrontDomainName", {
       value: this.distribution.domainName,
     })

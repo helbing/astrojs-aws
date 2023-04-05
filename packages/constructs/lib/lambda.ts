@@ -18,7 +18,7 @@ import {
   ViewerProtocolPolicy,
 } from "aws-cdk-lib/aws-cloudfront"
 import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
+import { Code, Function } from "aws-cdk-lib/aws-lambda"
 import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
@@ -32,9 +32,9 @@ export class LambdaAstroSite extends AstroSiteConstruct {
    */
   readonly bucket: Bucket
   /**
-   * Lambda function handler
+   * Lambda function
    */
-  readonly handler: NodejsFunction
+  readonly function: Function
   /**
    * HTTP API
    */
@@ -57,10 +57,12 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     })
 
     const runtime = this.strToRuntime(props.serverOptions?.runtime)
-    this.handler = new NodejsFunction(this, "LambdaAstroSiteHandler", {
+    const handler = props.serverOptions?.handler ?? "index.handler"
+    this.function = new Function(this, "LambdaAstroSiteHandler", {
       ...props.serverOptions,
-      entry: props.serverEntry,
-      runtime: runtime,
+      runtime,
+      handler,
+      code: Code.fromAsset(props.serverDir),
     })
 
     this.httpApi = new HttpApi(this, "LambdaAstroSiteHttpApi", {
@@ -68,7 +70,7 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     })
     const integration = new HttpLambdaIntegration(
       "HttpLambdaIntegration",
-      this.handler,
+      this.function,
     )
     this.httpApi.addRoutes({
       path: "/",
@@ -98,8 +100,8 @@ export class LambdaAstroSite extends AstroSiteConstruct {
 
     new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
     new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
-    new CfnOutput(this, "FunctionArn", { value: this.handler.functionArn })
-    new CfnOutput(this, "FunctionName", { value: this.handler.functionName })
+    new CfnOutput(this, "FunctionArn", { value: this.function.functionArn })
+    new CfnOutput(this, "FunctionName", { value: this.function.functionName })
     new CfnOutput(this, "HttpApiName", {
       value: this.httpApi.httpApiName ?? "",
     })

@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "jsii -vvv",
+    "build": "pnpm run clean && jsii -vvv",
     "test": "vitest run --no-threads",
     "testu": "vitest run --no-threads --update",
     "test:integ": "integ-runner --directory tests -l typescript --update-on-failed -v",
