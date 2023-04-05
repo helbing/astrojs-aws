@@ -1,3 +1,6 @@
+import { Buffer } from "node:buffer"
+import { URL } from "node:url"
+
 import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import {
@@ -15,9 +18,9 @@ export default function handler(
   knownBinaryMediaTypes: Set<string>,
 ): CloudFrontRequestHandler {
   return async function (event): Promise<CloudFrontRequestResult> {
-    if (event.Records.length == 0 || event.Records.length > 1) {
+    if (event.Records.length != 1) {
       throw new Error(
-        "Illegal record size, cloudfront event records equal 0 or greater than 1",
+        "Illegal record size, cloudfront event records not equal 1",
       )
     }
 

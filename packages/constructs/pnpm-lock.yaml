@@ -25,9 +25,6 @@ devDependencies:
   constructs:
     specifier: 10.1.301
     version: 10.1.301
-  glob:
-    specifier: ^9.3.4
-    version: 9.3.4
   jsii:
     specifier: ^1.79.0
     version: 1.79.0

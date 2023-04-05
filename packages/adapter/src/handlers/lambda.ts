@@ -1,3 +1,6 @@
+import { Buffer } from "node:buffer"
+import { URL } from "node:url"
+
 import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import { APIGatewayProxyHandlerV2, APIGatewayProxyResultV2 } from "aws-lambda"
