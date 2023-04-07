@@ -78,7 +78,3 @@ The adapter handle body base64 encode automatically based on the `Content-Type` 
   "video/webm",
 ]
 ```
-
-## Contributing
-
-## Changelog
