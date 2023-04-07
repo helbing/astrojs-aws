@@ -25,11 +25,11 @@ export class StaticAstroSite extends AstroSiteConstruct {
   constructor(scope: Construct, id: string, props: StaticAstroSiteProps) {
     super(scope, id)
 
-    this.bucket = new Bucket(this, "StaticAstroSiteBucket", {
+    this.bucket = new Bucket(this, "Bucket", {
       ...props.bucketOptions,
     })
 
-    new BucketDeployment(this, "StaticAstroSiteBucketDeployment", {
+    new BucketDeployment(this, "BucketDeployment", {
       ...props.bucketDeploymentOptions,
       sources: [Source.asset(props.staticDir)],
       destinationBucket: this.bucket,
@@ -40,7 +40,7 @@ export class StaticAstroSite extends AstroSiteConstruct {
     if (defaultRootObject == undefined) {
       defaultRootObject = "index.html"
     }
-    this.distribution = new Distribution(this, "StaticAstroSiteDistribution", {
+    this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultRootObject,
       defaultBehavior: {

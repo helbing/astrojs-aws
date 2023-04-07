@@ -9,6 +9,8 @@ import {
   CloudFrontRequestResult,
 } from "aws-lambda"
 
+import { parseContentType } from "../helpers"
+
 polyfill(globalThis, {
   exclude: "window document",
 })
@@ -27,7 +29,7 @@ export default function handler(
     const { uri, method, headers, querystring, body } =
       event.Records[0].cf.request
 
-    // convert aws cloudfront event to node request
+    // build request header
     const requestHeaders = new Headers()
     for (const [key, values] of Object.entries(headers)) {
       for (const { value } of values) {
@@ -36,6 +38,8 @@ export default function handler(
         }
       }
     }
+
+    // convert aws cloudfront event to node request
     const host = (headers["x-forwarded-host"] || headers["host"])[0].value
     const qs = querystring.length > 0 ? `?${querystring}` : ""
     const url = new URL(`${uri}${qs}`, `https://${host}`)
@@ -51,29 +55,20 @@ export default function handler(
 
     const routeData = app.match(request, { matchNotFound: true })
     if (!routeData) {
-      return {
-        status: "404",
-        statusDescription: "Not found",
-      }
+      return event.Records[0].cf.request
     }
 
     // astro render
     const rendered = await app.render(request, routeData)
 
-    // build cookies
+    // build response headers
     const responseHeaders: CloudFrontHeaders = {}
-    const rawHeaders = rendered.headers.entries()
-    for (const [key, value] of rawHeaders) {
-      for (const v of value) {
-        responseHeaders[key] = [
-          ...(responseHeaders[key] || []),
-          { key, value: v },
-        ]
-      }
+    for (const [key, value] of rendered.headers.entries()) {
+      responseHeaders[key] = [...(responseHeaders[key] ?? []), { key, value }]
     }
 
     // convert node response to cloudfront response
-    const contentType = rendered.headers.get("content-type") ?? ""
+    const contentType = parseContentType(rendered.headers.get("content-type"))
     const responseIsBase64Encoded = knownBinaryMediaTypes.has(contentType)
     return {
       status: rendered.status.toString(),

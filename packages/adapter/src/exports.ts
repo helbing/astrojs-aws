@@ -53,10 +53,10 @@ export function createExports(manifest: SSRManifest, options: Options) {
   ])
 
   let handler: Handler
-  if (!(options?.isEdge ?? false)) {
-    handler = middy(lambdaHandler(app, knownBinaryMediaTypes))
-  } else {
+  if (options?.isEdge ?? false) {
     handler = middy(edgeHandler(app, knownBinaryMediaTypes))
+  } else {
+    handler = middy(lambdaHandler(app, knownBinaryMediaTypes))
   }
 
   return { handler }

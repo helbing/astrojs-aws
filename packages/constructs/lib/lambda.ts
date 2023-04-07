@@ -13,12 +13,13 @@ import {
   AllowedMethods,
   Distribution,
   IOrigin,
+  OriginAccessIdentity,
   OriginRequestPolicy,
   ResponseHeadersPolicy,
   ViewerProtocolPolicy,
 } from "aws-cdk-lib/aws-cloudfront"
 import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
-import { Code, Function } from "aws-cdk-lib/aws-lambda"
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
@@ -34,7 +35,7 @@ export class LambdaAstroSite extends AstroSiteConstruct {
   /**
    * Lambda function
    */
-  readonly function: Function
+  readonly function: NodejsFunction
   /**
    * HTTP API
    */
@@ -47,25 +48,29 @@ export class LambdaAstroSite extends AstroSiteConstruct {
   constructor(scope: Construct, id: string, props: LambdaAstroSiteProps) {
     super(scope, id)
 
-    this.bucket = new Bucket(this, "LambdaAstroSiteBucket", {
+    this.bucket = new Bucket(this, "Bucket", {
       ...props.bucketOptions,
     })
-    new BucketDeployment(this, "LambdaAstroSiteBucketDeployment", {
+    new BucketDeployment(this, "BucketDeployment", {
       ...props.bucketDeploymentOptions,
       sources: [Source.asset(props.staticDir)],
       destinationBucket: this.bucket,
     })
 
+    const originAccessIdentity = new OriginAccessIdentity(
+      this,
+      "OriginAccessIdentity",
+    )
+    this.bucket.grantRead(originAccessIdentity)
+
     const runtime = this.strToRuntime(props.serverOptions?.runtime)
-    const handler = props.serverOptions?.handler ?? "index.handler"
-    this.function = new Function(this, "LambdaAstroSiteHandler", {
+    this.function = new NodejsFunction(this, "Function", {
       ...props.serverOptions,
       runtime,
-      handler,
-      code: Code.fromAsset(props.serverDir),
+      entry: props.serverEntry,
     })
 
-    this.httpApi = new HttpApi(this, "LambdaAstroSiteHttpApi", {
+    this.httpApi = new HttpApi(this, "HttpApi", {
       ...props.httpApiOptions,
     })
     const integration = new HttpLambdaIntegration(
@@ -78,7 +83,7 @@ export class LambdaAstroSite extends AstroSiteConstruct {
       integration: integration,
     })
 
-    this.distribution = new Distribution(this, "LambdaAstroSiteDistribution", {
+    this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultBehavior: {
         origin: new HttpOrigin(
@@ -93,9 +98,13 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     })
     const routes = this.parseRoutesFromDir(props.staticDir)
     for (const route of routes) {
-      this.distribution.addBehavior(route, new S3Origin(this.bucket), {
-        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-      })
+      this.distribution.addBehavior(
+        route,
+        new S3Origin(this.bucket, { originAccessIdentity }),
+        {
+          viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        },
+      )
     }
 
     new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })

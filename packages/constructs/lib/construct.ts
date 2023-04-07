@@ -4,6 +4,8 @@ import * as path from "path"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
 import { Construct } from "constructs"
 
+// import { ServerOptions } from "./types"
+
 /**
  * The base class for all constructs.
  */
@@ -11,6 +13,11 @@ export class AstroSiteConstruct extends Construct {
   constructor(scope: Construct, id: string) {
     super(scope, id)
   }
+
+  // NodejsFunction(scope: Construct, id: string, props: ServerOptions) {
+  //   const runtime = this.strToRuntime(props.runtime)
+  // }
+
   /**
    * Transform string to Runtime
    *

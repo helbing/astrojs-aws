@@ -5,6 +5,8 @@ import { polyfill } from "@astrojs/webapi"
 import { App } from "astro/app"
 import { APIGatewayProxyHandlerV2, APIGatewayProxyResultV2 } from "aws-lambda"
 
+import { parseContentType } from "../helpers"
+
 polyfill(globalThis, {
   exclude: "window document",
 })
@@ -47,7 +49,7 @@ export default function handler(
     const rendered = await app.render(request, routeData)
 
     // convert node response to apigateway response
-    const contentType = rendered.headers.get("content-type") ?? ""
+    const contentType = parseContentType(rendered.headers.get("content-type"))
     const responseIsBase64Encoded = knownBinaryMediaTypes.has(contentType)
     return {
       statusCode: rendered.status,

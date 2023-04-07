@@ -5,13 +5,13 @@ import {
   Distribution,
   IOrigin,
   LambdaEdgeEventType,
+  OriginAccessIdentity,
   OriginRequestPolicy,
   ResponseHeadersPolicy,
   ViewerProtocolPolicy,
-  experimental,
 } from "aws-cdk-lib/aws-cloudfront"
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
-import { Code } from "aws-cdk-lib/aws-lambda"
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
@@ -25,9 +25,9 @@ export class EdgeAstroSite extends AstroSiteConstruct {
    */
   readonly bucket: Bucket
   /**
-   * Lambda Edge function
+   * Lambda function
    */
-  readonly function: experimental.EdgeFunction
+  readonly function: NodejsFunction
   /**
    * CloudFront distribution
    */
@@ -36,32 +36,32 @@ export class EdgeAstroSite extends AstroSiteConstruct {
   constructor(scope: Construct, id: string, props: EdgeAstroSiteProps) {
     super(scope, id)
 
-    this.bucket = new Bucket(this, "EdgeAstroSiteBucket", {
+    this.bucket = new Bucket(this, "Bucket", {
       ...props.bucketOptions,
     })
-    new BucketDeployment(this, "EdgeAstroSiteBucketDeployment", {
+    new BucketDeployment(this, "BucketDeployment", {
       ...props.bucketDeploymentOptions,
       sources: [Source.asset(props.staticDir)],
       destinationBucket: this.bucket,
     })
 
-    const runtime = this.strToRuntime(props.serverOptions?.runtime)
-    const handler = props.serverOptions?.handler ?? "index.handler"
-    this.function = new experimental.EdgeFunction(
+    const originAccessIdentity = new OriginAccessIdentity(
       this,
-      "EdgeAstroSiteHandler",
-      {
-        ...props.serverOptions,
-        runtime,
-        handler,
-        code: Code.fromAsset(props.serverDir),
-      },
+      "OriginAccessIdentity",
     )
+    this.bucket.grantRead(originAccessIdentity)
 
-    this.distribution = new Distribution(this, "EdgeAstroSiteDistribution", {
+    const runtime = this.strToRuntime(props.serverOptions?.runtime)
+    this.function = new NodejsFunction(this, "EdgeFunction", {
+      ...props.serverOptions,
+      runtime,
+      entry: props.serverEntry,
+    })
+
+    this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultBehavior: {
-        origin: new S3Origin(this.bucket),
+        origin: new S3Origin(this.bucket, { originAccessIdentity }),
         allowedMethods: AllowedMethods.ALLOW_ALL,
         originRequestPolicy: OriginRequestPolicy.USER_AGENT_REFERER_HEADERS,
         responseHeadersPolicy:
