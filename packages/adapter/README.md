@@ -32,15 +32,23 @@ export default defineConfig({
 
 ## Usage
 
-After `astro build`, you will get two directories, `dist/server` and `dist/client`. You should deploy them with the following architecture.
+After `astro build`, you will get two directories, `dist/server` and `dist/client`. You should deploy them with the following architecture:
 
-A recommended way is to use this [AWS Constructs Library](../constructs) to deploy.
+### Lambda Architecture
+
+![Lambda Architecture](../../docs/static/architecture/lambda.png)
+
+### Edge Architecture
+
+![Edge Architecture](../../docs/static/architecture/edge.png)
+
+Recommended to use this [AWS Constructs Library](../constructs) to deploy.
 
 ## Configuration
 
 ### isEdge
 
-The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `isEdge` is seted to true, it means the adapter will use [Lambda@Edge](https://aws.amazon.com/lambda/edge/), and meanwhile, you need to knows [limitations of edge functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html).
+The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `isEdge` set to true, it means the adapter will use [Lambda@Edge](https://aws.amazon.com/lambda/edge/), and meanwhile, you need to knows [limitations of edge functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html).
 
 ### binaryMediaTypes
 
