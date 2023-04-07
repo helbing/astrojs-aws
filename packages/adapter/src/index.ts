@@ -1,14 +1,6 @@
-import { AstroAdapter, AstroIntegration } from "astro"
+import { AstroIntegration } from "astro"
 
 import { Options } from "./exports"
-
-export const getAdapter = (args?: Options): AstroAdapter => ({
-  name: "@astrojs-aws/adapter",
-  serverEntrypoint: "@astrojs-aws/adapter/exports",
-  exports: ["handler"],
-  // Options
-  args,
-})
 
 export default function createIntegration(args?: Options): AstroIntegration {
   return {
@@ -21,7 +13,13 @@ export default function createIntegration(args?: Options): AstroIntegration {
           )
         }
 
-        setAdapter(getAdapter(args))
+        setAdapter({
+          name: "@astrojs-aws/adapter",
+          serverEntrypoint: "@astrojs-aws/adapter/exports",
+          exports: ["handler"],
+          // Options
+          args,
+        })
       },
     },
   }

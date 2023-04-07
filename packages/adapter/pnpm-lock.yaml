@@ -27,6 +27,9 @@ devDependencies:
   vitest:
     specifier: ^0.29.8
     version: 0.29.8
+  vitest-mock-extended:
+    specifier: ^1.1.3
+    version: 1.1.3(typescript@5.0.3)(vitest@0.29.8)
 
 packages:
 
@@ -2969,6 +2972,14 @@ packages:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: true
 
+  /ts-essentials@9.3.1(typescript@5.0.3):
+    resolution: {integrity: sha512-9CChSvQMyVRo29Vb1A2jbs+LKo3d/bAf+ndSaX0T8cEiy/HChVaRN/HY5DqUryZ8hZ6uol9bEgCnGmnDbwBR9Q==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    dependencies:
+      typescript: 5.0.3
+    dev: true
+
   /tsconfig-resolver@3.0.1:
     resolution: {integrity: sha512-ZHqlstlQF449v8glscGRXzL6l2dZvASPCdXJRWG4gHEZlUVx2Jtmr+a2zeVG4LCsKhDXKRj5R3h0C/98UcVAQg==}
     dependencies:
@@ -3201,6 +3212,17 @@ packages:
         optional: true
     dependencies:
       vite: 4.2.1(@types/node@18.15.11)
+    dev: true
+
+  /vitest-mock-extended@1.1.3(typescript@5.0.3)(vitest@0.29.8):
+    resolution: {integrity: sha512-MiaKYZbTg+fjozKnCpoTTva0BnlSNYyk4jiPuM2xVhg4aou112QIrALdH3/ZKK6qfXWh0A17gFIjWJjylOlXxg==}
+    peerDependencies:
+      typescript: 3.x || 4.x || 5.x
+      vitest: '>=0.29.2'
+    dependencies:
+      ts-essentials: 9.3.1(typescript@5.0.3)
+      typescript: 5.0.3
+      vitest: 0.29.8
     dev: true
 
   /vitest@0.29.8:
