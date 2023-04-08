@@ -2,7 +2,11 @@ import { CfnOutput } from "aws-cdk-lib"
 import {
   AddBehaviorOptions,
   Distribution,
+  Function,
+  FunctionCode,
+  FunctionEventType,
   IOrigin,
+  OriginAccessIdentity,
 } from "aws-cdk-lib/aws-cloudfront"
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
@@ -35,16 +39,36 @@ export class StaticAstroSite extends AstroSiteConstruct {
       destinationBucket: this.bucket,
     })
 
-    // set default root object
-    let defaultRootObject = props.distributionOptions?.defaultRootObject
-    if (defaultRootObject == undefined) {
-      defaultRootObject = "index.html"
-    }
+    const originAccessIdentity = new OriginAccessIdentity(
+      this,
+      "OriginAccessIdentity",
+    )
+    this.bucket.grantRead(originAccessIdentity)
+
+    const fn = new Function(this, "RedirectToIndexFunction", {
+      code: FunctionCode.fromInline(`
+        function handler(event) {
+          var request = event.request
+          if (request.uri.endsWith("/")) {
+            request.uri += "index.html";
+          } else if (!request.uri.includes(".")) {
+            request.uri += "/index.html";
+          }
+          return request
+        }
+      `),
+    })
+
     this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
-      defaultRootObject,
       defaultBehavior: {
-        origin: new S3Origin(this.bucket),
+        origin: new S3Origin(this.bucket, { originAccessIdentity }),
+        functionAssociations: [
+          {
+            eventType: FunctionEventType.VIEWER_REQUEST,
+            function: fn,
+          },
+        ],
       },
     })
 
