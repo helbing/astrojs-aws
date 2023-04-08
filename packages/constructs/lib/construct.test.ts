@@ -34,7 +34,17 @@ describe("Test parseRoutesFromDir", () => {
     "TestConstruct",
   )
 
-  // test("", () => {
-  //   // expect(cst.parseRoutesFromDir())
-  // })
+  test("Expect throw Error when path not exists", () => {
+    expect(() => {
+      cst.parseRoutesFromDir("pathNotExists")
+    }).toThrowError()
+  })
+
+  test("Expect parse success", () => {
+    expect(
+      cst.parseRoutesFromDir(
+        path.join(__dirname, "../tests/fixures/testdirs/"),
+      ),
+    ).toEqual(expect.arrayContaining(["/test.txt", "/route1/*", "/route2/*"]))
+  })
 })

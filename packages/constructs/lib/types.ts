@@ -27,17 +27,16 @@ export interface StaticAstroSiteProps {
    */
   readonly staticDir: string
   /**
-   * Bucket options
+   * Bucket options which is based on BucketProps
+   *
+   * removalPolicy: @default RemovalPolicy.DESTROY
+   * autoDeleteObjects @default true,
    */
   readonly bucketOptions?: BucketProps
   /**
-   * Bucket deployment options
-   */
-  readonly bucketDeploymentOptions?: BucketDeploymentProps
-  /**
    * CloudFront distribution options
    */
-  readonly distributionOptions?: DistributionProps
+  readonly distributionOptions?: DistributionOptions
 }
 
 export interface LambdaAstroSiteProps {
@@ -68,7 +67,7 @@ export interface LambdaAstroSiteProps {
   /**
    * CloudFront distribution options
    */
-  readonly distributionOptions?: DistributionProps
+  readonly distributionOptions?: DistributionOptions
 }
 
 export interface EdgeAstroSiteProps {
@@ -95,7 +94,7 @@ export interface EdgeAstroSiteProps {
   /**
    * CloudFront distribution options
    */
-  readonly distributionOptions?: DistributionProps
+  readonly distributionOptions?: DistributionOptions
 }
 
 export interface ServerOptions extends FunctionOptions {
@@ -261,7 +260,11 @@ export interface BucketDeploymentProps {
   readonly vpcSubnets?: SubnetSelection
 }
 
-export interface DistributionProps {
+/**
+ * CloudFront distribution which is based on CDK DistributionProps, remove
+ * defaultBehavior, defaultRootObject.
+ */
+export interface DistributionOptions {
   /**
    * Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to.
    *
@@ -280,14 +283,6 @@ export interface DistributionProps {
    * @default - no comment
    */
   readonly comment?: string
-  /**
-   * The object that you want CloudFront to request from your origin (for example, index.html)
-   * when a viewer requests the root URL for your distribution. If no default object is set, the
-   * request goes to the origin's root (e.g., example.com/).
-   *
-   * @default - no default root object
-   */
-  readonly defaultRootObject?: string
   /**
    * Alternative domain names for this distribution.
    *

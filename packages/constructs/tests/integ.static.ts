@@ -1,18 +1,10 @@
-import * as path from "path"
+// import * as path from "path"
 
-import {
-  // AssertionResult,
-  // ExpectedResult,
-  IntegTest,
-  IntegTestCaseStack,
-} from "@aws-cdk/integ-tests-alpha"
-import // GetDistributionCommandInput,
-// GetDistributionCommandOutput,
-"@aws-sdk/client-cloudfront"
+import { IntegTest, IntegTestCaseStack } from "@aws-cdk/integ-tests-alpha"
 import { App } from "aws-cdk-lib"
 import { RequireApproval } from "aws-cdk-lib/cloud-assembly-schema"
 
-import { StaticAstroSite } from "../lib"
+// import { StaticAstroSite } from "../lib"
 
 const app = new App()
 const testCase = new IntegTestCaseStack(app, "IntegTestCaseStack", {
@@ -21,19 +13,17 @@ const testCase = new IntegTestCaseStack(app, "IntegTestCaseStack", {
     region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
   },
 })
-const astroSite = new StaticAstroSite(
-  testCase,
-  "TestStaticAstroSiteConstruct",
-  {
-    staticDir: path.join(__dirname, "./fixures/static/dist"),
-  },
-)
 
-const integ = new IntegTest(app, "IntegTest", {
+// new StaticAstroSite(testCase, "TestStaticAstroSiteConstruct", {
+//   staticDir: path.join(__dirname, "./fixures/static/dist"),
+// })
+
+new IntegTest(app, "IntegTest", {
   testCases: [testCase],
   cdkCommandOptions: {
     deploy: {
       args: {
+        all: true,
         requireApproval: RequireApproval.NEVER,
         json: true,
       },

@@ -12,8 +12,9 @@
     "test": {},
     "testu": {},
     "test:integ": {
+      "cache": false,
       "dependsOn": [
-        "^build"
+        "build"
       ]
     },
     "clean": {

@@ -1,7 +1,12 @@
 import * as fs from "fs"
 import * as path from "path"
 
+import { RemovalPolicy } from "aws-cdk-lib"
+import { OriginAccessIdentity } from "aws-cdk-lib/aws-cloudfront"
+import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
+import { Bucket, BucketProps } from "aws-cdk-lib/aws-s3"
+import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
 
 // import { ServerOptions } from "./types"
@@ -13,11 +18,48 @@ export class AstroSiteConstruct extends Construct {
   constructor(scope: Construct, id: string) {
     super(scope, id)
   }
+  /**
+   * New bucket
+   *
+   * @param scope
+   * @param staticDir
+   * @param props
+   * @returns
+   */
+  newBucket(scope: Construct, staticDir: string, props?: BucketProps) {
+    const removalPolicy = props?.removalPolicy ?? RemovalPolicy.DESTROY
+    const autoDeleteObjects = props?.autoDeleteObjects ?? true
+    const bucket = new Bucket(scope, "Static", {
+      ...props,
+      removalPolicy,
+      autoDeleteObjects,
+    })
 
-  // NodejsFunction(scope: Construct, id: string, props: ServerOptions) {
-  //   const runtime = this.strToRuntime(props.runtime)
-  // }
+    new BucketDeployment(scope, "BucketDeployment", {
+      sources: [Source.asset(staticDir)],
+      destinationBucket: bucket,
+    })
 
+    return bucket
+  }
+  /**
+   * New S3 origin
+   * @param scope
+   * @param bucket
+   * @returns
+   */
+  newS3Origin(scope: Construct, bucket: Bucket) {
+    const originAccessIdentity = new OriginAccessIdentity(
+      scope,
+      "OriginAccessIdentity",
+      {
+        comment: `Allows CloudFront to reach the bucket ${bucket.bucketName}`,
+      },
+    )
+    bucket.grantRead(originAccessIdentity)
+
+    return new S3Origin(bucket, { originAccessIdentity })
+  }
   /**
    * Transform string to Runtime
    *
@@ -29,7 +71,6 @@ export class AstroSiteConstruct extends Construct {
     if (str == "nodejs16.x") return Runtime.NODEJS_16_X
     else return Runtime.NODEJS_18_X
   }
-
   /**
    * Parse routes from directory
    * if the item is directory will parse to /item/*

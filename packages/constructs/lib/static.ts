@@ -1,50 +1,38 @@
-import { CfnOutput } from "aws-cdk-lib"
 import {
-  AddBehaviorOptions,
   Distribution,
   Function,
   FunctionCode,
   FunctionEventType,
-  IOrigin,
-  OriginAccessIdentity,
 } from "aws-cdk-lib/aws-cloudfront"
-import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
-import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
-import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
+import {
+  Bucket,
+  BucketMetrics,
+  CorsRule,
+  EventType,
+  IBucketNotificationDestination,
+  Inventory,
+  LifecycleRule,
+  NotificationKeyFilter,
+} from "aws-cdk-lib/aws-s3"
 import { Construct } from "constructs"
 
 import { AstroSiteConstruct } from "./construct"
 import { StaticAstroSiteProps } from "./types"
 
 export class StaticAstroSite extends AstroSiteConstruct {
-  /**
-   * The bucket
-   */
-  readonly bucket: Bucket
-  /**
-   * The cloudfront distribution
-   */
-  readonly distribution: Distribution
+  private readonly bucket: Bucket
+  private readonly distribution: Distribution
+  readonly bucketArn: string
+  readonly bucketName: string
+  readonly distributionDomainName: string
+  readonly domainName: string
 
   constructor(scope: Construct, id: string, props: StaticAstroSiteProps) {
     super(scope, id)
 
-    this.bucket = new Bucket(this, "Bucket", {
-      ...props.bucketOptions,
-    })
+    this.bucket = this.newBucket(this, props.staticDir, props.bucketOptions)
 
-    new BucketDeployment(this, "BucketDeployment", {
-      ...props.bucketDeploymentOptions,
-      sources: [Source.asset(props.staticDir)],
-      destinationBucket: this.bucket,
-    })
-
-    const originAccessIdentity = new OriginAccessIdentity(
-      this,
-      "OriginAccessIdentity",
-    )
-    this.bucket.grantRead(originAccessIdentity)
-
+    // add index.html in uri by default for every directories
     const fn = new Function(this, "RedirectToIndexFunction", {
       code: FunctionCode.fromInline(`
         function handler(event) {
@@ -62,7 +50,7 @@ export class StaticAstroSite extends AstroSiteConstruct {
     this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultBehavior: {
-        origin: new S3Origin(this.bucket, { originAccessIdentity }),
+        origin: this.newS3Origin(this, this.bucket),
         functionAssociations: [
           {
             eventType: FunctionEventType.VIEWER_REQUEST,
@@ -72,32 +60,69 @@ export class StaticAstroSite extends AstroSiteConstruct {
       },
     })
 
-    new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
-    new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
-    new CfnOutput(this, "CloudFrontDomainName", {
-      value: this.distribution.domainName,
-    })
+    this.bucketArn = this.bucket.bucketArn
+    this.bucketName = this.bucket.bucketName
+    this.distributionDomainName = this.distribution.distributionDomainName
+    this.domainName = this.distribution.domainName
   }
   /**
    * Add a lifecycle rule to the bucket
    *
-   * @param rule
+   * @param rule The rule to add
    */
-  addBucketLifecycleRule(rule: LifecycleRule) {
+  addLifecycleRule(rule: LifecycleRule) {
     this.bucket.addLifecycleRule(rule)
   }
   /**
-   * Adds a new behavior to this distribution for the given pathPattern.
+   * Adds a metrics configuration for the CloudWatch request metrics from the bucket.
    *
-   * @param pathPattern the path pattern (e.g., 'images/*') that specifies which requests to apply the behavior to.
-   * @param origin the origin to use for this behavior
-   * @param behaviorOptions the options for the behavior at this path.
+   * @param metric The metric configuration to add
    */
-  addDistributionBehavior(
-    pathPattern: string,
-    origin: IOrigin,
-    behaviorOptions?: AddBehaviorOptions,
+  addMetric(metric: BucketMetrics) {
+    this.bucket.addMetric(metric)
+  }
+  /**
+   * Adds a cross-origin access configuration for objects in an Amazon S3 bucket
+   *
+   * @param rule The CORS configuration rule to add
+   */
+  addCorsRule(rule: CorsRule) {
+    this.bucket.addCorsRule(rule)
+  }
+  /**
+   * Add an inventory configuration.
+   *
+   * @param inventory configuration to add
+   */
+  addInventory(inventory: Inventory) {
+    this.bucket.addInventory(inventory)
+  }
+  /**
+   * Adds a bucket notification event destination.
+   * @param event The event to trigger the notification
+   * @param dest The notification destination (Lambda, SNS Topic or SQS Queue)
+   *
+   * @param filters S3 object key filter rules to determine which objects
+   * trigger this event. Each filter must include a `prefix` and/or `suffix`
+   * that will be matched against the s3 object key. Refer to the S3 Developer Guide
+   * for details about allowed filter rules.
+   *
+   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-filtering
+   *
+   * @example
+   *
+   *    declare const myLambda: lambda.Function;
+   *    const bucket = new s3.Bucket(this, 'MyBucket');
+   *    bucket.addEventNotification(s3.EventType.OBJECT_CREATED, new s3n.LambdaDestination(myLambda), {prefix: 'home/myusername/*'});
+   *
+   * @see
+   * https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
+   */
+  addEventNotification(
+    event: EventType,
+    dest: IBucketNotificationDestination,
+    ...filters: NotificationKeyFilter[]
   ) {
-    this.distribution?.addBehavior(pathPattern, origin, behaviorOptions)
+    this.bucket.addEventNotification(event, dest, ...filters)
   }
 }
