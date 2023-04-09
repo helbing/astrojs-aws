@@ -99,7 +99,7 @@ export class StaticAstroSite extends AstroSiteConstruct {
   }
   /**
    * Adds a bucket notification event destination.
-   * @param event The event to trigger the notification
+   * @param eventType The event to trigger the notification
    * @param dest The notification destination (Lambda, SNS Topic or SQS Queue)
    *
    * @param filters S3 object key filter rules to determine which objects
@@ -119,10 +119,10 @@ export class StaticAstroSite extends AstroSiteConstruct {
    * https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
    */
   addEventNotification(
-    event: EventType,
+    eventType: EventType,
     dest: IBucketNotificationDestination,
     ...filters: NotificationKeyFilter[]
   ) {
-    this.bucket.addEventNotification(event, dest, ...filters)
+    this.bucket.addEventNotification(eventType, dest, ...filters)
   }
 }

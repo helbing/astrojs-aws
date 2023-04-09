@@ -1,0 +1,1127 @@
+{
+ "Resources": {
+  "TestStaticAstroSiteConstructStatic14CA2F72": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "aws-cdk:auto-delete-objects",
+      "Value": "true"
+     },
+     {
+      "Key": "aws-cdk:cr-owned:ab627d68",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
+  },
+  "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "TestStaticAstroSiteConstructStatic14CA2F72"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:DeleteObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::GetAtt": [
+          "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+          "Arn"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructStatic14CA2F72",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "TestStaticAstroSiteConstructStatic14CA2F72",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "CanonicalUser": {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+          "S3CanonicalUserId"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructStatic14CA2F72",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "TestStaticAstroSiteConstructStatic14CA2F72",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "s3:GetObject",
+       "Effect": "Allow",
+       "Principal": {
+        "CanonicalUser": {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+          "S3CanonicalUserId"
+         ]
+        }
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "TestStaticAstroSiteConstructStatic14CA2F72",
+            "Arn"
+           ]
+          },
+          "/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   }
+  },
+  "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9": {
+   "Type": "Custom::S3AutoDeleteObjects",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Ref": "TestStaticAstroSiteConstructStatic14CA2F72"
+    }
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
+  },
+  "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "a3b50bcf02563ef9ac5444957bb7982a8cc320ef6c48a2281481a3d997d34776.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   }
+  },
+  "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     "cdk-hnb659fds-assets-437170827605-us-east-1"
+    ],
+    "SourceObjectKeys": [
+     "fc7b25f2ee55ad16a43ca1dbcc8c9aeff85383b77b6d68021b57827c6703afab.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "TestStaticAstroSiteConstructStatic14CA2F72"
+    },
+    "Prune": true
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
+  },
+  "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591": {
+   "Type": "AWS::CloudFront::Function",
+   "Properties": {
+    "FunctionCode": "\n        function handler(event) {\n          var request = event.request\n          if (request.uri.endsWith(\"/\")) {\n            request.uri += \"index.html\";\n          } else if (!request.uri.includes(\".\")) {\n            request.uri += \"/index.html\";\n          }\n          return request\n        }\n      ",
+    "FunctionConfig": {
+     "Comment": "us-east-1teststaticisdeployedsuctRedirectToIndexFunctionE143AAF5",
+     "Runtime": "cloudfront-js-1.0"
+    },
+    "Name": "us-east-1teststaticisdeployedsuctRedirectToIndexFunctionE143AAF5",
+    "AutoPublish": true
+   }
+  },
+  "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07": {
+   "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+   "Properties": {
+    "CloudFrontOriginAccessIdentityConfig": {
+     "Comment": {
+      "Fn::Join": [
+       "",
+       [
+        "Allows CloudFront to reach the bucket ",
+        {
+         "Ref": "TestStaticAstroSiteConstructStatic14CA2F72"
+        }
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "TestStaticAstroSiteConstructDistributionA61B42B0": {
+   "Type": "AWS::CloudFront::Distribution",
+   "Properties": {
+    "DistributionConfig": {
+     "DefaultCacheBehavior": {
+      "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+      "Compress": true,
+      "FunctionAssociations": [
+       {
+        "EventType": "viewer-request",
+        "FunctionARN": {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+          "FunctionARN"
+         ]
+        }
+       }
+      ],
+      "TargetOriginId": "teststaticisdeployedsuccessTestStaticAstroSiteConstructDistributionOrigin115D9D29A",
+      "ViewerProtocolPolicy": "allow-all"
+     },
+     "Enabled": true,
+     "HttpVersion": "http2",
+     "IPV6Enabled": true,
+     "Origins": [
+      {
+       "DomainName": {
+        "Fn::GetAtt": [
+         "TestStaticAstroSiteConstructStatic14CA2F72",
+         "RegionalDomainName"
+        ]
+       },
+       "Id": "teststaticisdeployedsuccessTestStaticAstroSiteConstructDistributionOrigin115D9D29A",
+       "S3OriginConfig": {
+        "OriginAccessIdentity": {
+         "Fn::Join": [
+          "",
+          [
+           "origin-access-identity/cloudfront/",
+           {
+            "Ref": "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07"
+           }
+          ]
+         ]
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "350185a1069fa20a23a583e20c77f6844218bd73097902362dc94f1a108f5d89.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x",
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "Lambda function for auto-deleting objects in ",
+       {
+        "Ref": "TestStaticAstroSiteConstructStatic14CA2F72"
+       },
+       " S3 bucket."
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+   ]
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:s3:::cdk-hnb659fds-assets-437170827605-us-east-1",
+        "arn:aws:s3:::cdk-hnb659fds-assets-437170827605-us-east-1/*"
+       ]
+      },
+      {
+       "Action": [
+        "s3:Abort*",
+        "s3:DeleteObject*",
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "TestStaticAstroSiteConstructStatic14CA2F72",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "TestStaticAstroSiteConstructStatic14CA2F72",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "Roles": [
+     {
+      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+     }
+    ]
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "de91205450df70f943fbde8ad6f4eec685d4c82c11ddec668199a8d2ec4d7065.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      "Arn"
+     ]
+    },
+    "Handler": "index.handler",
+    "Layers": [
+     {
+      "Ref": "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010"
+     }
+    ],
+    "Runtime": "python3.9",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+   ]
+  },
+  "PingerrootindexhtmlProviderFuncServiceRoleA97B88E6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlProviderFunc5D47926A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "e3ca9638039b72fb88656d14b1e4ddbd8ace97e36011a885e71902bf1486237f.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PingerrootindexhtmlProviderFuncServiceRoleA97B88E6",
+      "Arn"
+     ]
+    },
+    "Handler": "index.handler",
+    "Runtime": "python3.9",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "PingerrootindexhtmlProviderFuncServiceRoleA97B88E6",
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlProviderframeworkonEventServiceRole6A1CE2F8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlProviderframeworkonEventServiceRoleDefaultPolicyAE7CD838": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "PingerrootindexhtmlProviderFunc5D47926A",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PingerrootindexhtmlProviderFunc5D47926A",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PingerrootindexhtmlProviderframeworkonEventServiceRoleDefaultPolicyAE7CD838",
+    "Roles": [
+     {
+      "Ref": "PingerrootindexhtmlProviderframeworkonEventServiceRole6A1CE2F8"
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlProviderframeworkonEvent3B6BD9D5": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "903be65b9594a9f17d7120273620367e7830b6d087fc9591f31dc5a080049e46.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PingerrootindexhtmlProviderframeworkonEventServiceRole6A1CE2F8",
+      "Arn"
+     ]
+    },
+    "Description": "AWS CDK resource provider framework - onEvent (test-static-is-deployed-success/Pinger root index.html/Provider)",
+    "Environment": {
+     "Variables": {
+      "USER_ON_EVENT_FUNCTION_ARN": {
+       "Fn::GetAtt": [
+        "PingerrootindexhtmlProviderFunc5D47926A",
+        "Arn"
+       ]
+      }
+     }
+    },
+    "Handler": "framework.onEvent",
+    "Runtime": "nodejs14.x",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "PingerrootindexhtmlProviderframeworkonEventServiceRoleDefaultPolicyAE7CD838",
+    "PingerrootindexhtmlProviderframeworkonEventServiceRole6A1CE2F8",
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlProviderframeworkonEventLogRetention11DCEB4A": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "PingerrootindexhtmlProviderframeworkonEvent3B6BD9D5"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrootindexhtmlPingerResourceAA63AF5F": {
+   "Type": "Custom::Pinger",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "PingerrootindexhtmlProviderframeworkonEvent3B6BD9D5",
+      "Arn"
+     ]
+    },
+    "url": {
+     "Fn::Join": [
+      "",
+      [
+       "https://",
+       {
+        "Fn::GetAtt": [
+         "TestStaticAstroSiteConstructDistributionA61B42B0",
+         "DomainName"
+        ]
+       }
+      ]
+     ]
+    },
+    "method": "GET"
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:DeleteRetentionPolicy",
+        "logs:PutRetentionPolicy"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "Roles": [
+     {
+      "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+     }
+    ]
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Handler": "index.handler",
+    "Runtime": "nodejs14.x",
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "5fa1330271b8967d9254ba2d4a07144f8acefe8b77e6d6bba38261373a50d5f8.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+   ]
+  },
+  "PingerrouteindexhtmlProviderFuncServiceRole9C58BB8C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlProviderFuncEA39D80A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "e3ca9638039b72fb88656d14b1e4ddbd8ace97e36011a885e71902bf1486237f.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PingerrouteindexhtmlProviderFuncServiceRole9C58BB8C",
+      "Arn"
+     ]
+    },
+    "Handler": "index.handler",
+    "Runtime": "python3.9",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "PingerrouteindexhtmlProviderFuncServiceRole9C58BB8C",
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlProviderframeworkonEventServiceRoleE820CB63": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlProviderframeworkonEventServiceRoleDefaultPolicy5B81BA76": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "PingerrouteindexhtmlProviderFuncEA39D80A",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "PingerrouteindexhtmlProviderFuncEA39D80A",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PingerrouteindexhtmlProviderframeworkonEventServiceRoleDefaultPolicy5B81BA76",
+    "Roles": [
+     {
+      "Ref": "PingerrouteindexhtmlProviderframeworkonEventServiceRoleE820CB63"
+     }
+    ]
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlProviderframeworkonEventA956DEF7": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-437170827605-us-east-1",
+     "S3Key": "903be65b9594a9f17d7120273620367e7830b6d087fc9591f31dc5a080049e46.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "PingerrouteindexhtmlProviderframeworkonEventServiceRoleE820CB63",
+      "Arn"
+     ]
+    },
+    "Description": "AWS CDK resource provider framework - onEvent (test-static-is-deployed-success/Pinger route index.html/Provider)",
+    "Environment": {
+     "Variables": {
+      "USER_ON_EVENT_FUNCTION_ARN": {
+       "Fn::GetAtt": [
+        "PingerrouteindexhtmlProviderFuncEA39D80A",
+        "Arn"
+       ]
+      }
+     }
+    },
+    "Handler": "framework.onEvent",
+    "Runtime": "nodejs14.x",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "PingerrouteindexhtmlProviderframeworkonEventServiceRoleDefaultPolicy5B81BA76",
+    "PingerrouteindexhtmlProviderframeworkonEventServiceRoleE820CB63",
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlProviderframeworkonEventLogRetentionC1C4955A": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "PingerrouteindexhtmlProviderframeworkonEventA956DEF7"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 1
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ]
+  },
+  "PingerrouteindexhtmlPingerResource9BE1A69A": {
+   "Type": "Custom::Pinger",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "PingerrouteindexhtmlProviderframeworkonEventA956DEF7",
+      "Arn"
+     ]
+    },
+    "url": {
+     "Fn::Join": [
+      "",
+      [
+       "https://",
+       {
+        "Fn::GetAtt": [
+         "TestStaticAstroSiteConstructDistributionA61B42B0",
+         "DomainName"
+        ]
+       },
+       "/route"
+      ]
+     ]
+    },
+    "method": "GET"
+   },
+   "DependsOn": [
+    "TestStaticAstroSiteConstructBucketDeploymentAwsCliLayerA84CD010",
+    "TestStaticAstroSiteConstructBucketDeploymentCustomResource54815A1F",
+    "TestStaticAstroSiteConstructDistributionA61B42B0",
+    "TestStaticAstroSiteConstructOriginAccessIdentity0E0E6D07",
+    "TestStaticAstroSiteConstructRedirectToIndexFunctionC6C46591",
+    "TestStaticAstroSiteConstructStaticAutoDeleteObjectsCustomResourceFC3BB3D9",
+    "TestStaticAstroSiteConstructStaticPolicy7A9FAC9D",
+    "TestStaticAstroSiteConstructStatic14CA2F72"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete"
+  }
+ },
+ "Outputs": {
+  "IndexResponseSuccess": {
+   "Value": {
+    "Fn::GetAtt": [
+     "PingerrootindexhtmlPingerResourceAA63AF5F",
+     "status"
+    ]
+   }
+  },
+  "RouteResponseSuccess": {
+   "Value": {
+    "Fn::GetAtt": [
+     "PingerrouteindexhtmlPingerResource9BE1A69A",
+     "status"
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

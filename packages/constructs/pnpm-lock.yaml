@@ -28,6 +28,9 @@ devDependencies:
   aws-lambda:
     specifier: ^1.0.7
     version: 1.0.7
+  cdk-http-pinger:
+    specifier: ^0.1.222
+    version: 0.1.222(aws-cdk-lib@2.72.1)(constructs@10.1.301)
   constructs:
     specifier: 10.1.301
     version: 10.1.301
@@ -652,6 +655,16 @@ packages:
   /case@1.6.3:
     resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /cdk-http-pinger@0.1.222(aws-cdk-lib@2.72.1)(constructs@10.1.301):
+    resolution: {integrity: sha512-/2pOuoqAJVP+TTRO2eDFWWmYK9v67obBA1OLTXixCyDwzVN8PfhE2BLLzoz93jjhqTWsmPyNEiaqUG7ktGpG9A==}
+    peerDependencies:
+      aws-cdk-lib: ^2.1.0
+      constructs: ^10.0.5
+    dependencies:
+      aws-cdk-lib: 2.72.1(constructs@10.1.301)
+      constructs: 10.1.301
     dev: true
 
   /chai@4.3.7:

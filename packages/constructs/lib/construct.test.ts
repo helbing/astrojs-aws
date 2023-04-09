@@ -43,7 +43,7 @@ describe("Test parseRoutesFromDir", () => {
   test("Expect parse success", () => {
     expect(
       cst.parseRoutesFromDir(
-        path.join(__dirname, "../tests/fixures/testdirs/"),
+        path.join(__dirname, "../tests/fixtures/testdirs/"),
       ),
     ).toEqual(expect.arrayContaining(["/test.txt", "/route1/*", "/route2/*"]))
   })

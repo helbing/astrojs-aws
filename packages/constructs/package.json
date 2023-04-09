@@ -59,6 +59,7 @@
     "@types/node": "18.11.9",
     "aws-cdk-lib": "2.72.1",
     "aws-lambda": "^1.0.7",
+    "cdk-http-pinger": "^0.1.222",
     "constructs": "10.1.301",
     "jsii": "^1.79.0",
     "jsii-pacmak": "^1.79.0",

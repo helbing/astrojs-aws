@@ -1,0 +1,12 @@
+{
+  "name": "@astrojs-aws/constructs-fixtures-static",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run clean && astro build",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "astro": "^2.1.9",
+    "rimraf": "^4.4.1"
+  }
+}
