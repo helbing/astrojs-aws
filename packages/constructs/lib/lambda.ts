@@ -68,19 +68,19 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     this.domainName = this.distribution.domainName
   }
   /**
-   * Get edge function
+   *  Returns lambda function
    *
    * @returns
    */
-  GetFunction() {
+  lambdaFunction() {
     return this.function
   }
   /**
-   * Get http api gateway
+   * return http api
    *
    * @returns
    */
-  GetHttpApi() {
+  api() {
     return this.httpApi
   }
 }

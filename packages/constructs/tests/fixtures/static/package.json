@@ -6,7 +6,7 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "astro": "^2.1.9",
+    "astro": "^2.2.1",
     "rimraf": "^4.4.1"
   }
 }

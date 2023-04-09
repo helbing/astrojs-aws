@@ -2,8 +2,7 @@
   "name": "@astrojs-aws/constructs-examples-helloworld",
   "private": true,
   "scripts": {
-    "build": "pnpm run clean && astro build && pnpm run esbuild",
-    "esbuild": "esbuild dist/server/entry.mjs --bundle --minify --platform=node --target=node18 --log-level=error --outfile=dist/esbuild/index.js",
+    "build": "pnpm run clean && astro build",
     "clean": "rimraf dist",
     "cdk": "cdk"
   },
@@ -12,10 +11,10 @@
   },
   "dependencies": {
     "@astrojs-aws/constructs": "workspace:^",
-    "astro": "^2.1.9",
-    "aws-cdk": "^2.72.1",
-    "aws-cdk-lib": "^2.72.1",
-    "constructs": "^10.1.301",
+    "astro": "^2.2.1",
+    "aws-cdk": "^2.73.0",
+    "aws-cdk-lib": "^2.73.0",
+    "constructs": "^10.1.306",
     "react": "^18.2.0",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1"
@@ -24,15 +23,15 @@
     "@astrojs-aws/adapter": "workspace:^",
     "@astrojs/react": "^2.1.1",
     "@types/source-map-support": "^0.5.6",
-    "@unocss/astro": "^0.50.6",
-    "@unocss/preset-attributify": "^0.50.6",
-    "@unocss/preset-icons": "^0.50.6",
-    "@unocss/preset-uno": "^0.50.6",
+    "@unocss/astro": "^0.50.8",
+    "@unocss/preset-attributify": "^0.50.8",
+    "@unocss/preset-icons": "^0.50.8",
+    "@unocss/preset-uno": "^0.50.8",
     "aws-cdk-lib": "^2.70.0",
     "constructs": "^10.1.296",
     "esbuild": "^0.17.15",
     "rimraf": "^4.4.1",
-    "typescript": "^5.0.3",
-    "unocss": "^0.50.6"
+    "typescript": "^5.0.4",
+    "unocss": "^0.50.8"
   }
 }

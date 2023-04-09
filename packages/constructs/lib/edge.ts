@@ -29,7 +29,6 @@ export class EdgeAstroSite extends AstroSiteConstruct {
       props.serverOptions,
     )
 
-    this.function.grantInvokeUrl
     this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultBehavior: {
@@ -55,11 +54,11 @@ export class EdgeAstroSite extends AstroSiteConstruct {
     this.domainName = this.distribution.domainName
   }
   /**
-   * Get edge function
+   * Return edge function
    *
    * @returns
    */
-  GetFunction() {
+  edgeFunction() {
     return this.function
   }
 }

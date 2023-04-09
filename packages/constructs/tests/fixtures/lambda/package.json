@@ -1,0 +1,13 @@
+{
+  "name": "@astrojs-aws/constructs-fixtures-lambda",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run clean && astro build",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@astrojs-aws/adapter": "workspace:^",
+    "astro": "^2.2.1",
+    "rimraf": "^4.4.1"
+  }
+}
