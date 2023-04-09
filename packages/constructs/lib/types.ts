@@ -1,7 +1,7 @@
 import { HttpApiProps } from "@aws-cdk/aws-apigatewayv2-alpha"
-import { Expiration } from "aws-cdk-lib"
 import { ICertificate } from "aws-cdk-lib/aws-certificatemanager"
 import {
+  AddBehaviorOptions,
   BehaviorOptions,
   ErrorResponse,
   GeoRestriction,
@@ -10,17 +10,13 @@ import {
   SSLMethod,
   SecurityPolicyProtocol,
 } from "aws-cdk-lib/aws-cloudfront"
-import { IVpc, SubnetSelection } from "aws-cdk-lib/aws-ec2"
-import { IRole } from "aws-cdk-lib/aws-iam"
 import { FunctionOptions } from "aws-cdk-lib/aws-lambda"
 import { BundlingOptions } from "aws-cdk-lib/aws-lambda-nodejs"
-import { BucketAccessControl, BucketProps, IBucket } from "aws-cdk-lib/aws-s3"
-import {
-  CacheControl,
-  ServerSideEncryption,
-  StorageClass,
-} from "aws-cdk-lib/aws-s3-deployment"
+import { BucketProps, IBucket } from "aws-cdk-lib/aws-s3"
 
+/**
+ *  The options for the StaticAstroSite
+ */
 export interface StaticAstroSiteProps {
   /**
    * The directory of built files, e.g. path.join(__dirname, "../dist")
@@ -37,8 +33,14 @@ export interface StaticAstroSiteProps {
    * CloudFront distribution options
    */
   readonly distributionOptions?: DistributionOptions
+  /**
+   * CloudFront distribution default behavior options
+   */
+  readonly distributionDefaultBehaviorOptions?: AddBehaviorOptions
 }
-
+/**
+ * The options for the LambdaAstroSite
+ */
 export interface LambdaAstroSiteProps {
   /**
    * The server entry file, e.g. path.join(__dirname, "../server/entry.mjs")
@@ -53,13 +55,12 @@ export interface LambdaAstroSiteProps {
    */
   readonly serverOptions?: ServerOptions
   /**
-   * Bucket options
+   * Bucket options which is based on BucketProps
+   *
+   * removalPolicy: @default RemovalPolicy.DESTROY
+   * autoDeleteObjects @default true,
    */
   readonly bucketOptions?: BucketProps
-  /**
-   * Bucket deployment options
-   */
-  readonly bucketDeploymentOptions?: BucketDeploymentProps
   /**
    * The HTTP api options
    */
@@ -68,8 +69,14 @@ export interface LambdaAstroSiteProps {
    * CloudFront distribution options
    */
   readonly distributionOptions?: DistributionOptions
+  /**
+   * CloudFront distribution default behavior options
+   */
+  readonly distributionDefaultBehaviorOptions?: AddBehaviorOptions
 }
-
+/**
+ * The options for the EdgeAstroSite
+ */
 export interface EdgeAstroSiteProps {
   /**
    * The server entry file, e.g. path.join(__dirname, "../server/entry.mjs")
@@ -84,19 +91,24 @@ export interface EdgeAstroSiteProps {
    */
   readonly serverOptions?: ServerOptions
   /**
-   * Bucket options
+   * Bucket options which is based on BucketProps
+   *
+   * removalPolicy: @default RemovalPolicy.DESTROY
+   * autoDeleteObjects @default true,
    */
   readonly bucketOptions?: BucketProps
-  /**
-   * Bucket deployment options
-   */
-  readonly bucketDeploymentOptions?: BucketDeploymentProps
   /**
    * CloudFront distribution options
    */
   readonly distributionOptions?: DistributionOptions
+  /**
+   * CloudFront distribution default behavior options
+   */
+  readonly distributionDefaultBehaviorOptions?: AddBehaviorOptions
 }
-
+/**
+ * The options for the lambda function
+ */
 export interface ServerOptions extends FunctionOptions {
   /**
    * The Nodejs Runtime
@@ -109,157 +121,6 @@ export interface ServerOptions extends FunctionOptions {
    */
   readonly bundling?: BundlingOptions
 }
-
-export interface BucketDeploymentProps {
-  /**
-   * If this is set, matching files or objects will be excluded from the deployment's sync
-   * command. This can be used to exclude a file from being pruned in the destination bucket.
-   *
-   * If you want to just exclude files from the deployment package (which excludes these files
-   * evaluated when invalidating the asset), you should leverage the `exclude` property of
-   * `AssetOptions` when defining your source.
-   *
-   * @default - No exclude filters are used
-   * @see https://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters
-   */
-  readonly exclude?: string[]
-  /**
-   * If this is set, matching files or objects will be included with the deployment's sync
-   * command. Since all files from the deployment package are included by default, this property
-   * is usually leveraged alongside an `exclude` filter.
-   *
-   * @default - No include filters are used and all files are included with the sync command
-   * @see https://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters
-   */
-  readonly include?: string[]
-  /**
-   * If this is set to false, files in the destination bucket that
-   * do not exist in the asset, will NOT be deleted during deployment (create/update).
-   *
-   * @see https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html
-   *
-   * @default true
-   */
-  readonly prune?: boolean
-  /**
-   * If this is set to "false", the destination files will be deleted when the
-   * resource is deleted or the destination is updated.
-   *
-   * NOTICE: Configuring this to "false" might have operational implications. Please
-   * visit to the package documentation referred below to make sure you fully understand those implications.
-   *
-   * @see https://github.com/aws/aws-cdk/tree/main/packages/%40aws-cdk/aws-s3-deployment#retain-on-delete
-   * @default true - when resource is deleted/updated, files are retained
-   */
-  readonly retainOnDelete?: boolean
-  /**
-   * User-defined object metadata to be set on all objects in the deployment
-   * @default - No user metadata is set
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#UserMetadata
-   */
-  /**
-   * Execution role associated with this function
-   *
-   * @default - A role is automatically created
-   */
-  readonly role?: IRole
-  /**
-   * User-defined object metadata to be set on all objects in the deployment
-   * @default - No user metadata is set
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#UserMetadata
-   */
-  readonly metadata?: {
-    [key: string]: string
-  }
-  /**
-   * System-defined cache-control metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly cacheControl?: CacheControl[]
-  /**
-   * System-defined cache-disposition metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly contentDisposition?: string
-  /**
-   * System-defined content-encoding metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly contentEncoding?: string
-  /**
-   * System-defined content-language metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly contentLanguage?: string
-  /**
-   * System-defined content-type metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly contentType?: string
-  /**
-   * System-defined expires metadata to be set on all objects in the deployment.
-   * @default - The objects in the distribution will not expire.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly expires?: Expiration
-  /**
-   * System-defined x-amz-server-side-encryption metadata to be set on all objects in the deployment.
-   * @default - Server side encryption is not used.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly serverSideEncryption?: ServerSideEncryption
-  /**
-   * System-defined x-amz-storage-class metadata to be set on all objects in the deployment.
-   * @default - Default storage-class for the bucket is used.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly storageClass?: StorageClass
-  /**
-   * System-defined x-amz-website-redirect-location metadata to be set on all objects in the deployment.
-   * @default - No website redirection.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly websiteRedirectLocation?: string
-  /**
-   * System-defined x-amz-server-side-encryption-aws-kms-key-id metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#SysMetadata
-   */
-  readonly serverSideEncryptionAwsKmsKeyId?: string
-  /**
-   * System-defined x-amz-server-side-encryption-customer-algorithm metadata to be set on all objects in the deployment.
-   * Warning: This is not a useful parameter until this bug is fixed: https://github.com/aws/aws-cdk/issues/6080
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html#sse-c-how-to-programmatically-intro
-   */
-  readonly serverSideEncryptionCustomerAlgorithm?: string
-  /**
-   * System-defined x-amz-acl metadata to be set on all objects in the deployment.
-   * @default - Not set.
-   * @see https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl
-   */
-  readonly accessControl?: BucketAccessControl
-  /**
-   * The VPC network to place the deployment lambda handler in.
-   * This is required if `useEfs` is set.
-   *
-   * @default None
-   */
-  readonly vpc?: IVpc
-  /**
-   * Where in the VPC to place the deployment lambda handler.
-   * Only used if 'vpc' is supplied.
-   *
-   * @default - the Vpc default strategy if not specified
-   */
-  readonly vpcSubnets?: SubnetSelection
-}
-
 /**
  * CloudFront distribution which is based on CDK DistributionProps, remove
  * defaultBehavior, defaultRootObject.

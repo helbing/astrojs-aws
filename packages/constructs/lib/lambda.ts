@@ -1,74 +1,34 @@
-import {
-  AddRoutesOptions,
-  HttpApi,
-  HttpMethod,
-  HttpRoute,
-  HttpStage,
-  HttpStageOptions,
-} from "@aws-cdk/aws-apigatewayv2-alpha"
+import { HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2-alpha"
 import { HttpLambdaIntegration } from "@aws-cdk/aws-apigatewayv2-integrations-alpha"
-import { CfnOutput, Fn } from "aws-cdk-lib"
-import {
-  AddBehaviorOptions,
-  AllowedMethods,
-  Distribution,
-  IOrigin,
-  OriginAccessIdentity,
-  OriginRequestPolicy,
-  ResponseHeadersPolicy,
-  ViewerProtocolPolicy,
-} from "aws-cdk-lib/aws-cloudfront"
-import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
+import { Fn } from "aws-cdk-lib"
+import { AllowedMethods, Distribution } from "aws-cdk-lib/aws-cloudfront"
+import { HttpOrigin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
-import { Bucket, LifecycleRule } from "aws-cdk-lib/aws-s3"
-import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
+import { Bucket } from "aws-cdk-lib/aws-s3"
 import { Construct } from "constructs"
 
 import { AstroSiteConstruct } from "./construct"
 import { LambdaAstroSiteProps } from "./types"
 
 export class LambdaAstroSite extends AstroSiteConstruct {
-  /**
-   * S3 bucket
-   */
-  readonly bucket: Bucket
-  /**
-   * Lambda function
-   */
-  readonly function: NodejsFunction
-  /**
-   * HTTP API
-   */
-  readonly httpApi: HttpApi
-  /**
-   * CloudFront distribution
-   */
-  readonly distribution: Distribution
+  private readonly bucket: Bucket
+  private readonly function: NodejsFunction
+  private readonly httpApi: HttpApi
+  private readonly distribution: Distribution
+  readonly bucketArn: string
+  readonly bucketName: string
+  readonly distributionDomainName: string
+  readonly domainName: string
 
   constructor(scope: Construct, id: string, props: LambdaAstroSiteProps) {
     super(scope, id)
 
-    this.bucket = new Bucket(this, "Bucket", {
-      ...props.bucketOptions,
-    })
-    new BucketDeployment(this, "BucketDeployment", {
-      ...props.bucketDeploymentOptions,
-      sources: [Source.asset(props.staticDir)],
-      destinationBucket: this.bucket,
-    })
-
-    const originAccessIdentity = new OriginAccessIdentity(
+    this.bucket = this.newBucket(this, props.staticDir, props.bucketOptions)
+    this.function = this.newFunction(
       this,
-      "OriginAccessIdentity",
+      props.serverEntry,
+      props.serverOptions,
     )
-    this.bucket.grantRead(originAccessIdentity)
-
-    const runtime = this.strToRuntime(props.serverOptions?.runtime)
-    this.function = new NodejsFunction(this, "Function", {
-      ...props.serverOptions,
-      runtime,
-      entry: props.serverEntry,
-    })
 
     this.httpApi = new HttpApi(this, "HttpApi", {
       ...props.httpApiOptions,
@@ -86,71 +46,41 @@ export class LambdaAstroSite extends AstroSiteConstruct {
     this.distribution = new Distribution(this, "Distribution", {
       ...props.distributionOptions,
       defaultBehavior: {
+        ...props.distributionDefaultBehaviorOptions,
         origin: new HttpOrigin(
           Fn.select(1, Fn.split("://", this.httpApi.apiEndpoint ?? "")),
         ),
-        allowedMethods: AllowedMethods.ALLOW_ALL,
-        originRequestPolicy: OriginRequestPolicy.USER_AGENT_REFERER_HEADERS,
-        responseHeadersPolicy:
-          ResponseHeadersPolicy.CORS_ALLOW_ALL_ORIGINS_WITH_PREFLIGHT_AND_SECURITY_HEADERS,
-        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        allowedMethods:
+          props.distributionDefaultBehaviorOptions?.allowedMethods ??
+          AllowedMethods.ALLOW_ALL,
       },
     })
+
     const routes = this.parseRoutesFromDir(props.staticDir)
+    const s3Origin = this.newS3Origin(this, this.bucket)
     for (const route of routes) {
-      this.distribution.addBehavior(
-        route,
-        new S3Origin(this.bucket, { originAccessIdentity }),
-        {
-          viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        },
-      )
+      this.distribution.addBehavior(route, s3Origin)
     }
 
-    new CfnOutput(this, "BucketArn", { value: this.bucket.bucketArn })
-    new CfnOutput(this, "BucketName", { value: this.bucket.bucketName })
-    new CfnOutput(this, "FunctionArn", { value: this.function.functionArn })
-    new CfnOutput(this, "FunctionName", { value: this.function.functionName })
-    new CfnOutput(this, "HttpApiName", {
-      value: this.httpApi.httpApiName ?? "",
-    })
-    new CfnOutput(this, "CloudFrontDomainName", {
-      value: this.distribution.domainName,
-    })
+    this.bucketArn = this.bucket.bucketArn
+    this.bucketName = this.bucket.bucketName
+    this.distributionDomainName = this.distribution.distributionDomainName
+    this.domainName = this.distribution.domainName
   }
   /**
-   * Add a lifecycle rule to the bucket
+   * Get edge function
    *
-   * @param rule
+   * @returns
    */
-  addBucketLifecycleRule(rule: LifecycleRule) {
-    this.bucket.addLifecycleRule(rule)
+  GetFunction() {
+    return this.function
   }
   /**
-   * Adds a new behavior to this distribution for the given pathPattern.
+   * Get http api gateway
    *
-   * @param pathPattern the path pattern (e.g., 'images/*') that specifies which requests to apply the behavior to.
-   * @param origin the origin to use for this behavior
-   * @param behaviorOptions the options for the behavior at this path.
+   * @returns
    */
-  addDistributionBehavior(
-    pathPattern: string,
-    origin: IOrigin,
-    behaviorOptions?: AddBehaviorOptions,
-  ) {
-    this.distribution?.addBehavior(pathPattern, origin, behaviorOptions)
-  }
-  /**
-   * Add a new stage.
-   */
-  addHttpApiStage(id: string, options: HttpStageOptions): HttpStage {
-    return this.httpApi.addStage(id, options)
-  }
-  /**
-   * Add multiple routes that uses the same configuration. The routes all go to the same path, but for different
-   * methods.
-   */
-  addHttpApiRoutes(options: AddRoutesOptions): HttpRoute[] {
-    return this.httpApi.addRoutes(options)
+  GetHttpApi() {
+    return this.httpApi
   }
 }

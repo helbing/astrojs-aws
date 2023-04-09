@@ -5,11 +5,12 @@ import { RemovalPolicy } from "aws-cdk-lib"
 import { OriginAccessIdentity } from "aws-cdk-lib/aws-cloudfront"
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins"
 import { Runtime } from "aws-cdk-lib/aws-lambda"
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs"
 import { Bucket, BucketProps } from "aws-cdk-lib/aws-s3"
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment"
 import { Construct } from "constructs"
 
-// import { ServerOptions } from "./types"
+import { ServerOptions } from "./types"
 
 /**
  * The base class for all constructs.
@@ -43,6 +44,22 @@ export class AstroSiteConstruct extends Construct {
     return bucket
   }
   /**
+   * New nodejs function
+   *
+   * @param scope
+   * @param serverEntry
+   * @param props
+   * @returns
+   */
+  newFunction(scope: Construct, serverEntry: string, props?: ServerOptions) {
+    const runtime = this.strToRuntime(props?.runtime)
+    return new NodejsFunction(scope, "Function", {
+      ...props,
+      runtime,
+      entry: serverEntry,
+    })
+  }
+  /**
    * New S3 origin
    * @param scope
    * @param bucket
@@ -69,7 +86,7 @@ export class AstroSiteConstruct extends Construct {
    */
   strToRuntime(str?: string): Runtime {
     if (str == "nodejs16.x") return Runtime.NODEJS_16_X
-    else return Runtime.NODEJS_18_X
+    return Runtime.NODEJS_18_X
   }
   /**
    * Parse routes from directory
