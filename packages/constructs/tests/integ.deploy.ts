@@ -75,6 +75,40 @@ class TestLambdaStack extends IntegTestCaseStack {
   }
 }
 
+class TestEdgeStack extends IntegTestCaseStack {
+  constructor(scope: App, id: string, props?: IntegTestCaseStackProps) {
+    super(scope, id, props)
+
+    const site = new LambdaAstroSite(this, "TestEdgeAstroSiteConstruct", {
+      serverEntry: path.join(
+        __dirname,
+        "./fixtures/edge/dist/server/entry.mjs",
+      ),
+      staticDir: path.join(__dirname, "./fixtures/edge/dist/client"),
+    })
+
+    const indexPinger = new Pinger(this, "Pinger root index.html", {
+      url: `https://${site.domainName}`,
+    })
+
+    const routePinger = new Pinger(this, "Pinger route index.html", {
+      url: `https://${site.domainName}/route`,
+    })
+
+    // the pinger must wait for the site to be deployed.
+    indexPinger.node.addDependency(site)
+    routePinger.node.addDependency(site)
+
+    new CfnOutput(this, "IndexResponseSuccess", {
+      value: indexPinger.httpStatus,
+    })
+
+    new CfnOutput(this, "RouteResponseSuccess", {
+      value: routePinger.httpStatus,
+    })
+  }
+}
+
 const app = new App()
 const testStaticCase = new TestStaticStack(
   app,
@@ -98,9 +132,20 @@ const testLambdaCase = new TestLambdaStack(
     },
   },
 )
+const testEdgeCase = new TestEdgeStack(
+  app,
+  "test-edge-site-is-deployed-success",
+  {
+    env: {
+      account:
+        process.env.CDK_DEPLOY_ACCOUNT || process.env.CDK_DEFAULT_ACCOUNT,
+      region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
+    },
+  },
+)
 
 new IntegTest(app, "IntegTest", {
-  testCases: [testStaticCase, testLambdaCase],
+  testCases: [testStaticCase, testLambdaCase, testEdgeCase],
   cdkCommandOptions: {
     deploy: {
       args: {
