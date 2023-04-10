@@ -113,35 +113,14 @@ const app = new App()
 const testStaticCase = new TestStaticStack(
   app,
   "test-static-site-is-deployed-success",
-  {
-    env: {
-      account:
-        process.env.CDK_DEPLOY_ACCOUNT || process.env.CDK_DEFAULT_ACCOUNT,
-      region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
-    },
-  },
 )
 const testLambdaCase = new TestLambdaStack(
   app,
   "test-lambda-site-is-deployed-success",
-  {
-    env: {
-      account:
-        process.env.CDK_DEPLOY_ACCOUNT || process.env.CDK_DEFAULT_ACCOUNT,
-      region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
-    },
-  },
 )
 const testEdgeCase = new TestEdgeStack(
   app,
   "test-edge-site-is-deployed-success",
-  {
-    env: {
-      account:
-        process.env.CDK_DEPLOY_ACCOUNT || process.env.CDK_DEFAULT_ACCOUNT,
-      region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION,
-    },
-  },
 )
 
 new IntegTest(app, "IntegTest", {

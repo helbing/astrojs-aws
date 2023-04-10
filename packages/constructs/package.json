@@ -8,7 +8,7 @@
     "build": "pnpm run clean && jsii -vvv",
     "test": "vitest run --no-threads",
     "testu": "vitest run --no-threads --update",
-    "test:integ": "integ-runner --directory tests -l typescript --parallel-regions $CDK_DEPLOY_REGION --update-on-failed -v",
+    "test:integ": "integ-runner --directory tests -l typescript --parallel-regions us-east-1 --update-on-failed -v",
     "package": "jsii-pacmak -vvv",
     "clean": "rimraf dist lib/*.js lib/*.d.ts"
   },
@@ -42,10 +42,31 @@
     ],
     "outdir": "dist",
     "projectReferences": true,
+    "metadata": {
+      "jsii": {
+        "rosetta": {
+          "strict": true
+        }
+      }
+    },
     "targets": {
+      "java": {
+        "package": "org.astrojs.aws.constructs",
+        "maven": {
+          "groupId": "org.astrojs.aws.constructs",
+          "artifactId": "constructs"
+        }
+      },
       "python": {
-        "distName": "aws-jsiisamples.jsii-code-samples",
-        "module": "aws_jsiisamples.jsii_code_samples"
+        "distName": "astrojs-aws.constructs",
+        "module": "astrojs_aws.constructs",
+        "classifiers": [
+          "Framework :: AWS CDK",
+          "Framework :: AWS CDK :: 2"
+        ]
+      },
+      "go": {
+        "moduleName": "github.com/helbing/astrojs-aws-go"
       }
     }
   },

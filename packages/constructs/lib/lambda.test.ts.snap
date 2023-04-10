@@ -2,45 +2,6 @@
 
 exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
 {
-  "Outputs": {
-    "TestSiteBucketArn3086CE28": {
-      "Value": {
-        "Fn::GetAtt": [
-          "TestSiteBucket722B9E9B",
-          "Arn",
-        ],
-      },
-    },
-    "TestSiteBucketNameCA295A85": {
-      "Value": {
-        "Ref": "TestSiteBucket722B9E9B",
-      },
-    },
-    "TestSiteCloudFrontDomainName28EBB168": {
-      "Value": {
-        "Fn::GetAtt": [
-          "TestSiteDistribution7B61650D",
-          "DomainName",
-        ],
-      },
-    },
-    "TestSiteFunctionArnE2BE3008": {
-      "Value": {
-        "Fn::GetAtt": [
-          "TestSiteFunction231279BB",
-          "Arn",
-        ],
-      },
-    },
-    "TestSiteFunctionNameE92EE45D": {
-      "Value": {
-        "Ref": "TestSiteFunction231279BB",
-      },
-    },
-    "TestSiteHttpApiName5FEBBE91": {
-      "Value": "HttpApi",
-    },
-  },
   "Parameters": {
     "BootstrapVersion": {
       "Default": "/cdk-bootstrap/hnb659fds/version",
@@ -171,7 +132,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "TestSiteBucket722B9E9B",
+                    "TestSiteStaticE941A0E0",
                     "Arn",
                   ],
                 },
@@ -181,7 +142,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
                     [
                       {
                         "Fn::GetAtt": [
-                          "TestSiteBucket722B9E9B",
+                          "TestSiteStaticE941A0E0",
                           "Arn",
                         ],
                       },
@@ -203,18 +164,63 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
       },
       "Type": "AWS::IAM::Policy",
     },
-    "TestSiteBucket722B9E9B": {
-      "DeletionPolicy": "Retain",
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+      "DependsOn": [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
       "Properties": {
-        "Tags": [
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "350185a1069fa20a23a583e20c77f6844218bd73097902362dc94f1a108f5d89.zip",
+        },
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Lambda function for auto-deleting objects in ",
+              {
+                "Ref": "TestSiteStaticE941A0E0",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
           {
-            "Key": "aws-cdk:cr-owned:cc5bd9f8",
-            "Value": "true",
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
           },
         ],
       },
-      "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "Type": "AWS::IAM::Role",
     },
     "TestSiteBucketDeploymentAwsCliLayerD8E01993": {
       "Properties": {
@@ -232,7 +238,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
       "DeletionPolicy": "Delete",
       "Properties": {
         "DestinationBucketName": {
-          "Ref": "TestSiteBucket722B9E9B",
+          "Ref": "TestSiteStaticE941A0E0",
         },
         "Prune": true,
         "ServiceToken": {
@@ -253,83 +259,6 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
       "Type": "Custom::CDKBucketDeployment",
       "UpdateReplacePolicy": "Delete",
     },
-    "TestSiteBucketPolicy38B317BC": {
-      "Properties": {
-        "Bucket": {
-          "Ref": "TestSiteBucket722B9E9B",
-        },
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "s3:GetObject*",
-                "s3:GetBucket*",
-                "s3:List*",
-              ],
-              "Effect": "Allow",
-              "Principal": {
-                "CanonicalUser": {
-                  "Fn::GetAtt": [
-                    "TestSiteOriginAccessIdentity031C693B",
-                    "S3CanonicalUserId",
-                  ],
-                },
-              },
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "TestSiteBucket722B9E9B",
-                    "Arn",
-                  ],
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      {
-                        "Fn::GetAtt": [
-                          "TestSiteBucket722B9E9B",
-                          "Arn",
-                        ],
-                      },
-                      "/*",
-                    ],
-                  ],
-                },
-              ],
-            },
-            {
-              "Action": "s3:GetObject",
-              "Effect": "Allow",
-              "Principal": {
-                "CanonicalUser": {
-                  "Fn::GetAtt": [
-                    "TestSiteOriginAccessIdentity031C693B",
-                    "S3CanonicalUserId",
-                  ],
-                },
-              },
-              "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    {
-                      "Fn::GetAtt": [
-                        "TestSiteBucket722B9E9B",
-                        "Arn",
-                      ],
-                    },
-                    "/*",
-                  ],
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::S3::BucketPolicy",
-    },
     "TestSiteDistribution7B61650D": {
       "Properties": {
         "DistributionConfig": {
@@ -339,7 +268,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
               "Compress": true,
               "PathPattern": "/index.html",
               "TargetOriginId": "TestSiteDistributionOrigin22856C72E",
-              "ViewerProtocolPolicy": "redirect-to-https",
+              "ViewerProtocolPolicy": "allow-all",
             },
           ],
           "DefaultCacheBehavior": {
@@ -354,10 +283,8 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
             ],
             "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
             "Compress": true,
-            "OriginRequestPolicyId": "acba4595-bd28-49b8-b9fe-13317c0390fa",
-            "ResponseHeadersPolicyId": "eaab4381-ed33-4a86-88ca-d9558dc6cd63",
             "TargetOriginId": "TestSiteDistributionOrigin1026CC2AE",
-            "ViewerProtocolPolicy": "redirect-to-https",
+            "ViewerProtocolPolicy": "allow-all",
           },
           "Enabled": true,
           "HttpVersion": "http2",
@@ -391,7 +318,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
             {
               "DomainName": {
                 "Fn::GetAtt": [
-                  "TestSiteBucket722B9E9B",
+                  "TestSiteStaticE941A0E0",
                   "RegionalDomainName",
                 ],
               },
@@ -567,10 +494,171 @@ exports[`Test LambdaAstroSite > Expect match snapshot 1`] = `
     "TestSiteOriginAccessIdentity031C693B": {
       "Properties": {
         "CloudFrontOriginAccessIdentityConfig": {
-          "Comment": "Allows CloudFront to reach the bucket",
+          "Comment": {
+            "Fn::Join": [
+              "",
+              [
+                "Allows CloudFront to reach the bucket ",
+                {
+                  "Ref": "TestSiteStaticE941A0E0",
+                },
+              ],
+            ],
+          },
         },
       },
       "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "TestSiteStaticAutoDeleteObjectsCustomResourceA26F030E": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "TestSiteStaticPolicy7622386F",
+      ],
+      "Properties": {
+        "BucketName": {
+          "Ref": "TestSiteStaticE941A0E0",
+        },
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "TestSiteStaticE941A0E0": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "aws-cdk:auto-delete-objects",
+            "Value": "true",
+          },
+          {
+            "Key": "aws-cdk:cr-owned:cc5bd9f8",
+            "Value": "true",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "TestSiteStaticPolicy7622386F": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "TestSiteStaticE941A0E0",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::GetAtt": [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "TestSiteStaticE941A0E0",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "TestSiteStaticE941A0E0",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "TestSiteOriginAccessIdentity031C693B",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "TestSiteStaticE941A0E0",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "TestSiteStaticE941A0E0",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "TestSiteOriginAccessIdentity031C693B",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "TestSiteStaticE941A0E0",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
     },
   },
   "Rules": {
