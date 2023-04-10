@@ -1,4 +1,3 @@
-baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'astrojs-aws'
 theme = "hugo-book"
