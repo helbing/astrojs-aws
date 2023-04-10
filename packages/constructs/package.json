@@ -51,15 +51,15 @@
     },
     "targets": {
       "java": {
-        "package": "org.astrojs.aws.constructs",
+        "package": "com.astrojs.aws.constructs",
         "maven": {
-          "groupId": "org.astrojs.aws.constructs",
+          "groupId": "com.astrojs.aws",
           "artifactId": "constructs"
         }
       },
       "python": {
-        "distName": "astrojs-aws.constructs",
-        "module": "astrojs_aws.constructs",
+        "distName": "astrojs-aws-constructs",
+        "module": "astrojs_aws_constructs",
         "classifiers": [
           "Framework :: AWS CDK",
           "Framework :: AWS CDK :: 2"

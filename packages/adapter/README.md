@@ -18,6 +18,8 @@ yarn add -D @astrojs-aws/adapter
 pnpm install -D @astrojs-aws/adapter
 ```
 
+## Usage
+
 Edit the `astro.config.mjs` or `astro.config.ts`.
 
 ```typescript
@@ -26,23 +28,25 @@ import { defineConfig } from "astro/config"
 
 export default defineConfig({
   output: "server", // required
-  adapter: aws(), 
+  adapter: aws({
+    isEdge: false
+  }), 
 })
 ```
 
-## Usage
+## Architecture
 
 After `astro build`, you will get two directories, `dist/server` and `dist/client`. You should deploy them with the following architecture:
 
-### Lambda Architecture
+### lambda
 
-![Lambda Architecture](../../docs/static/architecture/lambda.png)
+![lambda](https://raw.githubusercontent.com/helbing/astrojs-aws/main/docs/static/architecture/lambda.png)
 
-### Edge Architecture
+### edge
 
-![Edge Architecture](../../docs/static/architecture/edge.png)
+![edge](https://raw.githubusercontent.com/helbing/astrojs-aws/main/docs/static/architecture/edge.png)
 
-Recommended to use this [AWS Constructs Library](../constructs) to deploy.
+Recommended to use this [AWS Constructs Library](https://github.com/helbing/astrojs-aws/tree/main/packages/constructs) to deploy.
 
 ## Configuration
 
