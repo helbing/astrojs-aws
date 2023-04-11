@@ -5,11 +5,12 @@
 
 version: 2
 updates:
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: "daily"
 - package-ecosystem: "npm" # not support pnpm now, so I write npm with temporary
   directory: "/"
   schedule:
     interval: "daily"
+  labels:
+  - "automerge"
+  commit-message:
+    prefix: "chore(deps):"
+  open-pull-requests-limit: 5
