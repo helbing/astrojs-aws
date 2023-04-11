@@ -16,7 +16,6 @@
     "@unocss"
   ],
   "rules": {
-    "@typescript-eslint/ban-types": "off",
     "sort-imports": ["error", {
         "ignoreDeclarationSort": true
       }
