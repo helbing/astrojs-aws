@@ -7,7 +7,7 @@
     "cdk": "cdk"
   },
   "engines": {
-    "node": "16.x || 18.x"
+    "node": "18.x"
   },
   "devDependencies": {
     "@astrojs-aws/adapter": "workspace:^",

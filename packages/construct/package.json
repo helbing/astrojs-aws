@@ -33,7 +33,7 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "16.x || 18.x"
+    "node": "18.x"
   },
   "jsii": {
     "excludeTypescript": [

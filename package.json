@@ -23,7 +23,7 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "16.x || 18.x"
+    "node": "18.x"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
