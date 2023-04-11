@@ -23,10 +23,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: subdir/package-lock.json
-    - uses: pnpm install
+    - name: Install dependencies
+      run: pnpm install
     - name: Run linter
-      uses: pnpm run lint
+      run: pnpm run lint
     - name: Run Build
-      uses: pnpm run build
+      run: pnpm run build
     - name: Run unit-tests
-      uses: pnpm run test
+      run: pnpm run test
