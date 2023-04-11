@@ -13,6 +13,7 @@
     "clean": "turbo run clean",
     "cdk": "turbo run cdk --",
     "package": "turbo run package",
+    "docgen": "turbo run docgen",
     "hugo": "turbo run hugo --filter @astrojs-aws/docs",
     "ci": "pnpm run lint && pnpm run build && pnpm run test"
   },

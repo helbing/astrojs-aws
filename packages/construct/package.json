@@ -10,6 +10,7 @@
     "testu": "vitest run --no-threads --update",
     "test:integ": "integ-runner --directory tests -l typescript --parallel-regions us-east-1 --update-on-failed -v",
     "package": "jsii-pacmak -vvv",
+    "docgen": "jsii-docgen",
     "clean": "rimraf dist lib/*.js lib/*.d.ts"
   },
   "keywords": [
@@ -83,6 +84,7 @@
     "cdk-http-pinger": "^0.1.222",
     "constructs": "10.1.307",
     "jsii": "^1.80.0",
+    "jsii-docgen": "^7.1.46",
     "jsii-pacmak": "^1.80.0",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"

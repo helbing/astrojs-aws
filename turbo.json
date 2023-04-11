@@ -24,6 +24,7 @@
       "cache": false
     },
     "package": {},
+    "docgen": {},
     "hugo": {
       "cache": false
     }

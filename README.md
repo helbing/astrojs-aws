@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The project is to develop and deploy [Astro](https://astro.build/) with AWS. It provides [Astro Adapter](./packages/adapter/) for developing Astro SSR(Lambda or Edge) website. In the meanwhile, it provides [AWS CDk Construct](./packages/construct/) to deploy website(Static or SSR) to AWS. You can see further [examples](./examples/).
+This project is to develop and deploy [Astro](https://astro.build/) with AWS. It provides [Astro Adapter](./packages/adapter/) for developing Astro SSR(Lambda or Edge) website. In the meanwhile, it provides [AWS CDk Construct](./packages/construct/) to deploy website(Static or SSR) to AWS. You can see further [examples](./examples/).
 
 ## Contributing
 
