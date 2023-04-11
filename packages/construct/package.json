@@ -1,5 +1,5 @@
 {
-  "name": "@astrojs-aws/constructs",
+  "name": "@astrojs-aws/construct",
   "version": "0.0.0",
   "description": "The CDK Construct Library of Astro",
   "main": "./lib/index.js",
@@ -16,6 +16,7 @@
     "aws",
     "cdk",
     "constructs",
+    "awscdk",
     "jsii",
     "astro"
   ],
@@ -24,7 +25,7 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/helbing/astrojs-aws.git",
-    "directory": "packages/constructs"
+    "directory": "packages/construct"
   },
   "files": [
     "lib"
@@ -50,20 +51,20 @@
       }
     },
     "targets": {
+      "python": {
+        "distName": "astrojs-aws.construct",
+        "module": "astrojs_aws.construct"
+      },
       "java": {
-        "package": "com.astrojs.aws.constructs",
+        "package": "com.astrojs.aws.construct",
         "maven": {
           "groupId": "com.astrojs.aws",
-          "artifactId": "constructs"
+          "artifactId": "construct"
         }
       },
-      "python": {
-        "distName": "astrojs-aws-constructs",
-        "module": "astrojs_aws_constructs",
-        "classifiers": [
-          "Framework :: AWS CDK",
-          "Framework :: AWS CDK :: 2"
-        ]
+      "dotnet": {
+        "namespace": "AstrojsAWS.Construct",
+        "packageId": "AstrojsAWS.Construct"
       },
       "go": {
         "moduleName": "github.com/helbing/astrojs-aws-go"
@@ -71,25 +72,24 @@
     }
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "2.72.1-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.72.1-alpha.0",
-    "@aws-cdk/integ-runner": "^2.72.1",
-    "@aws-cdk/integ-tests-alpha": "^2.72.1-alpha.0",
-    "@aws-sdk/fetch-http-handler": "^3.306.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.73.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.73.0-alpha.0",
+    "@aws-cdk/integ-runner": "2.73.0-alpha.0",
+    "@aws-cdk/integ-tests-alpha": "2.73.0-alpha.0",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "18.11.9",
-    "aws-cdk-lib": "2.72.1",
+    "aws-cdk-lib": "2.73.0",
     "aws-lambda": "^1.0.7",
     "cdk-http-pinger": "^0.1.222",
-    "constructs": "10.1.301",
+    "constructs": "10.1.307",
     "jsii": "^1.80.0",
     "jsii-pacmak": "^1.80.0",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "2.72.1-alpha.0",
-    "aws-cdk-lib": "2.72.1",
-    "constructs": "10.1.301"
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.73.0-alpha.0",
+    "aws-cdk-lib": "2.73.0",
+    "constructs": "10.1.307"
   }
 }

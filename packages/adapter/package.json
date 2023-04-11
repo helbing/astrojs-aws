@@ -30,7 +30,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/helbing/astrojs-aws.git",
-    "directory": "packages/constructs"
+    "directory": "packages/adapter"
   },
   "author": "helbing",
   "license": "MIT",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@astrojs/webapi": "^2.1.0",
-    "@middy/core": "^4.2.8"
+    "@middy/core": "^4.3.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.114",

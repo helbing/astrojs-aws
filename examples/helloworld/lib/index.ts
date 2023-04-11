@@ -1,16 +1,13 @@
 import path from "path"
 
-import { StaticAstroSite } from "@astrojs-aws/constructs"
-import { Stack, StackProps } from "aws-cdk-lib"
-import { Construct } from "constructs"
+import { StaticAstroSite } from "@astrojs-aws/construct"
+import { App, Stack, StackProps } from "aws-cdk-lib"
 
-export default class ExampleStack extends Stack {
-  public readonly site: StaticAstroSite
-
-  constructor(scope: Construct, id: string, props?: StackProps) {
+export default class AppStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    this.site = new StaticAstroSite(this, "AstroSite", {
+    new StaticAstroSite(this, "AstroSite", {
       staticDir: path.join(__dirname, "../dist"),
     })
   }

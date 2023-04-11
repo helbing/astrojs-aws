@@ -1,5 +1,5 @@
 {
-  "name": "@astrojs-aws/constructs-fixtures-edge",
+  "name": "@astrojs-aws/construct-fixtures-lambda",
   "private": true,
   "scripts": {
     "build": "pnpm run clean && astro build",

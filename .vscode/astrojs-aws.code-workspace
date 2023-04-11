@@ -9,8 +9,8 @@
       "path": "../packages/adapter/"
     },
     {
-      "name": "constructs",
-      "path": "../packages/constructs/"
+      "name": "construct",
+      "path": "../packages/construct/"
     },
     {
       "name": "examples",
