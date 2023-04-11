@@ -13,7 +13,8 @@
     "clean": "turbo run clean",
     "cdk": "turbo run cdk --",
     "package": "turbo run package",
-    "hugo": "turbo run hugo --filter @astrojs-aws/docs"
+    "hugo": "turbo run hugo --filter @astrojs-aws/docs",
+    "ci": "pnpm run lint && pnpm run build && pnpm run test"
   },
   "keywords": [
     "aws",
@@ -28,8 +29,8 @@
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
     "@unocss/eslint-config": "^0.50.8",
     "astro-eslint-parser": "^0.13.3",
     "eslint": "^8.38.0",
