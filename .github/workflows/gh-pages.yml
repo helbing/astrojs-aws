@@ -2,9 +2,11 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
+    paths: [ "docs" ]
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
+    paths: [ "docs" ]
   workflow_dispatch:
 
 permissions:
@@ -36,7 +38,7 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: 'latest'
+        hugo-version: "latest"
         extended: true
     - name: Build
       env:
@@ -50,7 +52,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: ["build"]
+    needs: [ "build" ]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

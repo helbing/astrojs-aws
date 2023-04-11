@@ -2,7 +2,7 @@ name: Dependabot auto merge
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
 
 permissions:
   contents: write
@@ -11,7 +11,7 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+    if: ${{ github.actor == "dependabot[bot]" }}
     steps:
     - uses: actions/checkout@v3
     - uses: ahmadnassri/action-dependabot-auto-merge@v2
