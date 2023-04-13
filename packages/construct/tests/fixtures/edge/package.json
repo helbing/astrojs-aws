@@ -2,7 +2,7 @@
   "name": "@astrojs-aws/construct-fixtures-edge",
   "private": true,
   "scripts": {
-    "build": "pnpm run clean && astro build",
+    "build": "astro build",
     "clean": "rimraf dist"
   },
   "devDependencies": {

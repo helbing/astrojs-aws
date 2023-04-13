@@ -10,7 +10,6 @@
       ]
     },
     "test": {},
-    "testu": {},
     "test:integ": {
       "cache": false,
       "dependsOn": [

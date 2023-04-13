@@ -1,6 +1,6 @@
 {
   "name": "@astrojs-aws/adapter",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "The Astro adapter of AWS Serverless",
   "type": "module",
   "exports": {
@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm run clean && tsc",
+    "build": "tsc",
     "test": "vitest run",
     "clean": "rimraf dist"
   },
@@ -35,7 +35,7 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "18.x"
+    "node": "16.x || 18.x"
   },
   "dependencies": {
     "@astrojs/webapi": "^2.1.0",

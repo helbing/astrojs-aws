@@ -1,14 +1,13 @@
 {
   "name": "@astrojs-aws/construct",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "The CDK Construct Library of Astro",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "pnpm run clean && jsii -vvv",
+    "build": "jsii -vvv",
     "test": "vitest run --no-threads",
-    "testu": "vitest run --no-threads --update",
-    "test:integ": "integ-runner --directory tests -l typescript --parallel-regions us-east-1 --update-on-failed -v",
+    "test:integ": "integ-runner --directory tests --parallel-regions us-east-1 --update-on-failed -v",
     "package": "jsii-pacmak -vvv",
     "docgen": "jsii-docgen",
     "clean": "rimraf dist lib/*.js lib/*.d.ts"
@@ -33,7 +32,7 @@
   "author": "helbing",
   "license": "MIT",
   "engines": {
-    "node": "18.x"
+    "node": "16.x || 18.x"
   },
   "stability": "experimental",
   "jsii": {

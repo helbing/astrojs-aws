@@ -1,0 +1,17 @@
+{
+  "version": "31.0.0",
+  "testCases": {
+    "IntegTest/DefaultTest": {
+      "stacks": [],
+      "assertionStack": "IntegTest/DefaultTest/DeployAssert",
+      "assertionStackName": "IntegTestDefaultTestDeployAssertE3E7D2A4"
+    },
+    "LambdaWebsite/LambdaWebsiteTestCase": {
+      "stacks": [
+        "LambdaWebsite"
+      ],
+      "assertionStack": "LambdaWebsite/LambdaWebsiteTestCase/DeployAssert",
+      "assertionStackName": "LambdaWebsiteLambdaWebsiteTestCaseDeployAssertD6107EB8"
+    }
+  }
+}

@@ -1,13 +1,16 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "helbing/astrojs-aws" }
+  ],
   "commit": false,
   "fixed": [
     ["@astrojs-aws/adapter", "@astrojs-aws/construct"]
   ],
-  "linked": [],
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": []
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "updateInternalDependents": "always"
+  }
 }

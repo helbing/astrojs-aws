@@ -1,0 +1,31 @@
+name: Release adapter
+
+on:
+  push:
+    tags: [ "v*" ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      latest_commit: ${{ steps.git_remote.outputs.latest_commit }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: pnpm/action-setup@v2
+      with:
+        version: latest
+    - uses: actions/setup-node@v3
+      with:
+        cache: "pnpm"
+    - name: Set git identity
+      run: |-
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile --filter adapter
+    - name: Run Build
+      run: pnpm run build --filter adapter
