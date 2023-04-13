@@ -30,8 +30,14 @@ jobs:
     - name: Run build
       run: pnpm run build --filter adapter
 
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+      with:
+        strip_v: true
+
     - name: Publish to Github Releases
-      run: npx gh-release --workpath packages/adapter --yes
+      run: npx gh-release --workpath packages/adapter --name adapter-${{ steps.tag.outputs.tag }} --yes
       env:
         GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

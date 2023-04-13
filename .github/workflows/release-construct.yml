@@ -48,8 +48,14 @@ jobs:
         pnpm run build --filter construct
         pnpm run package --filter construct
 
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+      with:
+        strip_v: true
+
     - name: Publish to Github Releases
-      run: npx gh-release --workpath packages/construct --yes
+      run: npx gh-release --workpath packages/construct --name construct-${{ steps.tag.outputs.tag }} --yes
       env:
         GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
