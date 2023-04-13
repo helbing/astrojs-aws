@@ -42,3 +42,6 @@ jobs:
 
     - name: Run unit-tests
       run: pnpm run test
+
+    - name: Run integ-tests
+      run: pnpm run test:integ

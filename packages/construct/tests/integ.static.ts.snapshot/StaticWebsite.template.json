@@ -200,7 +200,7 @@
         {
          "Ref": "AWS::Region"
         },
-        "StaticWebseRedirectToIndexFunction79F24EE0"
+        "StaticWebeRedirectToIndexFunction79F24EE0"
        ]
       ]
      },
@@ -213,7 +213,7 @@
        {
         "Ref": "AWS::Region"
        },
-       "StaticWebseRedirectToIndexFunction79F24EE0"
+       "StaticWebeRedirectToIndexFunction79F24EE0"
       ]
      ]
     },

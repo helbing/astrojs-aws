@@ -58,6 +58,9 @@ devDependencies:
   prettier:
     specifier: ^2.8.7
     version: 2.8.7
+  publib:
+    specifier: ^0.2.645
+    version: 0.2.646
   turbo:
     specifier: ^1.9.1
     version: 1.9.1
@@ -749,6 +752,12 @@ packages:
 
   /@tsconfig/node16@1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+    dev: true
+
+  /@types/fs-extra@8.1.2:
+    resolution: {integrity: sha512-SvSrYXfWSc7R4eqnOzbQF4TZmfpNSM9FrSWLU3EUnWBuyZqNBOrv1B1JA3byUDPUl9z4Ab3jeZG2eDdySlgNMg==}
+    dependencies:
+      '@types/node': 18.15.11
     dev: true
 
   /@types/is-ci@3.0.0:
@@ -3823,6 +3832,15 @@ packages:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
     dev: true
 
+  /publib@0.2.646:
+    resolution: {integrity: sha512-nDbSlK2DGuK8o8oSRFCfjNYDvxwBD38VIF0CK4gFXy9naXqGM79xex4Zx6k0G/pZmOcaQ0or2j6UZ/gbCM1JCg==}
+    hasBin: true
+    dependencies:
+      '@types/fs-extra': 8.1.2
+      fs-extra: 8.1.0
+      shlex: 2.1.2
+    dev: true
+
   /pump@3.0.0:
     resolution: {integrity: sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww==}
     dependencies:
@@ -4153,6 +4171,10 @@ packages:
       glob: 7.2.3
       interpret: 1.4.0
       rechoir: 0.6.2
+    dev: true
+
+  /shlex@2.1.2:
+    resolution: {integrity: sha512-Nz6gtibMVgYeMEhUjp2KuwAgqaJA1K155dU/HuDaEJUGgnmYfVtVZah+uerVWdH8UGnyahhDCgABbYTbs254+w==}
     dev: true
 
   /side-channel@1.0.4:

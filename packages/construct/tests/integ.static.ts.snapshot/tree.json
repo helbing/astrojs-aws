@@ -411,7 +411,7 @@
                                 {
                                   "Ref": "AWS::Region"
                                 },
-                                "StaticWebseRedirectToIndexFunction79F24EE0"
+                                "StaticWebeRedirectToIndexFunction79F24EE0"
                               ]
                             ]
                           },
@@ -424,7 +424,7 @@
                               {
                                 "Ref": "AWS::Region"
                               },
-                              "StaticWebseRedirectToIndexFunction79F24EE0"
+                              "StaticWebeRedirectToIndexFunction79F24EE0"
                             ]
                           ]
                         },
@@ -559,7 +559,7 @@
             },
             "constructInfo": {
               "fqn": "@astrojs-aws/construct.StaticAstroSite",
-              "version": "0.0.0"
+              "version": "0.0.1"
             }
           },
           "Custom::S3AutoDeleteObjectsCustomResourceProvider": {
