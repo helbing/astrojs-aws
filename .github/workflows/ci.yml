@@ -17,19 +17,26 @@ jobs:
         node-version: [ "16.x", "18.x" ]
     steps:
     - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
       with:
-        version: latest
-    - name: Use Node.js ${{ matrix.node-version }}
+        fetch-depth: 0
+
+    - name: Setup PNPM
+      uses: pnpm/action-setup@v2
+
+    - name: Setup Nodejs ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: "pnpm"
+
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+
     - name: Run Build
       run: pnpm run build
+
     - name: Run linter
       run: pnpm run lint
+
     - name: Run unit-tests
       run: pnpm run test
