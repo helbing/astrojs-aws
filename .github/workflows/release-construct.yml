@@ -1,4 +1,4 @@
-name: Release adapter
+name: Release construct
 
 on:
   push:

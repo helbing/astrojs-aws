@@ -35,7 +35,10 @@ jobs:
       env:
         GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set publishing config
+      run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
     - name: Publish to NPM
       run: pnpm publish --filter adapter --access public --no-git-checks
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
