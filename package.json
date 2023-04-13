@@ -6,7 +6,6 @@
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "build": "turbo run build",
-    "dev": "turbo run dev",
     "test": "turbo run test",
     "testu": "turbo run testu",
     "test:integ": "turbo run test:integ",
@@ -16,7 +15,7 @@
     "package": "turbo run package",
     "docgen": "turbo run docgen",
     "hugo": "turbo run hugo --filter @astrojs-aws/docs",
-    "ci": "pnpm run lint && pnpm run build && pnpm run test"
+    "changeset": "npx changeset"
   },
   "keywords": [
     "aws",

@@ -36,32 +36,26 @@
 
 ## Static Mode
 
-```typescript
-import { StaticAstroSite } from "@astrojs-aws/constructs"
-
-const site = new StaticAstroSite(this, "AstroSite", {
-  staticDir: path.join(__dirname, "../dist"),
+```ts
+const site = new astrojsaws.StaticAstroSite(this, "AstroSite", {
+  staticDir: "/path/to/dist",
 })
 ```
 
 ## Lambda Mode
 
-```typescript
-import { LambdaAstroSite } from "@astrojs-aws/constructs"
-
-const site = new LambdaAstroSite(this, "AstroSite", {
-  serverEntry: path.join(__dirname, "../dist/server/entry.mjs"),
-  staticDir: path.join(__dirname, "../dist/client"),
+```ts
+const site = new astrojsaws.LambdaAstroSite(this, "AstroSite", {
+  serverEntry: "/path/to/dist/server/entry.mjs",
+  staticDir: "/path/to/dist/client",
 })
 ```
 
 ## Edge Mode
 
-```typescript
-import { EdgeAstroSite } from "@astrojs-aws/constructs"
-
-const site = new EdgeAstroSite(this, "AstroSite", {
-  serverEntry: path.join(__dirname, "../dist/server/entry.mjs"),
-  staticDir: path.join(__dirname, "../dist/client"),
+```ts
+const site = new astrojsaws.EdgeAstroSite(this, "AstroSite", {
+  serverEntry: "/path/to/dist/server/entry.mjs",
+  staticDir: "/path/to/dist/client",
 })
 ```
