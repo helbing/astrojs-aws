@@ -34,7 +34,7 @@ jobs:
       id: tag
       uses: dawidd6/action-get-tag@v1
       with:
-        strip_v: true
+        strip_v: false
 
     - name: Publish to Github Releases
       run: npx gh-release --workpath packages/adapter --name adapter-${{ steps.tag.outputs.tag }} --yes
