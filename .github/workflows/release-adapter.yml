@@ -27,7 +27,7 @@ jobs:
         cache: "pnpm"
 
     - name: Install dependencies
-      run: pnpm install --frozen-lockfile --filter adapter
+      run: pnpm install --frozen-lockfile
 
     - name: Run build
       run: pnpm run build --filter adapter

@@ -2,8 +2,7 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    tags: [ "v*" ]
-    paths: [ "docs" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
