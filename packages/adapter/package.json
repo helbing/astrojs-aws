@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "publish-packages": "pnpm publish --access public --no-git-checks"
   },
   "keywords": [
     "aws",

@@ -23,6 +23,7 @@
       "cache": false
     },
     "publish-version": {},
+    "publish-packages": {},
     "hugo": {
       "cache": false
     }
