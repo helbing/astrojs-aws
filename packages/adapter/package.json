@@ -1,6 +1,6 @@
 {
   "name": "@astrojs-aws/adapter",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The Astro adapter of AWS Serverless",
   "type": "module",
   "exports": {
