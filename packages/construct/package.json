@@ -11,7 +11,8 @@
     "build:jsii": "jsii -vvv",
     "package": "jsii-pacmak -vvv",
     "docgen": "jsii-docgen",
-    "clean": "rimraf dist lib/*.js lib/*.d.ts"
+    "clean": "rimraf dist lib/*.js lib/*.d.ts",
+    "publish-packages": "publib"
   },
   "keywords": [
     "aws",
