@@ -25,11 +25,6 @@ jobs:
         cache: "pnpm"
         registry-url: "https://registry.npmjs.org"
 
-    - name: Set NPM Publish config
-      run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
     - name: Setup Java
       uses: actions/setup-java@v3
       with:
@@ -62,6 +57,7 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_ACCESS_LEVEL: ${{ secrets.NPM_ACCESS_LEVEL }}
         MAVEN_ENDPOINT: ${{ secrets.MAVEN_ENDPOINT }}
         MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
         MAVEN_GPG_PRIVATE_KEY_PASSPHRASE: ${{ secrets.MAVEN_GPG_PRIVATE_KEY_PASSPHRASE }}
