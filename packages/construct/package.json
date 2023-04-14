@@ -25,7 +25,7 @@
   "homepage": "https://astro-aws.org/",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/helbing/astrojs-aws.git",
+    "url": "https://github.com/helbing/astrojs-aws.git",
     "directory": "packages/construct"
   },
   "files": [
