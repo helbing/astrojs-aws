@@ -5,11 +5,11 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "jsii -vvv",
+    "build": "pnpm run build:jsii && pnpm run package && pnpm run docgen",
     "test": "vitest run --no-threads",
     "test:integ": "integ-runner --directory tests --parallel-regions us-east-1 --update-on-failed -v",
+    "build:jsii": "jsii -vvv",
     "package": "jsii-pacmak -vvv",
-    "publish": "publib --",
     "docgen": "jsii-docgen",
     "clean": "rimraf dist lib/*.js lib/*.d.ts"
   },

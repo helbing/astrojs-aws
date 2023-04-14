@@ -44,20 +44,7 @@ jobs:
       run: pnpm install --frozen-lockfile
 
     - name: Run build
-      run: |-
-        pnpm run build --filter construct
-        pnpm run package --filter construct
-
-    - name: Get tag
-      id: tag
-      uses: dawidd6/action-get-tag@v1
-      with:
-        strip_v: false
-
-    - name: Publish to Github Releases
-      run: npx gh-release --workpath packages/construct --name construct-${{ steps.tag.outputs.tag }} --yes
-      env:
-        GH_RELEASE_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: pnpm run build
 
     - name: Set publishing config
       run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"

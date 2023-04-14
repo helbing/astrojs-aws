@@ -1,4 +1,4 @@
-name: Release adapter
+name: Release Github
 
 on:
   push:
@@ -27,13 +27,7 @@ jobs:
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
-    - name: Run build
-      run: pnpm run build --filter adapter
-
-    - name: Set publishing config
-      run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+    - name: Publish Github Releases
+      run: npx changelogithub
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-    - name: Publish to NPM
-      run: pnpm publish --filter adapter --access public --no-git-checks
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

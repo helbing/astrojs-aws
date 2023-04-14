@@ -22,9 +22,7 @@
     "cdk": {
       "cache": false
     },
-    "package": {},
-    "publish": {},
-    "docgen": {},
+    "publish-version": {},
     "hugo": {
       "cache": false
     }

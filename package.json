@@ -10,11 +10,8 @@
     "lint": "eslint .",
     "clean": "turbo run clean",
     "cdk": "turbo run cdk --",
-    "package": "turbo run package",
-    "publish": "turbo run publish",
-    "docgen": "turbo run docgen",
-    "hugo": "turbo run hugo --filter @astrojs-aws/docs",
-    "changeset": "changeset --"
+    "publish-version": "bumpp -r",
+    "hugo": "turbo run hugo --filter docs"
   },
   "keywords": [
     "aws",
@@ -26,14 +23,13 @@
     "node": "16.x || 18.x"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "@unocss/eslint-config": "^0.51.4",
     "astro-eslint-parser": "^0.13.3",
+    "bumpp": "^9.1.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
