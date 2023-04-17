@@ -77,8 +77,8 @@
   "devDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.73.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.73.0-alpha.0",
-    "@aws-cdk/integ-runner": "^2.73.0-alpha.0",
-    "@aws-cdk/integ-tests-alpha": "^2.73.0-alpha.0",
+    "@aws-cdk/integ-runner": "2.73.0-alpha.0",
+    "@aws-cdk/integ-tests-alpha": "2.73.0-alpha.0",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "18.11.9",
     "aws-cdk-lib": "2.73.0",
@@ -88,7 +88,7 @@
     "jsii": "^1.80.0",
     "jsii-docgen": "^7.1.46",
     "jsii-pacmak": "^1.80.0",
-    "publib": "^0.2.645",
+    "publib": "^0.2.650",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
   },

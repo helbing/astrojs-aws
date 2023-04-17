@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "^18.15.11",
-    "astro": "^2.2.1",
+    "astro": "^2.3.0",
     "rimraf": "^4.4.1",
     "typescript": "^5.0.4",
     "vitest": "^0.29.8",
