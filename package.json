@@ -31,6 +31,7 @@
     "@unocss/eslint-config": "^0.51.4",
     "astro-eslint-parser": "^0.13.3",
     "bumpp": "^9.1.0",
+    "changelogithub": "^0.12.9",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
@@ -38,14 +39,10 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vitest": "^0.0.57",
-    "gh-release": "^7.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
     "turbo": "^1.9.1",
     "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "aws-cdk-lib": "2.73.0"
   }
 }
