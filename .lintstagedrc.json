@@ -1,6 +1,7 @@
 {
   "{packages,examples}/**/*.{ts,tsx,astro}": [
-    "eslint --fix"
+    "eslint --fix",
+    "pnpm run test"
   ],
   "docs/**/*.{md,mdx,ts}": [
     "eslint --fix"
