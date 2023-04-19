@@ -14,8 +14,8 @@ devDependencies:
     specifier: ^5.59.0
     version: 5.59.0(eslint@8.38.0)(typescript@5.0.4)
   '@unocss/eslint-config':
-    specifier: ^0.51.4
-    version: 0.51.4(eslint@8.38.0)(typescript@5.0.4)
+    specifier: ^0.51.5
+    version: 0.51.5(eslint@8.38.0)(typescript@5.0.4)
   astro-eslint-parser:
     specifier: ^0.13.3
     version: 0.13.3
@@ -558,36 +558,36 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@unocss/config@0.51.4:
-    resolution: {integrity: sha512-DAUdVhrtdQDf8lI+tDO/8CkHcZn9jdN4M/twNKQDEfPP4IRBtLwP5TfYvDI7KcNcjyUAmACINhw0TrTkyCKHUA==}
+  /@unocss/config@0.51.5:
+    resolution: {integrity: sha512-VqLAGgzONkMugCsAxK0pn96m48x4dpAqiwOE2YFqr/1kJkHkIcc8F/QtIygvfhZN2A674Mq4+S3hrYUdn8zq8g==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.51.4
+      '@unocss/core': 0.51.5
       unconfig: 0.3.7
     dev: true
 
-  /@unocss/core@0.51.4:
-    resolution: {integrity: sha512-glPBN989gJNNVzjulH6NlLAekBLuZbsFRIDqwZ1ZaoWY6teu8Z6uo3pqFCy+ibjxZSEha77BcnKfDzd2Hccsdw==}
+  /@unocss/core@0.51.5:
+    resolution: {integrity: sha512-c2Ssp62nMRp3hCGhyaWYOMSD+QdwoYgTUbmIVNMTlVtDo9fjvyE2XwVRwAK7fJk8TnubAaDpkhZ49hVVf7Wjag==}
     dev: true
 
-  /@unocss/eslint-config@0.51.4(eslint@8.38.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-P70ZbGMac+hjdIipuOrdZM2NxWM+NMqj90IH1ZwJKZaCb1cRM0fS7wKXuYjahtioYYVWMPMfAA/ycZZ5KDIWiQ==}
+  /@unocss/eslint-config@0.51.5(eslint@8.38.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-jwcxPSLigNXN/hJz+2MBkuhA1riBpBOUYKS7hssve8AtfwC9aUWQfgh6g9M6HqqBdii8lmlxYAYd1/oTdxFWIQ==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/eslint-plugin': 0.51.4(eslint@8.38.0)(typescript@5.0.4)
+      '@unocss/eslint-plugin': 0.51.5(eslint@8.38.0)(typescript@5.0.4)
     transitivePeerDependencies:
       - eslint
       - supports-color
       - typescript
     dev: true
 
-  /@unocss/eslint-plugin@0.51.4(eslint@8.38.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-Ien5ZMm4TjjR+AcjDXaTRC4q6H3oKnySV8sL+eWOncIYYhtrInjrcGe9ggFbJbsr9Rdeo+sZDoZ1RpBRFTfliQ==}
+  /@unocss/eslint-plugin@0.51.5(eslint@8.38.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-aiqpD2/f4tgfwwPkvB3zvUHITAo+fQmoinkCtgY6ULFE8RWL1McxU0CnKJEhzGLaOlsYF79duky4mi0CwENgoA==}
     engines: {node: '>=14'}
     dependencies:
       '@typescript-eslint/utils': 5.59.0(eslint@8.38.0)(typescript@5.0.4)
-      '@unocss/config': 0.51.4
-      '@unocss/core': 0.51.4
+      '@unocss/config': 0.51.5
+      '@unocss/core': 0.51.5
       magic-string: 0.30.0
       synckit: 0.8.5
     transitivePeerDependencies:
@@ -1276,7 +1276,7 @@ packages:
       object-inspect: 1.12.3
       object-keys: 1.1.1
       object.assign: 4.1.4
-      regexp.prototype.flags: 1.4.3
+      regexp.prototype.flags: 1.5.0
       safe-regex-test: 1.0.0
       string.prototype.trim: 1.2.7
       string.prototype.trimend: 1.0.6
@@ -2983,8 +2983,8 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /regexp.prototype.flags@1.4.3:
-    resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
+  /regexp.prototype.flags@1.5.0:
+    resolution: {integrity: sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
