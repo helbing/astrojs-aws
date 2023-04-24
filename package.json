@@ -9,7 +9,7 @@
     "test": "turbo run test --",
     "lint": "eslint .",
     "clean": "turbo run clean",
-    "cdk": "turbo run cdk --",
+    "cdk": "turbo run cdk --  ",
     "publish-version": "bumpp -r",
     "publish-packages": "turbo run publish-packages",
     "hugo": "turbo run hugo --filter docs"

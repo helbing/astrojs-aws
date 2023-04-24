@@ -40,11 +40,28 @@ describe("Test parseRoutesFromDir", () => {
     }).toThrowError()
   })
 
-  test("Expect parse success", () => {
+  test("Expect parse HttpApi Gateway routes success", () => {
     expect(
       cst.parseRoutesFromDir(
         path.join(__dirname, "../tests/fixtures/testdirs/"),
       ),
-    ).toEqual(expect.arrayContaining(["/test.txt", "/route1/*", "/route2/*"]))
+    ).toContain({
+      "/test.txt": "/test.txt",
+      "/route1/{proxy+}": "/route1/{proxy}",
+      "/route2/{proxy+}": "/route2/{proxy}",
+    })
+
+    test("Expect parse CloudFront routes success", () => {
+      expect(
+        cst.parseRoutesFromDir(
+          path.join(__dirname, "../tests/fixtures/testdirs/"),
+          true,
+        ),
+      ).toContain({
+        "/test.txt": "/test.txt",
+        "/route1/*": "/route1/*",
+        "/route2/*": "/route2/*",
+      })
+    })
   })
 })

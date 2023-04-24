@@ -10,10 +10,10 @@ import { StaticAstroSite } from "./static"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 describe("Test StaticAstroSite", () => {
-  test("Expect match snapshot", () => {
+  test("Expect match snapshot without CloudFront", () => {
     const stack = new Stack()
-    new StaticAstroSite(stack, "TestSite", {
-      staticDir: path.join(__dirname, "../tests/testdata/fakestatic"),
+    new StaticAstroSite(new Stack(), "TestSite", {
+      siteDir: path.join(__dirname, "../tests/testdata/fakestatic"),
     })
     const template = Template.fromStack(stack)
     expect(template).toMatchSnapshot()

@@ -9,12 +9,13 @@ import { EdgeAstroSite } from "./edge"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-describe("Test LambdaAstroSite", () => {
-  test("Expect match snapshot", () => {
+describe("Test EdgeAstroSite", () => {
+  test("Expect match snapshot when onlylambda", () => {
     const stack = new Stack()
     new EdgeAstroSite(stack, "TestSite", {
       serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
       staticDir: path.join(__dirname, "../tests/testdata/fakestatic"),
+      onlyLambda: true,
     })
     const template = Template.fromStack(stack)
     expect(template).toMatchSnapshot()

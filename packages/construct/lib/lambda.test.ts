@@ -10,7 +10,7 @@ import { LambdaAstroSite } from "./lambda"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 describe("Test LambdaAstroSite", () => {
-  test("Expect match snapshot", () => {
+  test("Expect match snapshot without CloudFront", () => {
     const stack = new Stack()
     new LambdaAstroSite(stack, "TestSite", {
       serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),

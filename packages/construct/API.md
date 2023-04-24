@@ -18,43 +18,21 @@
 
 ## Introduction
 
-[Astro](https://astro.build/) is the all-in-one web framework designed for speed. This library is supported modes, `static`, `lambda` and `edge`, to deploy astro website to AWS.
+[Astro](https://astro.build/) is the all-in-one web framework designed for speed. This library is supported modes, `static`, `lambda` and `edge`, to deploy astro website to AWS. You can further know it in [https://helbing.github.io/astrojs-aws/](https://helbing.github.io/astrojs-aws/).
 
-## Architecture
-
-### Static
-
-![static](https://raw.githubusercontent.com/helbing/astrojs-aws/main/docs/static/architecture/static.png)
-
-### Lambda
-
-![lambda](https://raw.githubusercontent.com/helbing/astrojs-aws/main/docs/static/architecture/lambda.png)
-
-### Edge
-
-![edge](https://raw.githubusercontent.com/helbing/astrojs-aws/main/docs/static/architecture/edge.png)
-
-## Static Mode
+## Usage
 
 ```ts
-const site = new astrojsaws.StaticAstroSite(this, "AstroSite", {
-  staticDir: "/path/to/dist",
+new astrojsaws.StaticAstroSite(this, "StaticAstroSite", {
+  siteDir: "/path/to/dist",
 })
-```
 
-## Lambda Mode
-
-```ts
-const site = new astrojsaws.LambdaAstroSite(this, "AstroSite", {
+new astrojsaws.LambdaAstroSite(this, "LambdaAstroSite", {
   serverEntry: "/path/to/dist/server/entry.mjs",
   staticDir: "/path/to/dist/client",
 })
-```
 
-## Edge Mode
-
-```ts
-const site = new astrojsaws.EdgeAstroSite(this, "AstroSite", {
+new astrojsaws.EdgeAstroSite(this, "EdgeAstroSite", {
   serverEntry: "/path/to/dist/server/entry.mjs",
   staticDir: "/path/to/dist/client",
 })
@@ -101,9 +79,12 @@ new AstroSiteConstruct(scope: Construct, id: string)
 | --- | --- |
 | <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newBucket">newBucket</a></code> | New bucket. |
+| <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newDistribution">newDistribution</a></code> | New CloudFront distribution. |
 | <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newFunction">newFunction</a></code> | New nodejs function. |
+| <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGatewayOrigin">newHttpApiGatewayOrigin</a></code> | New HttpApi Gateway origin. |
+| <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGw">newHttpApiGw</a></code> | New HttpApi Gateway. |
 | <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.newS3Origin">newS3Origin</a></code> | New S3 origin. |
-| <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item. |
+| <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory. |
 | <code><a href="#@astrojs-aws/construct.AstroSiteConstruct.strToRuntime">strToRuntime</a></code> | Transform string to Runtime. |
 
 ---
@@ -119,7 +100,7 @@ Returns a string representation of this construct.
 ##### `newBucket` <a name="newBucket" id="@astrojs-aws/construct.AstroSiteConstruct.newBucket"></a>
 
 ```typescript
-public newBucket(scope: Construct, staticDir: string, props?: BucketProps): Bucket
+public newBucket(scope: Construct, whEnabled: boolean, props?: AssetsOptions): Bucket
 ```
 
 New bucket.
@@ -130,15 +111,41 @@ New bucket.
 
 ---
 
-###### `staticDir`<sup>Required</sup> <a name="staticDir" id="@astrojs-aws/construct.AstroSiteConstruct.newBucket.parameter.staticDir"></a>
+###### `whEnabled`<sup>Required</sup> <a name="whEnabled" id="@astrojs-aws/construct.AstroSiteConstruct.newBucket.parameter.whEnabled"></a>
 
-- *Type:* string
+- *Type:* boolean
 
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.AstroSiteConstruct.newBucket.parameter.props"></a>
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.AssetsOptions">AssetsOptions</a>
+
+---
+
+##### `newDistribution` <a name="newDistribution" id="@astrojs-aws/construct.AstroSiteConstruct.newDistribution"></a>
+
+```typescript
+public newDistribution(scope: Construct, defaultBehavior: BehaviorOptions, props?: CfOptions): Distribution
+```
+
+New CloudFront distribution.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.AstroSiteConstruct.newDistribution.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `defaultBehavior`<sup>Required</sup> <a name="defaultBehavior" id="@astrojs-aws/construct.AstroSiteConstruct.newDistribution.parameter.defaultBehavior"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudfront.BehaviorOptions
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.AstroSiteConstruct.newDistribution.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
 
 ---
 
@@ -168,6 +175,46 @@ New nodejs function.
 
 ---
 
+##### `newHttpApiGatewayOrigin` <a name="newHttpApiGatewayOrigin" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGatewayOrigin"></a>
+
+```typescript
+public newHttpApiGatewayOrigin(httpApi: HttpApi): HttpOrigin
+```
+
+New HttpApi Gateway origin.
+
+###### `httpApi`<sup>Required</sup> <a name="httpApi" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGatewayOrigin.parameter.httpApi"></a>
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.HttpApi
+
+---
+
+##### `newHttpApiGw` <a name="newHttpApiGw" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGw"></a>
+
+```typescript
+public newHttpApiGw(scope: Construct, fn: NodejsFunction, props?: GwOptions): HttpApi
+```
+
+New HttpApi Gateway.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGw.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `fn`<sup>Required</sup> <a name="fn" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGw.parameter.fn"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.NodejsFunction
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.AstroSiteConstruct.newHttpApiGw.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.GwOptions">GwOptions</a>
+
+---
+
 ##### `newS3Origin` <a name="newS3Origin" id="@astrojs-aws/construct.AstroSiteConstruct.newS3Origin"></a>
 
 ```typescript
@@ -191,14 +238,25 @@ New S3 origin.
 ##### `parseRoutesFromDir` <a name="parseRoutesFromDir" id="@astrojs-aws/construct.AstroSiteConstruct.parseRoutesFromDir"></a>
 
 ```typescript
-public parseRoutesFromDir(dir: string): string[]
+public parseRoutesFromDir(dir: string, isCf?: boolean): {[ key: string ]: string}
 ```
 
-Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item.
+Parse routes from directory.
+
+if the item is directory will parse to {"/item/*": "/item/*"} or {"/item/{proxy+}": "/item/{proxy}"}
+if the item is file will parse to {"/item": "/item"}
 
 ###### `dir`<sup>Required</sup> <a name="dir" id="@astrojs-aws/construct.AstroSiteConstruct.parseRoutesFromDir.parameter.dir"></a>
 
 - *Type:* string
+
+---
+
+###### `isCf`<sup>Optional</sup> <a name="isCf" id="@astrojs-aws/construct.AstroSiteConstruct.parseRoutesFromDir.parameter.isCf"></a>
+
+- *Type:* boolean
+
+CloudFront route or not, HttpApi Gateway route by defauly, default false.
 
 ---
 
@@ -319,11 +377,13 @@ new EdgeAstroSite(scope: Construct, id: string, props: EdgeAstroSiteProps)
 | --- | --- |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newBucket">newBucket</a></code> | New bucket. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newDistribution">newDistribution</a></code> | New CloudFront distribution. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newFunction">newFunction</a></code> | New nodejs function. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newHttpApiGatewayOrigin">newHttpApiGatewayOrigin</a></code> | New HttpApi Gateway origin. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newHttpApiGw">newHttpApiGw</a></code> | New HttpApi Gateway. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.newS3Origin">newS3Origin</a></code> | New S3 origin. |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.strToRuntime">strToRuntime</a></code> | Transform string to Runtime. |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.edgeFunction">edgeFunction</a></code> | Return edge function. |
 
 ---
 
@@ -338,7 +398,7 @@ Returns a string representation of this construct.
 ##### `newBucket` <a name="newBucket" id="@astrojs-aws/construct.EdgeAstroSite.newBucket"></a>
 
 ```typescript
-public newBucket(scope: Construct, staticDir: string, props?: BucketProps): Bucket
+public newBucket(scope: Construct, whEnabled: boolean, props?: AssetsOptions): Bucket
 ```
 
 New bucket.
@@ -349,15 +409,41 @@ New bucket.
 
 ---
 
-###### `staticDir`<sup>Required</sup> <a name="staticDir" id="@astrojs-aws/construct.EdgeAstroSite.newBucket.parameter.staticDir"></a>
+###### `whEnabled`<sup>Required</sup> <a name="whEnabled" id="@astrojs-aws/construct.EdgeAstroSite.newBucket.parameter.whEnabled"></a>
 
-- *Type:* string
+- *Type:* boolean
 
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.EdgeAstroSite.newBucket.parameter.props"></a>
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.AssetsOptions">AssetsOptions</a>
+
+---
+
+##### `newDistribution` <a name="newDistribution" id="@astrojs-aws/construct.EdgeAstroSite.newDistribution"></a>
+
+```typescript
+public newDistribution(scope: Construct, defaultBehavior: BehaviorOptions, props?: CfOptions): Distribution
+```
+
+New CloudFront distribution.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.EdgeAstroSite.newDistribution.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `defaultBehavior`<sup>Required</sup> <a name="defaultBehavior" id="@astrojs-aws/construct.EdgeAstroSite.newDistribution.parameter.defaultBehavior"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudfront.BehaviorOptions
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.EdgeAstroSite.newDistribution.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
 
 ---
 
@@ -387,6 +473,46 @@ New nodejs function.
 
 ---
 
+##### `newHttpApiGatewayOrigin` <a name="newHttpApiGatewayOrigin" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGatewayOrigin"></a>
+
+```typescript
+public newHttpApiGatewayOrigin(httpApi: HttpApi): HttpOrigin
+```
+
+New HttpApi Gateway origin.
+
+###### `httpApi`<sup>Required</sup> <a name="httpApi" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGatewayOrigin.parameter.httpApi"></a>
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.HttpApi
+
+---
+
+##### `newHttpApiGw` <a name="newHttpApiGw" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGw"></a>
+
+```typescript
+public newHttpApiGw(scope: Construct, fn: NodejsFunction, props?: GwOptions): HttpApi
+```
+
+New HttpApi Gateway.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGw.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `fn`<sup>Required</sup> <a name="fn" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGw.parameter.fn"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.NodejsFunction
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.EdgeAstroSite.newHttpApiGw.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.GwOptions">GwOptions</a>
+
+---
+
 ##### `newS3Origin` <a name="newS3Origin" id="@astrojs-aws/construct.EdgeAstroSite.newS3Origin"></a>
 
 ```typescript
@@ -410,14 +536,25 @@ New S3 origin.
 ##### `parseRoutesFromDir` <a name="parseRoutesFromDir" id="@astrojs-aws/construct.EdgeAstroSite.parseRoutesFromDir"></a>
 
 ```typescript
-public parseRoutesFromDir(dir: string): string[]
+public parseRoutesFromDir(dir: string, isCf?: boolean): {[ key: string ]: string}
 ```
 
-Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item.
+Parse routes from directory.
+
+if the item is directory will parse to {"/item/*": "/item/*"} or {"/item/{proxy+}": "/item/{proxy}"}
+if the item is file will parse to {"/item": "/item"}
 
 ###### `dir`<sup>Required</sup> <a name="dir" id="@astrojs-aws/construct.EdgeAstroSite.parseRoutesFromDir.parameter.dir"></a>
 
 - *Type:* string
+
+---
+
+###### `isCf`<sup>Optional</sup> <a name="isCf" id="@astrojs-aws/construct.EdgeAstroSite.parseRoutesFromDir.parameter.isCf"></a>
+
+- *Type:* boolean
+
+CloudFront route or not, HttpApi Gateway route by defauly, default false.
 
 ---
 
@@ -434,14 +571,6 @@ Transform string to Runtime.
 - *Type:* string
 
 ---
-
-##### `edgeFunction` <a name="edgeFunction" id="@astrojs-aws/construct.EdgeAstroSite.edgeFunction"></a>
-
-```typescript
-public edgeFunction(): NodejsFunction
-```
-
-Return edge function.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -490,8 +619,10 @@ Any object.
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.bucketArn">bucketArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.bucketName">bucketName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.distributionDomainName">distributionDomainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.distributionId">distributionId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.domains">domains</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.functionArn">functionArn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSite.property.functionName">functionName</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -527,20 +658,40 @@ public readonly bucketName: string;
 
 ---
 
-##### `distributionDomainName`<sup>Required</sup> <a name="distributionDomainName" id="@astrojs-aws/construct.EdgeAstroSite.property.distributionDomainName"></a>
+##### `distributionId`<sup>Required</sup> <a name="distributionId" id="@astrojs-aws/construct.EdgeAstroSite.property.distributionId"></a>
 
 ```typescript
-public readonly distributionDomainName: string;
+public readonly distributionId: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `domainName`<sup>Required</sup> <a name="domainName" id="@astrojs-aws/construct.EdgeAstroSite.property.domainName"></a>
+##### `domains`<sup>Required</sup> <a name="domains" id="@astrojs-aws/construct.EdgeAstroSite.property.domains"></a>
 
 ```typescript
-public readonly domainName: string;
+public readonly domains: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `functionArn`<sup>Required</sup> <a name="functionArn" id="@astrojs-aws/construct.EdgeAstroSite.property.functionArn"></a>
+
+```typescript
+public readonly functionArn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `functionName`<sup>Required</sup> <a name="functionName" id="@astrojs-aws/construct.EdgeAstroSite.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
 ```
 
 - *Type:* string
@@ -590,12 +741,13 @@ new LambdaAstroSite(scope: Construct, id: string, props: LambdaAstroSiteProps)
 | --- | --- |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newBucket">newBucket</a></code> | New bucket. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newDistribution">newDistribution</a></code> | New CloudFront distribution. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newFunction">newFunction</a></code> | New nodejs function. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newHttpApiGatewayOrigin">newHttpApiGatewayOrigin</a></code> | New HttpApi Gateway origin. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newHttpApiGw">newHttpApiGw</a></code> | New HttpApi Gateway. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.newS3Origin">newS3Origin</a></code> | New S3 origin. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.strToRuntime">strToRuntime</a></code> | Transform string to Runtime. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.api">api</a></code> | return http api. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.lambdaFunction">lambdaFunction</a></code> | Returns lambda function. |
 
 ---
 
@@ -610,7 +762,7 @@ Returns a string representation of this construct.
 ##### `newBucket` <a name="newBucket" id="@astrojs-aws/construct.LambdaAstroSite.newBucket"></a>
 
 ```typescript
-public newBucket(scope: Construct, staticDir: string, props?: BucketProps): Bucket
+public newBucket(scope: Construct, whEnabled: boolean, props?: AssetsOptions): Bucket
 ```
 
 New bucket.
@@ -621,15 +773,41 @@ New bucket.
 
 ---
 
-###### `staticDir`<sup>Required</sup> <a name="staticDir" id="@astrojs-aws/construct.LambdaAstroSite.newBucket.parameter.staticDir"></a>
+###### `whEnabled`<sup>Required</sup> <a name="whEnabled" id="@astrojs-aws/construct.LambdaAstroSite.newBucket.parameter.whEnabled"></a>
 
-- *Type:* string
+- *Type:* boolean
 
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.LambdaAstroSite.newBucket.parameter.props"></a>
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.AssetsOptions">AssetsOptions</a>
+
+---
+
+##### `newDistribution` <a name="newDistribution" id="@astrojs-aws/construct.LambdaAstroSite.newDistribution"></a>
+
+```typescript
+public newDistribution(scope: Construct, defaultBehavior: BehaviorOptions, props?: CfOptions): Distribution
+```
+
+New CloudFront distribution.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.LambdaAstroSite.newDistribution.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `defaultBehavior`<sup>Required</sup> <a name="defaultBehavior" id="@astrojs-aws/construct.LambdaAstroSite.newDistribution.parameter.defaultBehavior"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudfront.BehaviorOptions
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.LambdaAstroSite.newDistribution.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
 
 ---
 
@@ -659,6 +837,46 @@ New nodejs function.
 
 ---
 
+##### `newHttpApiGatewayOrigin` <a name="newHttpApiGatewayOrigin" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGatewayOrigin"></a>
+
+```typescript
+public newHttpApiGatewayOrigin(httpApi: HttpApi): HttpOrigin
+```
+
+New HttpApi Gateway origin.
+
+###### `httpApi`<sup>Required</sup> <a name="httpApi" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGatewayOrigin.parameter.httpApi"></a>
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.HttpApi
+
+---
+
+##### `newHttpApiGw` <a name="newHttpApiGw" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGw"></a>
+
+```typescript
+public newHttpApiGw(scope: Construct, fn: NodejsFunction, props?: GwOptions): HttpApi
+```
+
+New HttpApi Gateway.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGw.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `fn`<sup>Required</sup> <a name="fn" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGw.parameter.fn"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.NodejsFunction
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.LambdaAstroSite.newHttpApiGw.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.GwOptions">GwOptions</a>
+
+---
+
 ##### `newS3Origin` <a name="newS3Origin" id="@astrojs-aws/construct.LambdaAstroSite.newS3Origin"></a>
 
 ```typescript
@@ -682,14 +900,25 @@ New S3 origin.
 ##### `parseRoutesFromDir` <a name="parseRoutesFromDir" id="@astrojs-aws/construct.LambdaAstroSite.parseRoutesFromDir"></a>
 
 ```typescript
-public parseRoutesFromDir(dir: string): string[]
+public parseRoutesFromDir(dir: string, isCf?: boolean): {[ key: string ]: string}
 ```
 
-Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item.
+Parse routes from directory.
+
+if the item is directory will parse to {"/item/*": "/item/*"} or {"/item/{proxy+}": "/item/{proxy}"}
+if the item is file will parse to {"/item": "/item"}
 
 ###### `dir`<sup>Required</sup> <a name="dir" id="@astrojs-aws/construct.LambdaAstroSite.parseRoutesFromDir.parameter.dir"></a>
 
 - *Type:* string
+
+---
+
+###### `isCf`<sup>Optional</sup> <a name="isCf" id="@astrojs-aws/construct.LambdaAstroSite.parseRoutesFromDir.parameter.isCf"></a>
+
+- *Type:* boolean
+
+CloudFront route or not, HttpApi Gateway route by defauly, default false.
 
 ---
 
@@ -706,22 +935,6 @@ Transform string to Runtime.
 - *Type:* string
 
 ---
-
-##### `api` <a name="api" id="@astrojs-aws/construct.LambdaAstroSite.api"></a>
-
-```typescript
-public api(): HttpApi
-```
-
-return http api.
-
-##### `lambdaFunction` <a name="lambdaFunction" id="@astrojs-aws/construct.LambdaAstroSite.lambdaFunction"></a>
-
-```typescript
-public lambdaFunction(): NodejsFunction
-```
-
-Returns lambda function.
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -770,8 +983,10 @@ Any object.
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.bucketArn">bucketArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.bucketName">bucketName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.distributionDomainName">distributionDomainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.distributionId">distributionId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.domains">domains</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.functionArn">functionArn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSite.property.functionName">functionName</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -807,20 +1022,40 @@ public readonly bucketName: string;
 
 ---
 
-##### `distributionDomainName`<sup>Required</sup> <a name="distributionDomainName" id="@astrojs-aws/construct.LambdaAstroSite.property.distributionDomainName"></a>
+##### `distributionId`<sup>Required</sup> <a name="distributionId" id="@astrojs-aws/construct.LambdaAstroSite.property.distributionId"></a>
 
 ```typescript
-public readonly distributionDomainName: string;
+public readonly distributionId: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `domainName`<sup>Required</sup> <a name="domainName" id="@astrojs-aws/construct.LambdaAstroSite.property.domainName"></a>
+##### `domains`<sup>Required</sup> <a name="domains" id="@astrojs-aws/construct.LambdaAstroSite.property.domains"></a>
 
 ```typescript
-public readonly domainName: string;
+public readonly domains: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `functionArn`<sup>Required</sup> <a name="functionArn" id="@astrojs-aws/construct.LambdaAstroSite.property.functionArn"></a>
+
+```typescript
+public readonly functionArn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `functionName`<sup>Required</sup> <a name="functionName" id="@astrojs-aws/construct.LambdaAstroSite.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
 ```
 
 - *Type:* string
@@ -870,9 +1105,12 @@ new StaticAstroSite(scope: Construct, id: string, props: StaticAstroSiteProps)
 | --- | --- |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.newBucket">newBucket</a></code> | New bucket. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.newDistribution">newDistribution</a></code> | New CloudFront distribution. |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.newFunction">newFunction</a></code> | New nodejs function. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.newHttpApiGatewayOrigin">newHttpApiGatewayOrigin</a></code> | New HttpApi Gateway origin. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.newHttpApiGw">newHttpApiGw</a></code> | New HttpApi Gateway. |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.newS3Origin">newS3Origin</a></code> | New S3 origin. |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.parseRoutesFromDir">parseRoutesFromDir</a></code> | Parse routes from directory. |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.strToRuntime">strToRuntime</a></code> | Transform string to Runtime. |
 
 ---
@@ -888,7 +1126,7 @@ Returns a string representation of this construct.
 ##### `newBucket` <a name="newBucket" id="@astrojs-aws/construct.StaticAstroSite.newBucket"></a>
 
 ```typescript
-public newBucket(scope: Construct, staticDir: string, props?: BucketProps): Bucket
+public newBucket(scope: Construct, whEnabled: boolean, props?: AssetsOptions): Bucket
 ```
 
 New bucket.
@@ -899,15 +1137,41 @@ New bucket.
 
 ---
 
-###### `staticDir`<sup>Required</sup> <a name="staticDir" id="@astrojs-aws/construct.StaticAstroSite.newBucket.parameter.staticDir"></a>
+###### `whEnabled`<sup>Required</sup> <a name="whEnabled" id="@astrojs-aws/construct.StaticAstroSite.newBucket.parameter.whEnabled"></a>
 
-- *Type:* string
+- *Type:* boolean
 
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.StaticAstroSite.newBucket.parameter.props"></a>
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.AssetsOptions">AssetsOptions</a>
+
+---
+
+##### `newDistribution` <a name="newDistribution" id="@astrojs-aws/construct.StaticAstroSite.newDistribution"></a>
+
+```typescript
+public newDistribution(scope: Construct, defaultBehavior: BehaviorOptions, props?: CfOptions): Distribution
+```
+
+New CloudFront distribution.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.StaticAstroSite.newDistribution.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `defaultBehavior`<sup>Required</sup> <a name="defaultBehavior" id="@astrojs-aws/construct.StaticAstroSite.newDistribution.parameter.defaultBehavior"></a>
+
+- *Type:* aws-cdk-lib.aws_cloudfront.BehaviorOptions
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.StaticAstroSite.newDistribution.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
 
 ---
 
@@ -937,6 +1201,46 @@ New nodejs function.
 
 ---
 
+##### `newHttpApiGatewayOrigin` <a name="newHttpApiGatewayOrigin" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGatewayOrigin"></a>
+
+```typescript
+public newHttpApiGatewayOrigin(httpApi: HttpApi): HttpOrigin
+```
+
+New HttpApi Gateway origin.
+
+###### `httpApi`<sup>Required</sup> <a name="httpApi" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGatewayOrigin.parameter.httpApi"></a>
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.HttpApi
+
+---
+
+##### `newHttpApiGw` <a name="newHttpApiGw" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGw"></a>
+
+```typescript
+public newHttpApiGw(scope: Construct, fn: NodejsFunction, props?: GwOptions): HttpApi
+```
+
+New HttpApi Gateway.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGw.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `fn`<sup>Required</sup> <a name="fn" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGw.parameter.fn"></a>
+
+- *Type:* aws-cdk-lib.aws_lambda_nodejs.NodejsFunction
+
+---
+
+###### `props`<sup>Optional</sup> <a name="props" id="@astrojs-aws/construct.StaticAstroSite.newHttpApiGw.parameter.props"></a>
+
+- *Type:* <a href="#@astrojs-aws/construct.GwOptions">GwOptions</a>
+
+---
+
 ##### `newS3Origin` <a name="newS3Origin" id="@astrojs-aws/construct.StaticAstroSite.newS3Origin"></a>
 
 ```typescript
@@ -960,14 +1264,25 @@ New S3 origin.
 ##### `parseRoutesFromDir` <a name="parseRoutesFromDir" id="@astrojs-aws/construct.StaticAstroSite.parseRoutesFromDir"></a>
 
 ```typescript
-public parseRoutesFromDir(dir: string): string[]
+public parseRoutesFromDir(dir: string, isCf?: boolean): {[ key: string ]: string}
 ```
 
-Parse routes from directory if the item is directory will parse to /item/* if the item is file will parse to /item.
+Parse routes from directory.
+
+if the item is directory will parse to {"/item/*": "/item/*"} or {"/item/{proxy+}": "/item/{proxy}"}
+if the item is file will parse to {"/item": "/item"}
 
 ###### `dir`<sup>Required</sup> <a name="dir" id="@astrojs-aws/construct.StaticAstroSite.parseRoutesFromDir.parameter.dir"></a>
 
 - *Type:* string
+
+---
+
+###### `isCf`<sup>Optional</sup> <a name="isCf" id="@astrojs-aws/construct.StaticAstroSite.parseRoutesFromDir.parameter.isCf"></a>
+
+- *Type:* boolean
+
+CloudFront route or not, HttpApi Gateway route by defauly, default false.
 
 ---
 
@@ -1032,8 +1347,8 @@ Any object.
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.bucketArn">bucketArn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.bucketName">bucketName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.distributionDomainName">distributionDomainName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.domainName">domainName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.distributionId">distributionId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSite.property.domains">domains</a></code> | <code>string[]</code> | *No description.* |
 
 ---
 
@@ -1069,166 +1384,177 @@ public readonly bucketName: string;
 
 ---
 
-##### `distributionDomainName`<sup>Required</sup> <a name="distributionDomainName" id="@astrojs-aws/construct.StaticAstroSite.property.distributionDomainName"></a>
+##### `distributionId`<sup>Required</sup> <a name="distributionId" id="@astrojs-aws/construct.StaticAstroSite.property.distributionId"></a>
 
 ```typescript
-public readonly distributionDomainName: string;
+public readonly distributionId: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `domainName`<sup>Required</sup> <a name="domainName" id="@astrojs-aws/construct.StaticAstroSite.property.domainName"></a>
+##### `domains`<sup>Required</sup> <a name="domains" id="@astrojs-aws/construct.StaticAstroSite.property.domains"></a>
 
 ```typescript
-public readonly domainName: string;
+public readonly domains: string[];
 ```
 
-- *Type:* string
+- *Type:* string[]
 
 ---
 
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### DistributionOptions <a name="DistributionOptions" id="@astrojs-aws/construct.DistributionOptions"></a>
+### AssetsOptions <a name="AssetsOptions" id="@astrojs-aws/construct.AssetsOptions"></a>
 
-CloudFront distribution which is based on CDK DistributionProps, remove defaultBehavior, defaultRootObject.
+The options for the Assets.
 
-#### Initializer <a name="Initializer" id="@astrojs-aws/construct.DistributionOptions.Initializer"></a>
+#### Initializer <a name="Initializer" id="@astrojs-aws/construct.AssetsOptions.Initializer"></a>
 
 ```typescript
-import { DistributionOptions } from '@astrojs-aws/construct'
+import { AssetsOptions } from '@astrojs-aws/construct'
 
-const distributionOptions: DistributionOptions = { ... }
+const assetsOptions: AssetsOptions = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.additionalBehaviors">additionalBehaviors</a></code> | <code>{[ key: string ]: aws-cdk-lib.aws_cloudfront.BehaviorOptions}</code> | Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.certificate">certificate</a></code> | <code>aws-cdk-lib.aws_certificatemanager.ICertificate</code> | A certificate to associate with the distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.comment">comment</a></code> | <code>string</code> | Any comments you want to include about the distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.domainNames">domainNames</a></code> | <code>string[]</code> | Alternative domain names for this distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.enabled">enabled</a></code> | <code>boolean</code> | Enable or disable the distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.enableIpv6">enableIpv6</a></code> | <code>boolean</code> | Whether CloudFront will respond to IPv6 DNS requests with an IPv6 address. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.enableLogging">enableLogging</a></code> | <code>boolean</code> | Enable access logging for the distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.errorResponses">errorResponses</a></code> | <code>aws-cdk-lib.aws_cloudfront.ErrorResponse[]</code> | How CloudFront should handle requests that are not successful (e.g., PageNotFound). |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.geoRestriction">geoRestriction</a></code> | <code>aws-cdk-lib.aws_cloudfront.GeoRestriction</code> | Controls the countries in which your content is distributed. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.httpVersion">httpVersion</a></code> | <code>aws-cdk-lib.aws_cloudfront.HttpVersion</code> | Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.logBucket">logBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | The Amazon S3 bucket to store the access logs in. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.logFilePrefix">logFilePrefix</a></code> | <code>string</code> | An optional string that you want CloudFront to prefix to the access log filenames for this distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.logIncludesCookies">logIncludesCookies</a></code> | <code>boolean</code> | Specifies whether you want CloudFront to include cookies in access logs. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.minimumProtocolVersion">minimumProtocolVersion</a></code> | <code>aws-cdk-lib.aws_cloudfront.SecurityPolicyProtocol</code> | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.priceClass">priceClass</a></code> | <code>aws-cdk-lib.aws_cloudfront.PriceClass</code> | The price class that corresponds with the maximum price that you want to pay for CloudFront service. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.sslSupportMethod">sslSupportMethod</a></code> | <code>aws-cdk-lib.aws_cloudfront.SSLMethod</code> | The SSL method CloudFront will use for your distribution. |
-| <code><a href="#@astrojs-aws/construct.DistributionOptions.property.webAclId">webAclId</a></code> | <code>string</code> | Unique identifier that specifies the AWS WAF web ACL to associate with this CloudFront distribution. |
+| <code><a href="#@astrojs-aws/construct.AssetsOptions.property.cors">cors</a></code> | <code>aws-cdk-lib.aws_s3.CorsRule[]</code> | The CORS configuration of this bucket. |
+| <code><a href="#@astrojs-aws/construct.AssetsOptions.property.errorhtml">errorhtml</a></code> | <code>string</code> | Error document for the website. |
+| <code><a href="#@astrojs-aws/construct.AssetsOptions.property.indexhtml">indexhtml</a></code> | <code>string</code> | Index document for the website. |
 
 ---
 
-##### `additionalBehaviors`<sup>Optional</sup> <a name="additionalBehaviors" id="@astrojs-aws/construct.DistributionOptions.property.additionalBehaviors"></a>
+##### `cors`<sup>Optional</sup> <a name="cors" id="@astrojs-aws/construct.AssetsOptions.property.cors"></a>
 
 ```typescript
-public readonly additionalBehaviors: {[ key: string ]: BehaviorOptions};
+public readonly cors: CorsRule[];
 ```
 
-- *Type:* {[ key: string ]: aws-cdk-lib.aws_cloudfront.BehaviorOptions}
-- *Default:* no additional behaviors are added.
+- *Type:* aws-cdk-lib.aws_s3.CorsRule[]
+- *Default:* No CORS configuration.
 
-Additional behaviors for the distribution, mapped by the pathPattern that specifies which requests to apply the behavior to.
+The CORS configuration of this bucket.
 
----
-
-##### `certificate`<sup>Optional</sup> <a name="certificate" id="@astrojs-aws/construct.DistributionOptions.property.certificate"></a>
-
-```typescript
-public readonly certificate: ICertificate;
-```
-
-- *Type:* aws-cdk-lib.aws_certificatemanager.ICertificate
-- *Default:* the CloudFront wildcard certificate (*.cloudfront.net) will be used.
-
-A certificate to associate with the distribution.
-
-The certificate must be located in N. Virginia (us-east-1).
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html)
 
 ---
 
-##### `comment`<sup>Optional</sup> <a name="comment" id="@astrojs-aws/construct.DistributionOptions.property.comment"></a>
+##### `errorhtml`<sup>Optional</sup> <a name="errorhtml" id="@astrojs-aws/construct.AssetsOptions.property.errorhtml"></a>
 
 ```typescript
-public readonly comment: string;
+public readonly errorhtml: string;
 ```
 
 - *Type:* string
-- *Default:* no comment
+- *Default:* error.html
 
-Any comments you want to include about the distribution.
+Error document for the website.
 
 ---
 
-##### `domainNames`<sup>Optional</sup> <a name="domainNames" id="@astrojs-aws/construct.DistributionOptions.property.domainNames"></a>
+##### `indexhtml`<sup>Optional</sup> <a name="indexhtml" id="@astrojs-aws/construct.AssetsOptions.property.indexhtml"></a>
 
 ```typescript
-public readonly domainNames: string[];
+public readonly indexhtml: string;
 ```
 
-- *Type:* string[]
-- *Default:* The distribution will only support the default generated name (e.g., d111111abcdef8.cloudfront.net)
+- *Type:* string
+- *Default:* index.html
 
-Alternative domain names for this distribution.
-
-If you want to use your own domain name, such as www.example.com, instead of the cloudfront.net domain name,
-you can add an alternate domain name to your distribution. If you attach a certificate to the distribution,
-you must add (at least one of) the domain names of the certificate to this list.
+Index document for the website.
 
 ---
 
-##### `enabled`<sup>Optional</sup> <a name="enabled" id="@astrojs-aws/construct.DistributionOptions.property.enabled"></a>
+### CfOptions <a name="CfOptions" id="@astrojs-aws/construct.CfOptions"></a>
+
+CloudFront options.
+
+#### Initializer <a name="Initializer" id="@astrojs-aws/construct.CfOptions.Initializer"></a>
 
 ```typescript
-public readonly enabled: boolean;
+import { CfOptions } from '@astrojs-aws/construct'
+
+const cfOptions: CfOptions = { ... }
 ```
 
-- *Type:* boolean
-- *Default:* true
+#### Properties <a name="Properties" id="Properties"></a>
 
-Enable or disable the distribution.
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.certificateArn">certificateArn</a></code> | <code>string</code> | Use a custom certificate for the distribution from AWS Certificate Manager (ACM). |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.domain">domain</a></code> | <code>string</code> | Domains of the website. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.cfFunctions">cfFunctions</a></code> | <code>aws-cdk-lib.aws_cloudfront.FunctionAssociation[]</code> | The CloudFront functions to invoke before serving the contents. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.edgeFunctions">edgeFunctions</a></code> | <code>aws-cdk-lib.aws_cloudfront.EdgeLambda[]</code> | The Lambda@Edge functions to invoke before serving the contents. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.errorResponses">errorResponses</a></code> | <code>aws-cdk-lib.aws_cloudfront.ErrorResponse[]</code> | How CloudFront should handle requests that are not successful (e.g., PageNotFound). |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.geoRestriction">geoRestriction</a></code> | <code>aws-cdk-lib.aws_cloudfront.GeoRestriction</code> | Controls the countries in which your content is distributed. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.logBucket">logBucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | The Amazon S3 bucket to store the access logs in. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.logFilePrefix">logFilePrefix</a></code> | <code>string</code> | An optional string that you want CloudFront to prefix to the access log filenames for this distribution. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.logIncludesCookies">logIncludesCookies</a></code> | <code>boolean</code> | Specifies whether you want CloudFront to include cookies in access logs. |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.priceClass">priceClass</a></code> | <code>aws-cdk-lib.aws_cloudfront.PriceClass</code> | The price class for the distribution (this impacts how many locations CloudFront uses for your distribution, and billing). |
+| <code><a href="#@astrojs-aws/construct.CfOptions.property.webACLId">webACLId</a></code> | <code>string</code> | Unique identifier that specifies the AWS WAF web ACL to associate with this CloudFront distribution. |
 
 ---
 
-##### `enableIpv6`<sup>Optional</sup> <a name="enableIpv6" id="@astrojs-aws/construct.DistributionOptions.property.enableIpv6"></a>
+##### `certificateArn`<sup>Required</sup> <a name="certificateArn" id="@astrojs-aws/construct.CfOptions.property.certificateArn"></a>
 
 ```typescript
-public readonly enableIpv6: boolean;
+public readonly certificateArn: string;
 ```
 
-- *Type:* boolean
-- *Default:* true
+- *Type:* string
 
-Whether CloudFront will respond to IPv6 DNS requests with an IPv6 address.
+Use a custom certificate for the distribution from AWS Certificate Manager (ACM).
 
-If you specify false, CloudFront responds to IPv6 DNS requests with the DNS response code NOERROR and with no IP addresses.
-This allows viewers to submit a second request, for an IPv4 address for your distribution.
+> [https://aws.amazon.com/premiumsupport/knowledge-center/custom-ssl-certificate-cloudfront/](https://aws.amazon.com/premiumsupport/knowledge-center/custom-ssl-certificate-cloudfront/)
 
 ---
 
-##### `enableLogging`<sup>Optional</sup> <a name="enableLogging" id="@astrojs-aws/construct.DistributionOptions.property.enableLogging"></a>
+##### `domain`<sup>Required</sup> <a name="domain" id="@astrojs-aws/construct.CfOptions.property.domain"></a>
 
 ```typescript
-public readonly enableLogging: boolean;
+public readonly domain: string;
 ```
 
-- *Type:* boolean
-- *Default:* false, unless `logBucket` is specified.
+- *Type:* string
 
-Enable access logging for the distribution.
+Domains of the website.
 
 ---
 
-##### `errorResponses`<sup>Optional</sup> <a name="errorResponses" id="@astrojs-aws/construct.DistributionOptions.property.errorResponses"></a>
+##### `cfFunctions`<sup>Optional</sup> <a name="cfFunctions" id="@astrojs-aws/construct.CfOptions.property.cfFunctions"></a>
+
+```typescript
+public readonly cfFunctions: FunctionAssociation[];
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.FunctionAssociation[]
+- *Default:* no new functions will be invoked
+
+The CloudFront functions to invoke before serving the contents.
+
+---
+
+##### `edgeFunctions`<sup>Optional</sup> <a name="edgeFunctions" id="@astrojs-aws/construct.CfOptions.property.edgeFunctions"></a>
+
+```typescript
+public readonly edgeFunctions: EdgeLambda[];
+```
+
+- *Type:* aws-cdk-lib.aws_cloudfront.EdgeLambda[]
+- *Default:* no Lambda functions will be invoked
+
+The Lambda@Edge functions to invoke before serving the contents.
+
+> [https://aws.amazon.com/lambda/edge](https://aws.amazon.com/lambda/edge)
+
+---
+
+##### `errorResponses`<sup>Optional</sup> <a name="errorResponses" id="@astrojs-aws/construct.CfOptions.property.errorResponses"></a>
 
 ```typescript
 public readonly errorResponses: ErrorResponse[];
@@ -1241,48 +1567,33 @@ How CloudFront should handle requests that are not successful (e.g., PageNotFoun
 
 ---
 
-##### `geoRestriction`<sup>Optional</sup> <a name="geoRestriction" id="@astrojs-aws/construct.DistributionOptions.property.geoRestriction"></a>
+##### `geoRestriction`<sup>Optional</sup> <a name="geoRestriction" id="@astrojs-aws/construct.CfOptions.property.geoRestriction"></a>
 
 ```typescript
 public readonly geoRestriction: GeoRestriction;
 ```
 
 - *Type:* aws-cdk-lib.aws_cloudfront.GeoRestriction
-- *Default:* No geographic restrictions
+- *Default:* No geo restriction
 
 Controls the countries in which your content is distributed.
 
 ---
 
-##### `httpVersion`<sup>Optional</sup> <a name="httpVersion" id="@astrojs-aws/construct.DistributionOptions.property.httpVersion"></a>
-
-```typescript
-public readonly httpVersion: HttpVersion;
-```
-
-- *Type:* aws-cdk-lib.aws_cloudfront.HttpVersion
-- *Default:* HttpVersion.HTTP2
-
-Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront.
-
-For viewers and CloudFront to use HTTP/2, viewers must support TLS 1.2 or later, and must support server name identification (SNI).
-
----
-
-##### `logBucket`<sup>Optional</sup> <a name="logBucket" id="@astrojs-aws/construct.DistributionOptions.property.logBucket"></a>
+##### `logBucket`<sup>Optional</sup> <a name="logBucket" id="@astrojs-aws/construct.CfOptions.property.logBucket"></a>
 
 ```typescript
 public readonly logBucket: IBucket;
 ```
 
 - *Type:* aws-cdk-lib.aws_s3.IBucket
-- *Default:* A bucket is created if `enableLogging` is true
+- *Default:* if no specified, logs will be disabled.
 
 The Amazon S3 bucket to store the access logs in.
 
 ---
 
-##### `logFilePrefix`<sup>Optional</sup> <a name="logFilePrefix" id="@astrojs-aws/construct.DistributionOptions.property.logFilePrefix"></a>
+##### `logFilePrefix`<sup>Optional</sup> <a name="logFilePrefix" id="@astrojs-aws/construct.CfOptions.property.logFilePrefix"></a>
 
 ```typescript
 public readonly logFilePrefix: string;
@@ -1295,7 +1606,7 @@ An optional string that you want CloudFront to prefix to the access log filename
 
 ---
 
-##### `logIncludesCookies`<sup>Optional</sup> <a name="logIncludesCookies" id="@astrojs-aws/construct.DistributionOptions.property.logIncludesCookies"></a>
+##### `logIncludesCookies`<sup>Optional</sup> <a name="logIncludesCookies" id="@astrojs-aws/construct.CfOptions.property.logIncludesCookies"></a>
 
 ```typescript
 public readonly logIncludesCookies: boolean;
@@ -1308,68 +1619,23 @@ Specifies whether you want CloudFront to include cookies in access logs.
 
 ---
 
-##### `minimumProtocolVersion`<sup>Optional</sup> <a name="minimumProtocolVersion" id="@astrojs-aws/construct.DistributionOptions.property.minimumProtocolVersion"></a>
-
-```typescript
-public readonly minimumProtocolVersion: SecurityPolicyProtocol;
-```
-
-- *Type:* aws-cdk-lib.aws_cloudfront.SecurityPolicyProtocol
-- *Default:* SecurityPolicyProtocol.TLS_V1_2_2021 if the '
-
-The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.
-
-CloudFront serves your objects only to browsers or devices that support at
-least the SSL version that you specify.
-
----
-
-##### `priceClass`<sup>Optional</sup> <a name="priceClass" id="@astrojs-aws/construct.DistributionOptions.property.priceClass"></a>
+##### `priceClass`<sup>Optional</sup> <a name="priceClass" id="@astrojs-aws/construct.CfOptions.property.priceClass"></a>
 
 ```typescript
 public readonly priceClass: PriceClass;
 ```
 
 - *Type:* aws-cdk-lib.aws_cloudfront.PriceClass
-- *Default:* PriceClass.PRICE_CLASS_ALL
+- *Default:* PriceClass.PRICE_CLASS_200
 
-The price class that corresponds with the maximum price that you want to pay for CloudFront service.
-
-If you specify PriceClass_All, CloudFront responds to requests for your objects from all CloudFront edge locations.
-If you specify a price class other than PriceClass_All, CloudFront serves your objects from the CloudFront edge location
-that has the lowest latency among the edge locations in your price class.
+The price class for the distribution (this impacts how many locations CloudFront uses for your distribution, and billing).
 
 ---
 
-##### `sslSupportMethod`<sup>Optional</sup> <a name="sslSupportMethod" id="@astrojs-aws/construct.DistributionOptions.property.sslSupportMethod"></a>
+##### `webACLId`<sup>Optional</sup> <a name="webACLId" id="@astrojs-aws/construct.CfOptions.property.webACLId"></a>
 
 ```typescript
-public readonly sslSupportMethod: SSLMethod;
-```
-
-- *Type:* aws-cdk-lib.aws_cloudfront.SSLMethod
-- *Default:* SSLMethod.SNI
-
-The SSL method CloudFront will use for your distribution.
-
-Server Name Indication (SNI) - is an extension to the TLS computer networking protocol by which a client indicates
-which hostname it is attempting to connect to at the start of the handshaking process. This allows a server to present
-multiple certificates on the same IP address and TCP port number and hence allows multiple secure (HTTPS) websites
-(or any other service over TLS) to be served by the same IP address without requiring all those sites to use the same certificate.
-
-CloudFront can use SNI to host multiple distributions on the same IP - which a large majority of clients will support.
-
-If your clients cannot support SNI however - CloudFront can use dedicated IPs for your distribution - but there is a prorated monthly charge for
-using this feature. By default, we use SNI - but you can optionally enable dedicated IPs (VIP).
-
-See the CloudFront SSL for more details about pricing : https://aws.amazon.com/cloudfront/custom-ssl-domains/
-
----
-
-##### `webAclId`<sup>Optional</sup> <a name="webAclId" id="@astrojs-aws/construct.DistributionOptions.property.webAclId"></a>
-
-```typescript
-public readonly webAclId: string;
+public readonly webACLId: string;
 ```
 
 - *Type:* string
@@ -1379,6 +1645,7 @@ Unique identifier that specifies the AWS WAF web ACL to associate with this Clou
 
 To specify a web ACL created using the latest version of AWS WAF, use the ACL ARN, for example
 `arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/473e64fd-f30b-4765-81a0-62ad96dd167a`.
+
 To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `473e64fd-f30b-4765-81a0-62ad96dd167a`.
 
 > [https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html#API_CreateDistribution_RequestParameters.](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateDistribution.html#API_CreateDistribution_RequestParameters.)
@@ -1403,9 +1670,8 @@ const edgeAstroSiteProps: EdgeAstroSiteProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.serverEntry">serverEntry</a></code> | <code>string</code> | The server entry file, e.g. path.join(__dirname, "../server/entry.mjs"). |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.staticDir">staticDir</a></code> | <code>string</code> | The directory of static files, e.g. path.join(__dirname, "../dist/client"). |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.bucketOptions">bucketOptions</a></code> | <code>aws-cdk-lib.aws_s3.BucketProps</code> | Bucket options which is based on BucketProps. |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.distributionDefaultBehaviorOptions">distributionDefaultBehaviorOptions</a></code> | <code>aws-cdk-lib.aws_cloudfront.AddBehaviorOptions</code> | CloudFront distribution default behavior options. |
-| <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.distributionOptions">distributionOptions</a></code> | <code><a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a></code> | CloudFront distribution options. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.cfOptions">cfOptions</a></code> | <code><a href="#@astrojs-aws/construct.CfOptions">CfOptions</a></code> | The options for the CloudFront distribution. |
+| <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.onlyLambda">onlyLambda</a></code> | <code>boolean</code> | Only deploy the lambda function for testing, no S3 Bucket and CloudFront. |
 | <code><a href="#@astrojs-aws/construct.EdgeAstroSiteProps.property.serverOptions">serverOptions</a></code> | <code><a href="#@astrojs-aws/construct.ServerOptions">ServerOptions</a></code> | The server options. |
 
 ---
@@ -1434,42 +1700,33 @@ The directory of static files, e.g. path.join(__dirname, "../dist/client").
 
 ---
 
-##### `bucketOptions`<sup>Optional</sup> <a name="bucketOptions" id="@astrojs-aws/construct.EdgeAstroSiteProps.property.bucketOptions"></a>
+##### `cfOptions`<sup>Optional</sup> <a name="cfOptions" id="@astrojs-aws/construct.EdgeAstroSiteProps.property.cfOptions"></a>
 
 ```typescript
-public readonly bucketOptions: BucketProps;
+public readonly cfOptions: CfOptions;
 ```
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
+- *Default:* undefined
 
-Bucket options which is based on BucketProps.
+The options for the CloudFront distribution.
 
-removalPolicy: @default RemovalPolicy.DESTROY
-autoDeleteObjects @default true,
+CloudFront is required, unless `onlyLambda` is true.
 
 ---
 
-##### `distributionDefaultBehaviorOptions`<sup>Optional</sup> <a name="distributionDefaultBehaviorOptions" id="@astrojs-aws/construct.EdgeAstroSiteProps.property.distributionDefaultBehaviorOptions"></a>
+##### `onlyLambda`<sup>Optional</sup> <a name="onlyLambda" id="@astrojs-aws/construct.EdgeAstroSiteProps.property.onlyLambda"></a>
 
 ```typescript
-public readonly distributionDefaultBehaviorOptions: AddBehaviorOptions;
+public readonly onlyLambda: boolean;
 ```
 
-- *Type:* aws-cdk-lib.aws_cloudfront.AddBehaviorOptions
+- *Type:* boolean
+- *Default:* false
 
-CloudFront distribution default behavior options.
+Only deploy the lambda function for testing, no S3 Bucket and CloudFront.
 
----
-
-##### `distributionOptions`<sup>Optional</sup> <a name="distributionOptions" id="@astrojs-aws/construct.EdgeAstroSiteProps.property.distributionOptions"></a>
-
-```typescript
-public readonly distributionOptions: DistributionOptions;
-```
-
-- *Type:* <a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a>
-
-CloudFront distribution options.
+Edge function only works in CloudFront, but it really deploy too slow.
 
 ---
 
@@ -1482,6 +1739,69 @@ public readonly serverOptions: ServerOptions;
 - *Type:* <a href="#@astrojs-aws/construct.ServerOptions">ServerOptions</a>
 
 The server options.
+
+---
+
+### GwOptions <a name="GwOptions" id="@astrojs-aws/construct.GwOptions"></a>
+
+The options for the CloudFront distribution.
+
+#### Initializer <a name="Initializer" id="@astrojs-aws/construct.GwOptions.Initializer"></a>
+
+```typescript
+import { GwOptions } from '@astrojs-aws/construct'
+
+const gwOptions: GwOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@astrojs-aws/construct.GwOptions.property.authorizationScopes">authorizationScopes</a></code> | <code>string[]</code> | OIDC scopes attached to the gateway. |
+| <code><a href="#@astrojs-aws/construct.GwOptions.property.authorizer">authorizer</a></code> | <code>@aws-cdk/aws-apigatewayv2-alpha.IHttpRouteAuthorizer</code> | Authorizer to applied to the gateway. |
+| <code><a href="#@astrojs-aws/construct.GwOptions.property.cors">cors</a></code> | <code>@aws-cdk/aws-apigatewayv2-alpha.CorsPreflightOptions</code> | Specifies a CORS configuration for an API. |
+
+---
+
+##### `authorizationScopes`<sup>Optional</sup> <a name="authorizationScopes" id="@astrojs-aws/construct.GwOptions.property.authorizationScopes"></a>
+
+```typescript
+public readonly authorizationScopes: string[];
+```
+
+- *Type:* string[]
+- *Default:* no default authorization scopes
+
+OIDC scopes attached to the gateway.
+
+---
+
+##### `authorizer`<sup>Optional</sup> <a name="authorizer" id="@astrojs-aws/construct.GwOptions.property.authorizer"></a>
+
+```typescript
+public readonly authorizer: IHttpRouteAuthorizer;
+```
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.IHttpRouteAuthorizer
+- *Default:* No authorizer
+
+Authorizer to applied to the gateway.
+
+---
+
+##### `cors`<sup>Optional</sup> <a name="cors" id="@astrojs-aws/construct.GwOptions.property.cors"></a>
+
+```typescript
+public readonly cors: CorsPreflightOptions;
+```
+
+- *Type:* @aws-cdk/aws-apigatewayv2-alpha.CorsPreflightOptions
+- *Default:* CORS disabled.
+
+Specifies a CORS configuration for an API.
+
+> [https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html)
 
 ---
 
@@ -1503,10 +1823,8 @@ const lambdaAstroSiteProps: LambdaAstroSiteProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.serverEntry">serverEntry</a></code> | <code>string</code> | The server entry file, e.g. path.join(__dirname, "../server/entry.mjs"). |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.staticDir">staticDir</a></code> | <code>string</code> | The directory of static files, e.g. path.join(__dirname, "../dist/client"). |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.bucketOptions">bucketOptions</a></code> | <code>aws-cdk-lib.aws_s3.BucketProps</code> | Bucket options which is based on BucketProps. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.distributionDefaultBehaviorOptions">distributionDefaultBehaviorOptions</a></code> | <code>aws-cdk-lib.aws_cloudfront.AddBehaviorOptions</code> | CloudFront distribution default behavior options. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.distributionOptions">distributionOptions</a></code> | <code><a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a></code> | CloudFront distribution options. |
-| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.httpApiOptions">httpApiOptions</a></code> | <code>@aws-cdk/aws-apigatewayv2-alpha.HttpApiProps</code> | The HTTP api options. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.cfOptions">cfOptions</a></code> | <code><a href="#@astrojs-aws/construct.CfOptions">CfOptions</a></code> | The options for the CloudFront distribution. |
+| <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.gwOptions">gwOptions</a></code> | <code><a href="#@astrojs-aws/construct.GwOptions">GwOptions</a></code> | HttpApi Gateway options. |
 | <code><a href="#@astrojs-aws/construct.LambdaAstroSiteProps.property.serverOptions">serverOptions</a></code> | <code><a href="#@astrojs-aws/construct.ServerOptions">ServerOptions</a></code> | The server options. |
 
 ---
@@ -1535,54 +1853,30 @@ The directory of static files, e.g. path.join(__dirname, "../dist/client").
 
 ---
 
-##### `bucketOptions`<sup>Optional</sup> <a name="bucketOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.bucketOptions"></a>
+##### `cfOptions`<sup>Optional</sup> <a name="cfOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.cfOptions"></a>
 
 ```typescript
-public readonly bucketOptions: BucketProps;
+public readonly cfOptions: CfOptions;
 ```
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
+- *Default:* No CloudFront distribution, if not equal to undefined, CloudFront auto-enabled.
 
-Bucket options which is based on BucketProps.
+The options for the CloudFront distribution.
 
-removalPolicy: @default RemovalPolicy.DESTROY
-autoDeleteObjects @default true,
+Recommended to use CloudFront for production.
 
 ---
 
-##### `distributionDefaultBehaviorOptions`<sup>Optional</sup> <a name="distributionDefaultBehaviorOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.distributionDefaultBehaviorOptions"></a>
+##### `gwOptions`<sup>Optional</sup> <a name="gwOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.gwOptions"></a>
 
 ```typescript
-public readonly distributionDefaultBehaviorOptions: AddBehaviorOptions;
+public readonly gwOptions: GwOptions;
 ```
 
-- *Type:* aws-cdk-lib.aws_cloudfront.AddBehaviorOptions
+- *Type:* <a href="#@astrojs-aws/construct.GwOptions">GwOptions</a>
 
-CloudFront distribution default behavior options.
-
----
-
-##### `distributionOptions`<sup>Optional</sup> <a name="distributionOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.distributionOptions"></a>
-
-```typescript
-public readonly distributionOptions: DistributionOptions;
-```
-
-- *Type:* <a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a>
-
-CloudFront distribution options.
-
----
-
-##### `httpApiOptions`<sup>Optional</sup> <a name="httpApiOptions" id="@astrojs-aws/construct.LambdaAstroSiteProps.property.httpApiOptions"></a>
-
-```typescript
-public readonly httpApiOptions: HttpApiProps;
-```
-
-- *Type:* @aws-cdk/aws-apigatewayv2-alpha.HttpApiProps
-
-The HTTP api options.
+HttpApi Gateway options.
 
 ---
 
@@ -2255,17 +2549,59 @@ const staticAstroSiteProps: StaticAstroSiteProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.staticDir">staticDir</a></code> | <code>string</code> | The directory of built files, e.g. path.join(__dirname, "../dist"). |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.bucketOptions">bucketOptions</a></code> | <code>aws-cdk-lib.aws_s3.BucketProps</code> | Bucket options which is based on BucketProps. |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.distributionDefaultBehaviorOptions">distributionDefaultBehaviorOptions</a></code> | <code>aws-cdk-lib.aws_cloudfront.AddBehaviorOptions</code> | CloudFront distribution default behavior options. |
-| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.distributionOptions">distributionOptions</a></code> | <code><a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a></code> | CloudFront distribution options. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.cors">cors</a></code> | <code>aws-cdk-lib.aws_s3.CorsRule[]</code> | The CORS configuration of this bucket. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.errorhtml">errorhtml</a></code> | <code>string</code> | Error document for the website. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.indexhtml">indexhtml</a></code> | <code>string</code> | Index document for the website. |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.siteDir">siteDir</a></code> | <code>string</code> | The directory of built files, e.g. path.join(__dirname, "../dist"). |
+| <code><a href="#@astrojs-aws/construct.StaticAstroSiteProps.property.cfOptions">cfOptions</a></code> | <code><a href="#@astrojs-aws/construct.CfOptions">CfOptions</a></code> | The options for the CloudFront distribution. |
 
 ---
 
-##### `staticDir`<sup>Required</sup> <a name="staticDir" id="@astrojs-aws/construct.StaticAstroSiteProps.property.staticDir"></a>
+##### `cors`<sup>Optional</sup> <a name="cors" id="@astrojs-aws/construct.StaticAstroSiteProps.property.cors"></a>
 
 ```typescript
-public readonly staticDir: string;
+public readonly cors: CorsRule[];
+```
+
+- *Type:* aws-cdk-lib.aws_s3.CorsRule[]
+- *Default:* No CORS configuration.
+
+The CORS configuration of this bucket.
+
+> [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html)
+
+---
+
+##### `errorhtml`<sup>Optional</sup> <a name="errorhtml" id="@astrojs-aws/construct.StaticAstroSiteProps.property.errorhtml"></a>
+
+```typescript
+public readonly errorhtml: string;
+```
+
+- *Type:* string
+- *Default:* error.html
+
+Error document for the website.
+
+---
+
+##### `indexhtml`<sup>Optional</sup> <a name="indexhtml" id="@astrojs-aws/construct.StaticAstroSiteProps.property.indexhtml"></a>
+
+```typescript
+public readonly indexhtml: string;
+```
+
+- *Type:* string
+- *Default:* index.html
+
+Index document for the website.
+
+---
+
+##### `siteDir`<sup>Required</sup> <a name="siteDir" id="@astrojs-aws/construct.StaticAstroSiteProps.property.siteDir"></a>
+
+```typescript
+public readonly siteDir: string;
 ```
 
 - *Type:* string
@@ -2274,42 +2610,16 @@ The directory of built files, e.g. path.join(__dirname, "../dist").
 
 ---
 
-##### `bucketOptions`<sup>Optional</sup> <a name="bucketOptions" id="@astrojs-aws/construct.StaticAstroSiteProps.property.bucketOptions"></a>
+##### `cfOptions`<sup>Optional</sup> <a name="cfOptions" id="@astrojs-aws/construct.StaticAstroSiteProps.property.cfOptions"></a>
 
 ```typescript
-public readonly bucketOptions: BucketProps;
+public readonly cfOptions: CfOptions;
 ```
 
-- *Type:* aws-cdk-lib.aws_s3.BucketProps
+- *Type:* <a href="#@astrojs-aws/construct.CfOptions">CfOptions</a>
+- *Default:* No CloudFront distribution, if not equal to undefined, CloudFront auto-enabled.
 
-Bucket options which is based on BucketProps.
-
-removalPolicy: @default RemovalPolicy.DESTROY
-autoDeleteObjects @default true,
-
----
-
-##### `distributionDefaultBehaviorOptions`<sup>Optional</sup> <a name="distributionDefaultBehaviorOptions" id="@astrojs-aws/construct.StaticAstroSiteProps.property.distributionDefaultBehaviorOptions"></a>
-
-```typescript
-public readonly distributionDefaultBehaviorOptions: AddBehaviorOptions;
-```
-
-- *Type:* aws-cdk-lib.aws_cloudfront.AddBehaviorOptions
-
-CloudFront distribution default behavior options.
-
----
-
-##### `distributionOptions`<sup>Optional</sup> <a name="distributionOptions" id="@astrojs-aws/construct.StaticAstroSiteProps.property.distributionOptions"></a>
-
-```typescript
-public readonly distributionOptions: DistributionOptions;
-```
-
-- *Type:* <a href="#@astrojs-aws/construct.DistributionOptions">DistributionOptions</a>
-
-CloudFront distribution options.
+The options for the CloudFront distribution.
 
 ---
 
