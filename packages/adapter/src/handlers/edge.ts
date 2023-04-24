@@ -67,8 +67,9 @@ export function transformRequestHeaders(headers: CloudFrontHeaders): Headers {
 export function transformRequest(cfRequest: CloudFrontRequest): Request {
   const { uri, method, headers, querystring, body } = cfRequest
   const requestHeaders = transformRequestHeaders(headers)
-  const scheme = headers["x-forwarded-protocol"][0].value || "https"
-  const host = (headers["x-forwarded-host"] || headers["host"])[0].value
+  const scheme = requestHeaders.get("x-forwarded-protocol") ?? "https"
+  const host =
+    requestHeaders.get("x-forwarded-host") || requestHeaders.get("host")
   const qs = querystring.length > 0 ? `?${querystring}` : ""
   const url = new URL(`${uri}${qs}`, `${scheme}://${host}`)
 

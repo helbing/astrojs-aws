@@ -91,6 +91,32 @@ describe("Test transformRequest", () => {
     expect(transformRequest(cfRequest)).toMatchObject(expectRequest)
   })
 
+  test("Expect transform success without header x-forwarded-protocol", () => {
+    const cfRequest: CloudFrontRequest = {
+      uri: "/",
+      method: "GET",
+      headers: {
+        "x-forwarded-host": [
+          {
+            key: "x-forwarded-host",
+            value: "example.com",
+          },
+        ],
+      },
+      querystring: "",
+      body: undefined,
+      clientIp: "",
+    }
+    const expectRequest = new Request("https://example.com", {
+      method: "GET",
+      headers: {
+        "x-forwarded-host": "example.com",
+      },
+    })
+
+    expect(transformRequest(cfRequest)).toMatchObject(expectRequest)
+  })
+
   test("Expect transform success with querystring", () => {
     const cfRequest: CloudFrontRequest = {
       uri: "/",
