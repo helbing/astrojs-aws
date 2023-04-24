@@ -7,7 +7,6 @@
   "scripts": {
     "build": "pnpm run build:jsii && pnpm run package && pnpm run docgen",
     "test": "vitest run --no-threads",
-    "test:integ": "integ-runner --directory tests --parallel-regions us-east-1 --update-on-failed -v",
     "build:jsii": "jsii -vvv",
     "package": "jsii-pacmak -vvv",
     "docgen": "jsii-docgen",
@@ -16,7 +15,8 @@
   },
   "keywords": [
     "aws",
-    "aws-cdk",
+    "cdk",
+    "awscdk",
     "constructs",
     "jsii",
     "astro"
@@ -29,7 +29,8 @@
     "directory": "packages/construct"
   },
   "files": [
-    "lib"
+    "lib",
+    "API.md"
   ],
   "author": "helbing",
   "license": "MIT",
@@ -75,26 +76,24 @@
     }
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.75.1-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.75.1-alpha.0",
-    "@aws-cdk/integ-runner": "^2.75.1-alpha.0",
-    "@aws-cdk/integ-tests-alpha": "^2.75.1-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-alpha": "2.76.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.76.0-alpha.0",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "18.11.9",
-    "aws-cdk-lib": "^2.75.1",
+    "aws-cdk-lib": "2.76.0",
     "aws-lambda": "^1.0.7",
-    "constructs": "^10.2.1",
+    "constructs": "10.2.1",
     "jsii": "^1.80.0",
     "jsii-docgen": "^7.2.1",
     "jsii-pacmak": "^1.80.0",
-    "publib": "^0.2.652",
+    "publib": "^0.2.655",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.75.1-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.75.1-alpha.0",
-    "aws-cdk-lib": "^2.75.1",
+    "@aws-cdk/aws-apigatewayv2-alpha": "^2.76.0-alpha.0",
+    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.76.0-alpha.0",
+    "aws-cdk-lib": "^2.76.0",
     "constructs": "^10.2.1"
   }
 }
