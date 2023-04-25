@@ -1,5 +1,7 @@
 # @astrojs-aws/adapter
 
+[![npm version](https://badge.fury.io/js/@astrojs-aws%2Fadapter.svg)](https://badge.fury.io/js/@astrojs-aws%2Fadapter)
+
 This Adapter allows to develop your SSR site and deploy to [AWS](https://aws.amazon.com/).
 
 ## Installation
