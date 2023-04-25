@@ -2,7 +2,7 @@ name: Auto-lock inactive threads
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -15,13 +15,13 @@ jobs:
     - uses: dessant/lock-threads@v4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-inactive-days: '7'
-        issue-lock-reason: 'resolved'
+        issue-inactive-days: "7"
+        issue-lock-reason: "resolved"
         issue-comment: >
           Because there has been no activity on this issue for 7 days since it was closed, it has
           been automatically locked. Please open a new issue if it requires a follow up.
-        pr-inactive-days: '14'
-        pr-lock-reason: 'resolved'
+        pr-inactive-days: "14"
+        pr-lock-reason: "resolved"
         pr-comment: >
           Because there has been no activity on this PR for 14 days since it was merged, it has
           been automatically locked. Please open a new issue if it requires a follow up.
