@@ -11,6 +11,7 @@
   "scripts": {
     "build": "pnpm run build:jsii && pnpm run rosetta && pnpm run package && pnpm run docgen",
     "test": "vitest run --no-threads",
+    "coverage": "vitest run --no-threads --coverage",
     "build:jsii": "jsii -vvv",
     "rosetta": "jsii-rosetta extract",
     "package": "jsii-pacmak -vvv",
@@ -77,6 +78,7 @@
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.76.0-alpha.0",
     "@types/aws-lambda": "^8.10.114",
     "@types/node": "18.11.9",
+    "@vitest/coverage-c8": "^0.30.1",
     "aws-cdk-lib": "2.76.0",
     "aws-lambda": "^1.0.7",
     "constructs": "10.2.1",
@@ -86,7 +88,7 @@
     "jsii-rosetta": "^5.0.7",
     "publib": "^0.2.662",
     "rimraf": "^4.4.1",
-    "vitest": "^0.29.8"
+    "vitest": "^0.30.1"
   },
   "peerDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.76.0-alpha.0",

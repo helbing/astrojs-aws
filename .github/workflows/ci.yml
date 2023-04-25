@@ -42,3 +42,22 @@ jobs:
 
     - name: Run unit-tests
       run: pnpm run test
+
+    - name: Generate coverage report
+      run: pnpm run coverage
+
+    - name: Upload adapter coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./packages/adapter/coverage/coverage-final.json
+        flags: adapter
+        fail_ci_if_error: true
+
+    - name: Upload construct coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./packages/construct/coverage/coverage-final.json
+        flags: construct
+        fail_ci_if_error: true
