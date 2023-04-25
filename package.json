@@ -13,8 +13,7 @@
     "cdk": "turbo run cdk --  ",
     "astro": "turbo run astro --",
     "publish-version": "bumpp -r",
-    "publish-packages": "turbo run publish-packages",
-    "docs:dev": "turbo run dev --filter docs"
+    "publish-packages": "turbo run publish-packages"
   },
   "keywords": [
     "aws",

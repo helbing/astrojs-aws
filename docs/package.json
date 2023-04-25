@@ -1,9 +1,0 @@
-{
-  "name": "@astrojs-aws/docs",
-  "private": true,
-  "scripts": {
-    "hugo": "hugo"
-  },
-  "author": "helbing",
-  "license": "MIT"
-}
