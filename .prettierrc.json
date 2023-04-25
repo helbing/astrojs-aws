@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/prettierrc.json",
   "editorconfig": true,
   "semi": false,
   "singleQuote": false,
@@ -7,5 +8,14 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "bracketSameLine": false,
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {
+      "files": ["**/*.astro"],
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }

@@ -9,23 +9,20 @@
         "dist/**"
       ]
     },
-    "test": {},
-    "test:integ": {
-      "cache": false,
-      "dependsOn": [
-        "build"
-      ]
+    "dev": {
+      "cache": false
     },
+    "test": {},
     "clean": {
       "cache": false
     },
     "cdk": {
       "cache": false
     },
-    "publish-version": {},
-    "publish-packages": {},
-    "hugo": {
+    "astro": {
       "cache": false
-    }
+    },
+    "publish-version": {},
+    "publish-packages": {}
   }
 }

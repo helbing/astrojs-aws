@@ -12,9 +12,11 @@
     "plugin:vitest/recommended",
     "plugin:astro/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript",
-    "@unocss"
+    "plugin:import/typescript"
   ],
+  "globals": {
+    "JSX": true
+  },
   "rules": {
     "sort-imports": ["error", {
         "ignoreDeclarationSort": true
@@ -59,10 +61,13 @@
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "extraFileExtensions": [".astro"]
-      },
-      "rules": {
-        "prettier/prettier": "off"
       }
+    },
+    {
+      // Define the configuration for `<script>` tag.
+      // Script in `<script>` is assigned a virtual file name with the `.js` extension.
+      "files": ["**/*.astro/*.js", "*.astro/*.js"],
+      "parser": "@typescript-eslint/parser"
     }
   ]
 }

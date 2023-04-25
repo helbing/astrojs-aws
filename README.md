@@ -2,7 +2,12 @@
 
 ## Introduction
 
-This project is to develop and deploy [Astro](https://astro.build/) with AWS. It provides [Astro Adapter](./packages/adapter/) for developing Astro SSR(Lambda or Edge) website. In the meanwhile, it provides [AWS CDK Construct](./packages/construct/) to deploy website(Static or SSR) to AWS. You can see further [examples](./examples/).
+The **astrojs-aws** provides a set of libraries to helps develop and deploy the [Astro](https://astro.build/) in [AWS](https://aws.amazon.com/) Platform. It consists of:
+
+- [Astro SSR Adapter](https://github.com/helbing/astrojs-aws/tree/main/packages/adapter)
+- [AWS CDK Construct](https://github.com/helbing/astrojs-aws/tree/main/packages/construct)
+
+You can know further with [examples](./examples/).
 
 ## Contributing
 
