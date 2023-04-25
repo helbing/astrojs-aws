@@ -18,22 +18,16 @@
 
 ## Introduction
 
-[Astro](https://astro.build/) is the all-in-one web framework designed for speed. This library is supported modes, `static`, `lambda` and `edge`, to deploy astro website to AWS. You can further know it in [https://helbing.github.io/astrojs-aws/](https://helbing.github.io/astrojs-aws/).
+[Astro](https://astro.build/) is the all-in-one web framework designed for speed. This library is supported modes, `static`, `lambda` and `edge`, to deploy astro website to AWS.
+
+![Architectures](https://github.com/helbing/astrojs-aws/tree/main/docs/images/architectures.png)
 
 ## Usage
 
-```ts
-new astrojsaws.StaticAstroSite(this, "StaticAstroSite", {
+```typescript
+import { StaticAstroSite } from "@astrojs-aws/construct"
+
+new StaticAstroSite(this, "AstroSite", {
   siteDir: "/path/to/dist",
-})
-
-new astrojsaws.LambdaAstroSite(this, "LambdaAstroSite", {
-  serverEntry: "/path/to/dist/server/entry.mjs",
-  staticDir: "/path/to/dist/client",
-})
-
-new astrojsaws.EdgeAstroSite(this, "EdgeAstroSite", {
-  serverEntry: "/path/to/dist/server/entry.mjs",
-  staticDir: "/path/to/dist/client",
 })
 ```

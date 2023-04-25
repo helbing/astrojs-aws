@@ -9,9 +9,10 @@
     "API.md"
   ],
   "scripts": {
-    "build": "pnpm run build:jsii && pnpm run package && pnpm run docgen",
+    "build": "pnpm run build:jsii && pnpm run rosetta && pnpm run package && pnpm run docgen",
     "test": "vitest run --no-threads",
     "build:jsii": "jsii -vvv",
+    "rosetta": "jsii-rosetta extract",
     "package": "jsii-pacmak -vvv",
     "docgen": "jsii-docgen",
     "clean": "rimraf dist lib/*.js lib/*.d.ts",
@@ -26,7 +27,7 @@
     "astro"
   ],
   "bugs": "https://github.com/withastro/astro/issues",
-  "homepage": "https://helbing.github.io/astrojs-aws/",
+  "homepage": "https://github.com/helbing/astrojs-aws/tree/main/packages/construct",
   "repository": {
     "type": "git",
     "url": "https://github.com/helbing/astrojs-aws.git",
@@ -46,13 +47,6 @@
     ],
     "outdir": "dist",
     "projectReferences": true,
-    "metadata": {
-      "jsii": {
-        "rosetta": {
-          "strict": true
-        }
-      }
-    },
     "targets": {
       "python": {
         "distName": "astrojs-aws.construct",
@@ -75,6 +69,9 @@
       }
     }
   },
+  "jsiiRosetta": {
+    "strict": true
+  },
   "devDependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "2.76.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.76.0-alpha.0",
@@ -86,6 +83,7 @@
     "jsii": "^1.80.0",
     "jsii-docgen": "^7.2.1",
     "jsii-pacmak": "^1.80.0",
+    "jsii-rosetta": "^5.0.7",
     "publib": "^0.2.655",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
