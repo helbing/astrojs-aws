@@ -1,6 +1,33 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base", ":dependencyDashboard"
+  ],
+  "assignees": ["helbing"],
+  "addLabels": [
+    "renovate:bot"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "schedule": [
+        "every thursday"
+      ]
+    },
+    {
+      "matchUpdateTypes": ["patch", "minor"],
+      "automergeSchedule": [
+        "after 10am and before 6pm every day"
+      ]
+    },
+    {
+      "matchPaths": ["packages/construct/"],
+      "matchDepNames": ["@types/node"],
+      "allowedVersions": "18.11.9"
+    },
+    {
+      "matchPaths": ["packages/construct/"],
+      "matchPackagePatterns": ["^@aws-cdk/aws-", "aws-cdk-lib"]
+    }
   ]
 }

@@ -14,3 +14,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         wip: true
+        scopes: |
+          deps
+          adapter
+          construct
+          examples
+        ignoreLabels: |
+          renovate:bot
