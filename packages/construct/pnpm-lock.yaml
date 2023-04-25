@@ -26,8 +26,8 @@ devDependencies:
     specifier: 10.2.6
     version: 10.2.6
   jsii:
-    specifier: ^1.80.0
-    version: 1.80.0
+    specifier: ^5.0.0
+    version: 5.0.7
   jsii-docgen:
     specifier: ^7.2.1
     version: 7.2.1

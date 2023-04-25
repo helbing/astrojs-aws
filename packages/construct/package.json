@@ -82,7 +82,7 @@
     "aws-cdk-lib": "2.76.0",
     "aws-lambda": "^1.0.7",
     "constructs": "10.2.6",
-    "jsii": "^1.80.0",
+    "jsii": "^5.0.0",
     "jsii-docgen": "^7.2.1",
     "jsii-pacmak": "^1.80.0",
     "jsii-rosetta": "^5.0.7",
