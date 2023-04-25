@@ -22,7 +22,7 @@
     "astro"
   ],
   "bugs": "https://github.com/withastro/astro/issues",
-  "homepage": "https://astro-aws.org/",
+  "homepage": "https://helbing.github.io/astrojs-aws/",
   "repository": {
     "type": "git",
     "url": "https://github.com/helbing/astrojs-aws.git",

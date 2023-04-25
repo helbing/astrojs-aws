@@ -27,7 +27,7 @@
     "astro-adapter"
   ],
   "bugs": "https://github.com/helbing/astrojs-aws/issues",
-  "homepage": "https://github.com/helbing/astrojs-aws/",
+  "homepage": "https://helbing.github.io/astrojs-aws/",
   "repository": {
     "type": "git",
     "url": "https://github.com/helbing/astrojs-aws.git",
