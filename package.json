@@ -1,18 +1,19 @@
 {
   "name": "astrojs-aws",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": true,
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "prepare": "husky install",
     "build": "turbo run build",
+    "dev": "turbo run dev",
     "test": "turbo run test --",
     "lint": "eslint .",
     "clean": "turbo run clean",
     "cdk": "turbo run cdk --  ",
+    "astro": "turbo run astro --",
     "publish-version": "bumpp -r",
-    "publish-packages": "turbo run publish-packages",
-    "hugo": "turbo run hugo --filter docs"
+    "publish-packages": "turbo run publish-packages"
   },
   "keywords": [
     "aws",
@@ -28,7 +29,6 @@
     "@commitlint/config-conventional": "^17.6.1",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
-    "@unocss/eslint-config": "^0.51.8",
     "astro-eslint-parser": "^0.13.3",
     "bumpp": "^9.1.0",
     "changelogithub": "^0.12.9",
@@ -42,6 +42,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.8.0",
     "turbo": "^1.9.3",
     "typescript": "^5.0.4"
   }
