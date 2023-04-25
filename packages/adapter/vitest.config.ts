@@ -9,7 +9,8 @@ export default defineConfig({
     },
     coverage: {
       all: true,
-      include: ["**/*.ts"],
+      include: ["src/**/*.ts"],
+      exclude: ["src/exports.ts", "src/index.ts", "src/**/*.test.ts"],
     },
   },
 })
