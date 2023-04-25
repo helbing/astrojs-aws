@@ -59,7 +59,7 @@ To configure this adapter, pass an object to the `vercel()` function call in `as
 
 **Type:** `boolean`
 
-The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `isEdge` set to true, it means the adapter will use [Lambda@Edge](https://aws.amazon.com/lambda/edge/), and meanwhile, you need to knows the Lambda@Edge has it [limitations](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html).
+The adapter is use [Lambda](https://aws.amazon.com/lambda/) by default. When `isEdge` set to true, it means the adapter will use [Lambda@Edge](https://aws.amazon.com/lambda/edge/), and meanwhile, you need to knows the Lambda@Edge has its [limitations](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/edge-functions-restrictions.html).
 
 ### binaryMediaTypes
 
