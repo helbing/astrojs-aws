@@ -4,6 +4,10 @@
   "description": "The CDK Construct Library of Astro",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "API.md"
+  ],
   "scripts": {
     "build": "pnpm run build:jsii && pnpm run package && pnpm run docgen",
     "test": "vitest run --no-threads",
@@ -28,10 +32,6 @@
     "url": "https://github.com/helbing/astrojs-aws.git",
     "directory": "packages/construct"
   },
-  "files": [
-    "lib",
-    "API.md"
-  ],
   "author": "helbing",
   "license": "MIT",
   "engines": {
