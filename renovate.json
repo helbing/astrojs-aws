@@ -21,11 +21,13 @@
       ]
     },
     {
+      "groupName": "Fixed Construct @types/node version",
       "matchPaths": ["packages/construct/"],
       "matchDepNames": ["@types/node"],
       "allowedVersions": "18.11.9"
     },
     {
+      "groupName": "AWS CDK",
       "matchPaths": ["packages/construct/"],
       "matchPackagePatterns": ["^@aws-cdk/aws-", "aws-cdk-lib"]
     }
