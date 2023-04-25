@@ -1,6 +1,6 @@
 {
   "name": "@astrojs-aws/construct",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "The CDK Construct Library of Astro",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
