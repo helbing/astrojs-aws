@@ -7,5 +7,9 @@ export default defineConfig({
     resolveSnapshotPath(path, extension) {
       return path + extension
     },
+    coverage: {
+      all: true,
+      include: ["**/*.ts"],
+    },
   },
 })
