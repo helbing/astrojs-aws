@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^5.0.7
     version: 5.0.7
   publib:
-    specifier: ^0.2.655
-    version: 0.2.655
+    specifier: ^0.2.662
+    version: 0.2.662
   rimraf:
     specifier: ^4.4.1
     version: 4.4.1
@@ -46,8 +46,8 @@ devDependencies:
 
 packages:
 
-  /@aws-cdk/asset-awscli-v1@2.2.149:
-    resolution: {integrity: sha512-vndvY78xsO3S8mGF5eqKdLCBJALuV2h90tWA80xNgXqI3X95Z0tUxgFtI9LrxcH3147dAcar1c1gWMMFdY5zoQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.151:
+    resolution: {integrity: sha512-/+sjJeSgUjL+ZSbGP84I0fqreQxQnPC2mXemBd+ZADZW87reIIXG1u1ZICeBhaY12fg4iFbshGfRVAkOo3QgYw==}
     dev: true
 
   /@aws-cdk/asset-kubectl-v20@2.1.1:
@@ -469,7 +469,7 @@ packages:
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.149
+      '@aws-cdk/asset-awscli-v1': 2.2.151
       '@aws-cdk/asset-kubectl-v20': 2.1.1
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.126
       '@balena/dockerignore': 1.0.2
@@ -500,14 +500,14 @@ packages:
     resolution: {integrity: sha512-9GNFMRrEMG5y3Jvv+V4azWvc+qNWdWLTjDdhf/zgMlz8haaaLWv0xeAIWxz9PuWUBawsVxy0zZotjCdR3Xq+2w==}
     hasBin: true
     dependencies:
-      aws-sdk: 2.1363.0
+      aws-sdk: 2.1364.0
       commander: 3.0.2
       js-yaml: 3.14.1
       watchpack: 2.4.0
     dev: true
 
-  /aws-sdk@2.1363.0:
-    resolution: {integrity: sha512-M2MZZXehgi/EMQv5GlzRkn3TlhoOYHg2cYdSAAqhjv67WaEG50MjaQy5vRvfN1i8XvB24aJFJ5pCrx69TaCaIg==}
+  /aws-sdk@2.1364.0:
+    resolution: {integrity: sha512-PFoq9Rnu0DVi07wZ/SjKlrJDwso8AxE5q/ufLdNtINZPaSkB92OqKYVdlfQ4srsH2ala2NCrg8gFX98SCmqW3w==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -1426,8 +1426,8 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /publib@0.2.655:
-    resolution: {integrity: sha512-dL0k43cxbvuzThZXtT4qgQHVhdNuHlI3eJ81tM5XgnbvLwESEKtHoPce/8bS6xqvvTc/VJEsgw9sBbNEcvkpig==}
+  /publib@0.2.662:
+    resolution: {integrity: sha512-Y1QPWurUCj9gbPnDt+vIuoRww/t7CJe3nsOnSc39YfBsLexeD3TVhqC1es2Xi42dy8ZHUTH9c1nAVNXnjju1LQ==}
     hasBin: true
     dependencies:
       '@types/fs-extra': 8.1.2
@@ -1791,7 +1791,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.3.1(@types/node@18.11.9)
+      vite: 4.3.2(@types/node@18.11.9)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -1802,8 +1802,8 @@ packages:
       - terser
     dev: true
 
-  /vite@4.3.1(@types/node@18.11.9):
-    resolution: {integrity: sha512-EPmfPLAI79Z/RofuMvkIS0Yr091T2ReUoXQqc5ppBX/sjFRhHKiPPF/R46cTdoci/XgeQpB23diiJxq5w30vdg==}
+  /vite@4.3.2(@types/node@18.11.9):
+    resolution: {integrity: sha512-9R53Mf+TBoXCYejcL+qFbZde+eZveQLDYd9XgULILLC1a5ZwPaqgmdVpL8/uvw2BM/1TzetWjglwm+3RO+xTyw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -1887,7 +1887,7 @@ packages:
       tinybench: 2.4.0
       tinypool: 0.4.0
       tinyspy: 1.1.1
-      vite: 4.3.1(@types/node@18.11.9)
+      vite: 4.3.2(@types/node@18.11.9)
       vite-node: 0.29.8(@types/node@18.11.9)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:

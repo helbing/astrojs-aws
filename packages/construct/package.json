@@ -84,7 +84,7 @@
     "jsii-docgen": "^7.2.1",
     "jsii-pacmak": "^1.80.0",
     "jsii-rosetta": "^5.0.7",
-    "publib": "^0.2.655",
+    "publib": "^0.2.662",
     "rimraf": "^4.4.1",
     "vitest": "^0.29.8"
   },
