@@ -6,7 +6,7 @@
     ":assignAndReview(helbing)",
     ":automergePatch",
     ":automergeMinor",
-    ":labels(deps)",
+    ":labels(dependencies)",
     ":prHourlyLimit4"
   ],
   "automergeSchedule": [
