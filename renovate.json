@@ -7,17 +7,22 @@
   "addLabels": [
     "renovate:bot"
   ],
+  "automerge": true,
+  "automergeSchedule": [
+    "after 10am and before 6pm every day"
+  ],
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
       "schedule": [
         "every thursday"
-      ]
+      ],
+      "automerge": false
     },
     {
       "matchUpdateTypes": ["patch", "minor"],
-      "automergeSchedule": [
-        "after 10am and before 6pm every day"
+      "schedule": [
+        "at any time"
       ]
     },
     {
