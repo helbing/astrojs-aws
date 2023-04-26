@@ -1,5 +1,8 @@
+title: "Please input a title for your question"
 body:
 - type: markdown
   attributes:
-    description: 'Describe your issue.'
+    value: |
+      Please describe your issue or question here.
+  validations:
     required: true
