@@ -1,4 +1,18 @@
-comment:                  # this is a top-level key
+codecov:
+  require_ci_to_pass: true
+
+coverage:
+  status:
+    default_rules:
+      if_ci_failed: error
+      branches: [ "main" ]
+    project:
+      adapter:
+        flags: [ "adapter" ]
+      construct:
+        flags: [ "construct" ]
+
+comment:
   layout: "reach, diff, flags, files"
   behavior: default
-  require_changes: true
+  require_changes: false
