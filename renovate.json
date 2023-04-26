@@ -6,7 +6,7 @@
     ":assignAndReview(helbing)",
     ":automergePatch",
     ":automergeMinor",
-    ":labels(renovate:bot)",
+    ":labels(deps)",
     ":prHourlyLimit4"
   ],
   "automergeSchedule": [
