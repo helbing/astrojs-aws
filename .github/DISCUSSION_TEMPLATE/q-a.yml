@@ -21,4 +21,5 @@ body:
       1. os:
       2. node-version:
       3. package-version:
-      4. ...
+      ...
+    render: bash
