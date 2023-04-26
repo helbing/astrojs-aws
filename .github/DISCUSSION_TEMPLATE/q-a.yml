@@ -18,7 +18,7 @@ body:
     description: |
       Please describe your local envirments, such as OS, Node.js version, Package version etc. It's not required, if your question is not related to development.
     value: |
-      1. os: \n
+      1. os:
       2. node-version:
       3. package-version:
       ...
