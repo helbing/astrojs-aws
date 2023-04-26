@@ -6,8 +6,9 @@ body:
       Please describe your question here.
 
 - type: textarea
-  label: What's your local envirments?
-  description: |
-    Please describe your local envirments, such as OS, Node.js version, Package version etc. It's not required, if your question is not related to development.
+  attributes:
+    label: What's your local envirments?
+    description: |
+      Please describe your local envirments, such as OS, Node.js version, Package version etc. It's not required, if your question is not related to development.
   validations:
     required: false
