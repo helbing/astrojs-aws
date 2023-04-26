@@ -21,14 +21,14 @@
     },
     {
       "groupName": "Fixed Construct @types/node version",
-      "matchPaths": ["packages/construct/"],
+      "matchFiles": ["packages/construct/package.json"],
       "matchDepNames": ["@types/node"],
       "rangeStrategy": "pin"
     },
     {
       "groupName": "AWS CDK",
       "groupSlug": "awscdk",
-      "matchPaths": ["packages/construct/"],
+      "matchFiles": ["packages/construct/package.json"],
       "matchPackagePatterns": ["^@aws-cdk/aws-", "aws-cdk-lib"]
     }
   ]
