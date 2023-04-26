@@ -9,6 +9,8 @@ body:
     label: What's your question?
     description: |
       Please describe your question here.
+  validations:
+    required: true
 
 - type: input
   attributes:
@@ -20,5 +22,3 @@ body:
       2. node-version:
       3. package-version:
       4. ...
-  validations:
-    required: false
