@@ -3,6 +3,11 @@ body:
 - type: markdown
   attributes:
     value: |
-      Please describe your issue or question here.
+      Please describe your question here.
+
+- type: textarea
+  label: What's your local envirments?
+  description: |
+    Please describe your local envirments, such as OS, Node.js version, Package version etc. It's not required, if your question is not related to development.
   validations:
-    required: true
+    required: false
