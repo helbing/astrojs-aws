@@ -3,12 +3,11 @@
   "extends": [
     "config:base",
     ":dependencyDashboard",
+    ":assignAndReview(helbing)",
     ":automergePatch",
-    ":automergeMinor"
-  ],
-  "assignees": ["helbing"],
-  "addLabels": [
-    "renovate:bot"
+    ":automergeMinor",
+    ":labels(renovate:bot)",
+    ":prHourlyLimit4"
   ],
   "automergeSchedule": [
     "after 10am and before 6pm every day"
@@ -24,7 +23,7 @@
       "groupName": "Fixed Construct @types/node version",
       "matchPaths": ["packages/construct/"],
       "matchDepNames": ["@types/node"],
-      "allowedVersions": "18.11.9"
+      "rangeStrategy": "pin"
     },
     {
       "groupName": "AWS CDK",
