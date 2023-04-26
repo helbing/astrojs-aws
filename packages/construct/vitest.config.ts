@@ -10,7 +10,7 @@ export default defineConfig({
     coverage: {
       all: true,
       include: ["lib/*.ts"],
-      exclude: ["lib/*.test.ts", "lib/*.d.ts", "lib/types.ts"],
+      exclude: ["lib/*.test.ts", "lib/*.d.ts", "lib/types.ts", "lib/index.ts"],
     },
   },
 })

@@ -37,6 +37,9 @@ jobs:
     - name: Run Build
       run: pnpm run build
 
+    - name: Clean
+      run: pnpm run clean
+
     - name: Run linter
       run: pnpm run lint
 
