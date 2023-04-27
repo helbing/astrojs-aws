@@ -30,7 +30,7 @@
       "groupSlug": "awscdk",
       "matchFiles": ["packages/construct/package.json"],
       "matchPackagePrefixes": ["@aws-cdk/"],
-      "matchPackagePatterns": ["aws-cdk-lib"]
+      "matchDepNames": ["aws-cdk-lib"]
     }
   ]
 }
