@@ -1,0 +1,7 @@
+labels: [bug]
+body:
+- type: textarea
+  attributes:
+    label: Please describe the bug.
+  validations:
+    required: true

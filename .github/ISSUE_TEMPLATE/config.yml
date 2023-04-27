@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+- name: Community discussion.
+  url: https://github.com/helbing/astrojs-aws/discussions/new?category=general
+  about: Chat about anything and everything here.
+- name: Q&A
+  url: https://github.com/helbing/astrojs-aws/discussions/new?category=q-a
+  about: Please ask and answer questions as a discussion thread.
