@@ -3,9 +3,6 @@ codecov:
 
 coverage:
   status:
-    default_rules:
-      if_ci_failed: error
-      branches: [ "main" ]
     project:
       adapter:
         flags: [ "adapter" ]
