@@ -1,4 +1,5 @@
-name: Bug Report
+name: Bug report
+description: Report a bug in awstrojs-aws.
 labels: [bug]
 body:
 - type: textarea

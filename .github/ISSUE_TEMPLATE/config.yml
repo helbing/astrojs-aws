@@ -1,8 +1,9 @@
 blank_issues_enabled: false
 contact_links:
 - name: Community communication
-  url: https://github.com/helbing/astrojs-aws/discussions/new?category=general
   about: Chat about anything and everything here.
+  url: https://github.com/helbing/astrojs-aws/discussions/new?category=general
 - name: Q&A
-  url: https://github.com/helbing/astrojs-aws/discussions/new?category=q-a
   about: Please ask and answer questions as a discussion thread.
+  url: https://github.com/helbing/astrojs-aws/discussions/new?category=q-a
+
