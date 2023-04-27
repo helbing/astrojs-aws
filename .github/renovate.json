@@ -29,8 +29,11 @@
       "groupName": "AWS CDK",
       "groupSlug": "awscdk",
       "matchFiles": ["packages/construct/package.json"],
-      "matchPackagePrefixes": ["@aws-cdk/"],
-      "matchDepNames": ["aws-cdk-lib"]
+      "matchDepNames": [
+        "aws-cdk-lib",
+        "@aws-cdk/aws-apigatewayv2-alpha",
+        "@aws-cdk/aws-apigatewayv2-integrations-alpha"
+      ]
     }
   ]
 }
