@@ -29,7 +29,8 @@
       "groupName": "AWS CDK",
       "groupSlug": "awscdk",
       "matchFiles": ["packages/construct/package.json"],
-      "matchPackagePatterns": ["^@aws-cdk", "aws-cdk-lib"]
+      "matchPackagePrefixes": ["@aws-cdk/"],
+      "matchPackagePatterns": ["aws-cdk-lib"]
     }
   ]
 }
