@@ -1,3 +1,4 @@
+name: Bug Report
 labels: [bug]
 body:
 - type: textarea
