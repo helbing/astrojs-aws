@@ -1,9 +1,39 @@
 name: Bug report
-description: Report a bug in awstrojs-aws.
+description: Report a bug in astrojs-aws.
 labels: [bug]
 body:
 - type: textarea
   attributes:
-    label: Please describe the bug.
+    label: Please describe the bug
   validations:
     required: true
+
+- type: textarea
+  attributes:
+    label: Expected behavior
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Actual Behavior
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: What's your local envirments?
+    value: |
+      1. os:
+      2. node:
+      3. astrojs-aws:
+      ...
+    render: bash
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: How to reproduce it?
+  validations:
+    required: false

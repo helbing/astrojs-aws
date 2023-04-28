@@ -1,14 +1,9 @@
 body:
-- type: markdown
-  attributes:
-    value: |
-      Be sure to comfirm that your question is not duplicated.
-
 - type: textarea
   attributes:
     label: What's your question?
     description: |
-      Please describe your question here.
+      Please describe your question here
   validations:
     required: true
 
@@ -16,10 +11,10 @@ body:
   attributes:
     label: What's your local envirments?
     description: |
-      Please describe your local envirments, such as OS, Node.js version, Package version etc. It's not required, if your question is not related to development.
+      Please describe your local envirments. It's not required, if your question is not related to programming
     value: |
       1. os:
-      2. node-version:
-      3. package-version:
+      2. node:
+      3. astrojs-aws:
       ...
     render: bash
