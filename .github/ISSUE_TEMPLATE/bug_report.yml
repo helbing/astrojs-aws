@@ -1,14 +1,15 @@
 name: Bug report
 description: Report a bug in astrojs-aws.
-labels: [bug]
+labels: [ "bug" ]
 body:
 - type: checkboxes
   attributes:
     label: Sanity checks
     options:
-    - label: "I have searched [github.com/helbing/astrojs-aws/issues](https://github.com/helbing/astrojs-aws/issues?q=) and there are no duplicates of my issue"
+    - label: I have searched [github.com/helbing/astrojs-aws/issues](https://github.com/helbing/astrojs-aws/issues?q=) and there are no duplicates of my issue
       required: true
-    - label: "I would like to work on this."
+    - label: I would like to work on this
+
 - type: textarea
   attributes:
     label: Please describe the bug

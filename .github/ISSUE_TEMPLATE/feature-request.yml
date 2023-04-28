@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea for improving astrojs-aws.
+labels: [ "enhancement" ]
+body:
+- type: checkboxes
+  attributes:
+    label: Sanity checks
+    options:
+    - label: I would like to work on this
+    - label: This feature might incur a breaking change
+
+- type: textarea
+  attributes:
+    label: What's your feature request?
+    description: |
+      Please describe your feature request here
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Additional context
