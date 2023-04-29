@@ -24,9 +24,3 @@ dist/
 .cdk.staging
 cdk.out/
 cdk-integ.out.*
-
-# hugo
-docs/public/
-
-# vercel
-.vercel
