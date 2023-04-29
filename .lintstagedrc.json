@@ -1,8 +1,5 @@
 {
   "{packages,examples}/**/*.{ts,tsx,astro}": [
     "eslint --fix"
-  ],
-  "docs/**/*.{md,mdx,ts}": [
-    "eslint --fix"
   ]
 }
