@@ -10,7 +10,7 @@
     ":prHourlyLimit4"
   ],
   "automergeSchedule": [
-    "after 10am and before 6pm every day"
+    "after 10am"
   ],
   "packageRules": [
     {
