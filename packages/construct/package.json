@@ -94,6 +94,6 @@
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.77.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.77.0-alpha.0",
     "aws-cdk-lib": "^2.77.0",
-    "constructs": "^10.2.1"
+    "constructs": "^10.2.14"
   }
 }
