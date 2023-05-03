@@ -1,6 +1,6 @@
 {
   "name": "astrojs-aws",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": true,
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
