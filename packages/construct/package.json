@@ -81,7 +81,7 @@
     "@vitest/coverage-c8": "^0.31.0",
     "aws-cdk-lib": "2.77.0",
     "aws-lambda": "^1.0.7",
-    "constructs": "10.2.14",
+    "constructs": "10.2.15",
     "jsii": "^5.0.7",
     "jsii-docgen": "^8.0.6",
     "jsii-pacmak": "^1.80.0",
