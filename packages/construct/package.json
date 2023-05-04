@@ -83,10 +83,10 @@
     "aws-lambda": "^1.0.7",
     "constructs": "10.2.15",
     "jsii": "^5.0.7",
-    "jsii-docgen": "^8.0.6",
+    "jsii-docgen": "^8.0.7",
     "jsii-pacmak": "^1.80.0",
     "jsii-rosetta": "^5.0.7",
-    "publib": "^0.2.672",
+    "publib": "^0.2.678",
     "rimraf": "^5.0.0",
     "vitest": "^0.31.0"
   },
