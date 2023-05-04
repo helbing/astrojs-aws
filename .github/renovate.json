@@ -23,17 +23,18 @@
     {
       "groupName": "Fixed Construct @types/node version",
       "matchFiles": ["packages/construct/package.json"],
-      "matchDepNames": ["@types/node"],
+      "matchPackageNames": ["@types/node"],
       "rangeStrategy": "pin"
     },
     {
       "groupName": "AWS CDK",
       "groupSlug": "awscdk",
       "matchFiles": ["packages/construct/package.json"],
-      "matchDepNames": [
-        "aws-cdk-lib",
-        "@aws-cdk/aws-apigatewayv2-alpha",
-        "@aws-cdk/aws-apigatewayv2-integrations-alpha"
+      "matchPackageNames": [
+        "aws-cdk-lib"
+      ],
+      "matchPackagePrefixes": [
+        "aws-cdk/"
       ]
     }
   ]
