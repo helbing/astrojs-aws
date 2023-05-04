@@ -34,7 +34,7 @@
         "aws-cdk-lib"
       ],
       "matchPackagePrefixes": [
-        "aws-cdk/"
+        "@aws-cdk/"
       ]
     }
   ]
