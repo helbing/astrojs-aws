@@ -14,8 +14,8 @@ devDependencies:
     specifier: ^5.59.2
     version: 5.59.2(eslint@8.39.0)(typescript@5.0.4)
   astro-eslint-parser:
-    specifier: ^0.13.3
-    version: 0.13.3
+    specifier: ^0.14.0
+    version: 0.14.0
   bumpp:
     specifier: ^9.1.0
     version: 9.1.0
@@ -727,6 +727,22 @@ packages:
 
   /astro-eslint-parser@0.13.3:
     resolution: {integrity: sha512-n+fb6O40SM6sD36lGwgVIE3zeVQUMdl6ZHaHEjRI4zdaBu658XaAV1YDztF7Iga5kmeOxJYB87mcQ+lUnQs0Nw==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    dependencies:
+      '@astrojs/compiler': 1.4.1
+      '@typescript-eslint/scope-manager': 5.59.2
+      '@typescript-eslint/types': 5.59.2
+      astrojs-compiler-sync: 0.3.2(@astrojs/compiler@1.4.1)
+      debug: 4.3.4
+      eslint-visitor-keys: 3.4.0
+      espree: 9.5.1
+      semver: 7.5.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /astro-eslint-parser@0.14.0:
+    resolution: {integrity: sha512-3F8l1h7+5MNxzDg1cSQxEloalG7fj64K6vOERChUVG7RLnAzSoafADnPQlU8DpMM3WRNfRHSC4NwUCORk/aPrA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@astrojs/compiler': 1.4.1
