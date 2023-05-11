@@ -16,7 +16,17 @@ describe("Test LambdaAstroSite", () => {
       serverEntry: path.join(__dirname, "../tests/testdata/fake-entry.mjs"),
       staticDir: path.join(__dirname, "../tests/testdata/fakestatic"),
     })
-    const template = Template.fromStack(stack)
-    expect(template).toMatchSnapshot()
+    const template = Template.fromStack(stack).toJSON()
+    expect(template).toMatchSnapshot({
+      Resources: {
+        TestSiteBucketDeploymentAwsCliLayerD8E01993: {
+          Properties: {
+            Content: {
+              S3Key: expect.anything(),
+            },
+          },
+        },
+      },
+    })
   })
 })

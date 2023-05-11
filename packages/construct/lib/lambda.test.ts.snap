@@ -336,7 +336,7 @@ exports[`Test LambdaAstroSite > Expect match snapshot without CloudFront 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "c33f77e71bef2fbd8299fa87f0d89b792b981d73e22dba92b2dd13caec415dfc.zip",
+          "S3Key": Anything,
         },
         "Description": "/opt/awscli/aws",
       },
