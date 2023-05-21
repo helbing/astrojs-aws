@@ -81,7 +81,7 @@
     "@vitest/coverage-c8": "^0.31.0",
     "aws-cdk-lib": "2.80.0",
     "aws-lambda": "^1.0.7",
-    "constructs": "10.2.29",
+    "constructs": "10.2.30",
     "jsii": "^5.0.7",
     "jsii-docgen": "^8.0.7",
     "jsii-pacmak": "^1.80.0",
@@ -94,6 +94,6 @@
     "@aws-cdk/aws-apigatewayv2-alpha": "2.80.0-alpha.0",
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "2.80.0-alpha.0",
     "aws-cdk-lib": "2.80.0",
-    "constructs": "10.2.29"
+    "constructs": "10.2.30"
   }
 }
