@@ -7,10 +7,10 @@ settings:
 devDependencies:
   '@aws-cdk/aws-apigatewayv2-alpha':
     specifier: 2.84.0-alpha.0
-    version: 2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.69)
+    version: 2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.70)
   '@aws-cdk/aws-apigatewayv2-integrations-alpha':
     specifier: 2.84.0-alpha.0
-    version: 2.84.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0)(aws-cdk-lib@2.84.0)(constructs@10.2.69)
+    version: 2.84.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0)(aws-cdk-lib@2.84.0)(constructs@10.2.70)
   '@types/aws-lambda':
     specifier: ^8.10.115
     version: 8.10.115
@@ -22,13 +22,13 @@ devDependencies:
     version: 0.31.0(vitest@0.31.0)
   aws-cdk-lib:
     specifier: 2.84.0
-    version: 2.84.0(constructs@10.2.69)
+    version: 2.84.0(constructs@10.2.70)
   aws-lambda:
     specifier: ^1.0.7
     version: 1.0.7
   constructs:
-    specifier: 10.2.69
-    version: 10.2.69
+    specifier: 10.2.70
+    version: 10.2.70
   jsii:
     specifier: ^5.0.7
     version: 5.0.7
@@ -73,18 +73,18 @@ packages:
     resolution: {integrity: sha512-X7CjyphxMuAY1uNO2SMnTtQWxhnLf06ZAR9R4Ynm+8BOvyZfzqCrsmkT6O4nGRlhu5fGlRbNV//tCwU9e39yPQ==}
     dev: true
 
-  /@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.69):
+  /@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.70):
     resolution: {integrity: sha512-Iom2VbAt9N6QXJqqjikcG6hHCaYsPIZdLy8gkMkQu/idmaQnGzZ7sNp4uRdLr4EmqtGJOSFxAM9jrGyBIEhYlw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       aws-cdk-lib: 2.84.0
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.84.0(constructs@10.2.69)
-      constructs: 10.2.69
+      aws-cdk-lib: 2.84.0(constructs@10.2.70)
+      constructs: 10.2.70
     dev: true
 
-  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.84.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0)(aws-cdk-lib@2.84.0)(constructs@10.2.69):
+  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.84.0-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.84.0-alpha.0)(aws-cdk-lib@2.84.0)(constructs@10.2.70):
     resolution: {integrity: sha512-LgVYXnAAOWL8RJLVDpu/M0qbHMADk3EwZKPsVgtxgSxKXSIU9Wpw25mK9MhYMbEJdtRUUNFz98U7Ra8Zu8AJMg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -92,9 +92,9 @@ packages:
       aws-cdk-lib: 2.84.0
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.69)
-      aws-cdk-lib: 2.84.0(constructs@10.2.69)
-      constructs: 10.2.69
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.84.0-alpha.0(aws-cdk-lib@2.84.0)(constructs@10.2.70)
+      aws-cdk-lib: 2.84.0(constructs@10.2.70)
+      constructs: 10.2.70
     dev: true
 
   /@aws-crypto/ie11-detection@3.0.0:
@@ -1368,7 +1368,7 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib@2.84.0(constructs@10.2.69):
+  /aws-cdk-lib@2.84.0(constructs@10.2.70):
     resolution: {integrity: sha512-4zLtCLCIs5Ia4WRGqiXRwxSkpGaNy3NxMexO9qYHSuIYpqf4sHObzZ0tDHZCFL5Wkui3sCu3OLQWrRHrr93HvA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1379,7 +1379,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.151
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.2.69
+      constructs: 10.2.70
       fs-extra: 11.1.1
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -1611,8 +1611,8 @@ packages:
       well-known-symbols: 2.0.0
     dev: true
 
-  /constructs@10.2.69:
-    resolution: {integrity: sha512-0AiM/uQe5Uk6JVe/62oolmSN2MjbFQkOlYrM3fFGZLKuT+g7xlAI10EebFhyCcZwI2JAcWuWCmmCAyCothxjuw==}
+  /constructs@10.2.70:
+    resolution: {integrity: sha512-z6zr1E8K/9tzJbCQzY0UGX0/oVKPFKu9C/mzEnghCG6TAJINnvlq0CMKm63XqqeMleadZYm5T3sZGJKcxJS/Pg==}
     engines: {node: '>= 16.14.0'}
     dev: true
 
@@ -1681,7 +1681,7 @@ packages:
     dependencies:
       semver: 7.5.1
       shelljs: 0.8.5
-      typescript: 5.3.0-dev.20230827
+      typescript: 5.3.0-dev.20230829
     dev: true
 
   /eastasianwidth@0.2.0:
@@ -2931,8 +2931,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.3.0-dev.20230827:
-    resolution: {integrity: sha512-LXoK1ae7+xCSaRWV+/dKMoq6vasSldbtHxKLaPvcWGKv4yQbxxiA5gwz3PWtuaE5JbVk0NrZiWATIoRgr/Yufg==}
+  /typescript@5.3.0-dev.20230829:
+    resolution: {integrity: sha512-2bsH+jTfOtehS2ZMI6RteCCRFk2QTUUY3BijvnyS0+o0CB/xWJDu7+WRbpt/XEZgOcoTLf9evRm/tyGSlPyNgA==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
