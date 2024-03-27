@@ -46,11 +46,11 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.115",
     "@types/node": "^18.16.3",
-    "@vitest/coverage-c8": "^0.31.0",
+    "@vitest/coverage-c8": "^0.33.0",
     "astro": "^2.4.1",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.4",
-    "vitest": "^0.31.0",
+    "vitest": "^0.34.0",
     "vitest-mock-extended": "^1.1.3"
   }
 }
