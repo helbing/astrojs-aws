@@ -40,7 +40,7 @@ devDependencies:
     version: 1.80.0
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.0.7
+    version: 5.0.33
   publib:
     specifier: ^0.2.678
     version: 0.2.678
@@ -1181,6 +1181,14 @@ packages:
       semver: 7.6.0
     dev: true
 
+  /@jsii/check-node@1.93.0:
+    resolution: {integrity: sha512-NLn1Js6wEG2hYjH7gE5Q8s/hPlp3I+KhK/T8ykGdYVod7iODnk/0QVSZsk2iEyuw8NzvvgXUDBWreadUIWSz+g==}
+    engines: {node: '>= 14.17.0'}
+    dependencies:
+      chalk: 4.1.2
+      semver: 7.6.0
+    dev: true
+
   /@jsii/check-node@1.96.0:
     resolution: {integrity: sha512-1EZudLi9wMg6d8JYu8t5s0B+WhyAJvOezhdmFv+PTrTc1Eze7NRY7uZuvBRRkBvqvOWlKkCfBByyeZJnLcxNMA==}
     engines: {node: '>= 14.17.0'}
@@ -1221,7 +1229,7 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.15.0
+      fastq: 1.17.1
     dev: true
 
   /@pkgjs/parseargs@0.11.0:
@@ -1330,11 +1338,6 @@ packages:
 
   /@xmldom/xmldom@0.8.10:
     resolution: {integrity: sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==}
-    engines: {node: '>=10.0.0'}
-    dev: true
-
-  /@xmldom/xmldom@0.8.7:
-    resolution: {integrity: sha512-sI1Ly2cODlWStkINzqGrZ8K6n+MTSbAeQnAipGyL+KZCXuHaRlj2gyyy8B/9MvsFFqN7XHryQnB2QwhzvJXovg==}
     engines: {node: '>=10.0.0'}
     dev: true
 
@@ -1764,17 +1767,6 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
 
-  /fast-glob@3.2.12:
-    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
-    engines: {node: '>=8.6.0'}
-    dependencies:
-      '@nodelib/fs.stat': 2.0.5
-      '@nodelib/fs.walk': 1.2.8
-      glob-parent: 5.1.2
-      merge2: 1.4.1
-      micromatch: 4.0.5
-    dev: true
-
   /fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
     engines: {node: '>=8.6.0'}
@@ -1793,8 +1785,8 @@ packages:
       strnum: 1.0.5
     dev: true
 
-  /fastq@1.15.0:
-    resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
+  /fastq@1.17.1:
+    resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
     dependencies:
       reusify: 1.0.4
     dev: true
@@ -2163,7 +2155,7 @@ packages:
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
       jsii-reflect: 1.80.0
-      jsii-rosetta: 1.80.0
+      jsii-rosetta: 1.96.0
       semver: 7.5.0
       spdx-license-list: 6.6.0
       xmlbuilder: 15.1.1
@@ -2198,27 +2190,6 @@ packages:
       yargs: 16.2.0
     dev: true
 
-  /jsii-rosetta@1.80.0:
-    resolution: {integrity: sha512-7sziqogIHg6TQpMWR9eI8tDj8C+L/tSmsnbc+lASPlzkpHkukuETsgojnP/5Zg1tng8YW1+zvjuGbqVgiEXfzA==}
-    engines: {node: '>= 14.6.0'}
-    hasBin: true
-    dependencies:
-      '@jsii/check-node': 1.80.0
-      '@jsii/spec': 1.80.0
-      '@xmldom/xmldom': 0.8.7
-      commonmark: 0.30.0
-      fast-glob: 3.2.12
-      jsii: 1.80.0
-      semver: 7.5.0
-      semver-intersect: 1.5.0
-      stream-json: 1.7.5
-      typescript: 3.9.10
-      workerpool: 6.4.0
-      yargs: 16.2.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /jsii-rosetta@1.96.0:
     resolution: {integrity: sha512-TZQ3nmPay7MPhKO9ghYL5WfcRHzo79cAO0fq/WYMXVNwYBq4+g8xrXZYk/H/OTggyIgmSkVDP3EcwJXNVHC71Q==}
     engines: {node: '>= 14.17.0'}
@@ -2240,46 +2211,24 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.0.7:
-    resolution: {integrity: sha512-cJGoILr4jNnOIDtNY3LLldsZujmtEILOzwX7yHFu+sVcqlpyeT8VYd34hQwIh3D9HA9DqJh30thTqoQbRMdN+A==}
-    engines: {node: '>= 14.18.0'}
+  /jsii-rosetta@5.0.33:
+    resolution: {integrity: sha512-NwnFTNGhLUPowhLTDMRw7OCDdHOJ0lCEBYGbO+eW9PUaDqMYdHctKw8icFPwViMS9WMFA23YmXFbqzci24F/xA==}
+    engines: {node: '>= 16.14.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.80.0
-      '@jsii/spec': 1.80.0
-      '@xmldom/xmldom': 0.8.7
+      '@jsii/check-node': 1.93.0
+      '@jsii/spec': 1.96.0
+      '@xmldom/xmldom': 0.8.10
       chalk: 4.1.2
       commonmark: 0.30.0
-      fast-glob: 3.2.12
+      fast-glob: 3.3.2
       jsii: 5.0.21
-      semver: 7.5.0
-      semver-intersect: 1.4.0
-      stream-json: 1.7.5
-      typescript: 5.0.4
-      workerpool: 6.4.0
-      yargs: 17.7.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /jsii@1.80.0:
-    resolution: {integrity: sha512-mw2xlpnGszpQMYZoHaKFx0TuxAuEW+tIMMVj5xXOsEBFnsc0bdVGkFPytg5VOjOiKK2PA2fAZO/3Y0Vtn3GY+Q==}
-    engines: {node: '>= 14.6.0'}
-    hasBin: true
-    dependencies:
-      '@jsii/check-node': 1.80.0
-      '@jsii/spec': 1.80.0
-      case: 1.6.3
-      chalk: 4.1.2
-      fast-deep-equal: 3.1.3
-      fs-extra: 10.1.0
-      log4js: 6.9.1
-      semver: 7.5.0
+      semver: 7.6.0
       semver-intersect: 1.5.0
-      sort-json: 2.0.1
-      spdx-license-list: 6.9.0
-      typescript: 3.9.10
-      yargs: 16.2.0
+      stream-json: 1.8.0
+      typescript: 5.0.4
+      workerpool: 6.5.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2710,21 +2659,10 @@ packages:
     resolution: {integrity: sha512-8I2a3LovHTOpm7NV5yOyO8IHqgVsfK4+UuySrXU8YXkSRX7k6hCV9b3HrkKCr3nMpgj+0bmocaJJWpvp1oc7ZA==}
     dev: true
 
-  /semver-intersect@1.4.0:
-    resolution: {integrity: sha512-d8fvGg5ycKAq0+I6nfWeCx6ffaWJCsBYU0H2Rq56+/zFePYfT8mXkB3tWBSjR5BerkHNZ5eTPIk1/LBYas35xQ==}
-    dependencies:
-      semver: 5.7.2
-    dev: true
-
   /semver-intersect@1.5.0:
     resolution: {integrity: sha512-BDjWX7yCC0haX4W/zrnV2JaMpVirwaEkGOBmgRQtH++F1N3xl9v7k9H44xfTqwl+yLNNSbMKosoVSTIiJVQ2Pw==}
     dependencies:
       semver: 6.3.1
-    dev: true
-
-  /semver@5.7.2:
-    resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
-    hasBin: true
     dev: true
 
   /semver@6.3.1:
@@ -2825,12 +2763,6 @@ packages:
 
   /stream-chain@2.2.5:
     resolution: {integrity: sha512-1TJmBx6aSWqZ4tx7aTpBDXK0/e2hhcNSTV8+CbFJtDjbb+I1mZ8lHit0Grw9GRT+6JbIrrDd8esncgBi8aBXGA==}
-    dev: true
-
-  /stream-json@1.7.5:
-    resolution: {integrity: sha512-NSkoVduGakxZ8a+pTPUlcGEeAGQpWL9rKJhOFCV+J/QtdQUEU5vtBgVg6eJXn8JB8RZvpbJWZGvXkhz70MLWoA==}
-    dependencies:
-      stream-chain: 2.2.5
     dev: true
 
   /stream-json@1.8.0:
@@ -3182,10 +3114,6 @@ packages:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
-    dev: true
-
-  /workerpool@6.4.0:
-    resolution: {integrity: sha512-i3KR1mQMNwY2wx20ozq2EjISGtQWDIfV56We+yGJ5yDs8jTwQiLLaqHlkBHITlCuJnYlVRmXegxFxZg7gqI++A==}
     dev: true
 
   /workerpool@6.5.1:
