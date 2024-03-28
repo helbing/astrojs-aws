@@ -43,7 +43,7 @@ devDependencies:
     version: 5.0.33
   publib:
     specifier: ^0.2.678
-    version: 0.2.809
+    version: 0.2.810
   rimraf:
     specifier: ^5.0.0
     version: 5.0.5
@@ -2683,8 +2683,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /publib@0.2.809:
-    resolution: {integrity: sha512-a+uAstC1AIalkBpoUcCi5BJD7HCdD3WyC8w6YDe9U8TGn2ioMYhaVYscI+ER/8HwFwENLPe0SXFWKbxgCnkH8Q==}
+  /publib@0.2.810:
+    resolution: {integrity: sha512-e3j8KlaUJd48d2MnL4Q0KlAXH1QTvwAWfklxDpT06AfLqm/oYxcRRTacmrjg1XYjDTGOZDjDsfB7CF+1j+VXIw==}
     hasBin: true
     dependencies:
       '@aws-sdk/client-codeartifact': 3.540.0
