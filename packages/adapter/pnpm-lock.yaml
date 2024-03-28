@@ -10,7 +10,7 @@ dependencies:
     version: 2.1.1
   '@middy/core':
     specifier: ^4.4.0
-    version: 4.4.0
+    version: 4.4.3
 
 devDependencies:
   '@types/aws-lambda':
@@ -867,8 +867,8 @@ packages:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
     dev: true
 
-  /@middy/core@4.4.0:
-    resolution: {integrity: sha512-sNTeP6W1vaVN7ztXzksDP++I7tAdnqy2jG1dh3gRabhsGxVRyBOtNy7qThfdIhtl7YHHYL/J0XEIQJcYvzZyQQ==}
+  /@middy/core@4.4.3:
+    resolution: {integrity: sha512-DUXUuM5MvyQfEOu9MBtOE3/+af6SG5xiVqjo/k5jkFFnIXdI879MO5K9E2NCC7ECvRtQrLApSedtzwMbO9tL4g==}
     engines: {node: '>=16'}
     dev: false
 
