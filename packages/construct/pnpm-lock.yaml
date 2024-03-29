@@ -43,7 +43,7 @@ devDependencies:
     version: 5.3.31
   publib:
     specifier: ^0.2.678
-    version: 0.2.810
+    version: 0.2.811
   rimraf:
     specifier: ^5.0.0
     version: 5.0.5
@@ -165,13 +165,13 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.535.0
       '@aws-sdk/util-user-agent-node': 3.535.0
       '@smithy/config-resolver': 2.2.0
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/fetch-http-handler': 2.5.0
       '@smithy/hash-node': 2.2.0
       '@smithy/invalid-dependency': 2.2.0
       '@smithy/middleware-content-length': 2.2.0
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/middleware-stack': 2.2.0
       '@smithy/node-config-provider': 2.3.0
@@ -214,13 +214,13 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.535.0
       '@aws-sdk/util-user-agent-node': 3.535.0
       '@smithy/config-resolver': 2.2.0
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/fetch-http-handler': 2.5.0
       '@smithy/hash-node': 2.2.0
       '@smithy/invalid-dependency': 2.2.0
       '@smithy/middleware-content-length': 2.2.0
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/middleware-stack': 2.2.0
       '@smithy/node-config-provider': 2.3.0
@@ -264,13 +264,13 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.535.0
       '@aws-sdk/util-user-agent-node': 3.535.0
       '@smithy/config-resolver': 2.2.0
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/fetch-http-handler': 2.5.0
       '@smithy/hash-node': 2.2.0
       '@smithy/invalid-dependency': 2.2.0
       '@smithy/middleware-content-length': 2.2.0
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/middleware-stack': 2.2.0
       '@smithy/node-config-provider': 2.3.0
@@ -310,13 +310,13 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.535.0
       '@aws-sdk/util-user-agent-node': 3.535.0
       '@smithy/config-resolver': 2.2.0
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/fetch-http-handler': 2.5.0
       '@smithy/hash-node': 2.2.0
       '@smithy/invalid-dependency': 2.2.0
       '@smithy/middleware-content-length': 2.2.0
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/middleware-stack': 2.2.0
       '@smithy/node-config-provider': 2.3.0
@@ -359,13 +359,13 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.535.0
       '@aws-sdk/util-user-agent-node': 3.535.0
       '@smithy/config-resolver': 2.2.0
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/fetch-http-handler': 2.5.0
       '@smithy/hash-node': 2.2.0
       '@smithy/invalid-dependency': 2.2.0
       '@smithy/middleware-content-length': 2.2.0
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/middleware-stack': 2.2.0
       '@smithy/node-config-provider': 2.3.0
@@ -392,7 +392,7 @@ packages:
     resolution: {integrity: sha512-+Yusa9HziuaEDta1UaLEtMAtmgvxdxhPn7jgfRY6PplqAqgsfa5FR83sxy5qr2q7xjQTwHtV4MjQVuOjG9JsLw==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/core': 1.4.0
+      '@smithy/core': 1.4.1
       '@smithy/protocol-http': 3.3.0
       '@smithy/signature-v4': 2.2.0
       '@smithy/smithy-client': 2.5.0
@@ -1000,12 +1000,12 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@smithy/core@1.4.0:
-    resolution: {integrity: sha512-uu9ZDI95Uij4qk+L6kyFjdk11zqBkcJ3Lv0sc6jZrqHvLyr0+oeekD3CnqMafBn/5PRI6uv6ulW3kNLRBUHeVw==}
+  /@smithy/core@1.4.1:
+    resolution: {integrity: sha512-jCnbEQHvTOUQXxXOS110FIMc83dCXUlrqiG/q0QzUSYhglDj9bJVPFjXmxc6qUfARe0mEb8h9LeVoh7FUYHuUg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/middleware-endpoint': 2.5.0
-      '@smithy/middleware-retry': 2.2.0
+      '@smithy/middleware-retry': 2.3.0
       '@smithy/middleware-serde': 2.3.0
       '@smithy/protocol-http': 3.3.0
       '@smithy/smithy-client': 2.5.0
@@ -1090,8 +1090,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@smithy/middleware-retry@2.2.0:
-    resolution: {integrity: sha512-PsjDOLpbevgn37yJbawmfVoanru40qVA8UEf2+YA1lvOefmhuhL6ZbKtGsLAWDRnE1OlAmedsbA/htH6iSZjNA==}
+  /@smithy/middleware-retry@2.3.0:
+    resolution: {integrity: sha512-5H7kD0My2RkZryvYIWA4C9w6t/pdJfbgEdq+fcZhbnZsqHm/4vYFVjDsOzb5pC7PEpksuijoM9fGbM6eN4rLSg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/node-config-provider': 2.3.0
@@ -1102,7 +1102,7 @@ packages:
       '@smithy/util-middleware': 2.2.0
       '@smithy/util-retry': 2.2.0
       tslib: 2.6.2
-      uuid: 8.3.2
+      uuid: 9.0.1
     dev: true
 
   /@smithy/middleware-serde@2.3.0:
@@ -2243,7 +2243,7 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       fs.realpath: 1.0.0
-      minimatch: 9.0.3
+      minimatch: 9.0.4
       minipass: 5.0.0
       path-scurry: 1.10.2
     dev: true
@@ -2847,6 +2847,13 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch@9.0.4:
+    resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
@@ -3026,8 +3033,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /publib@0.2.810:
-    resolution: {integrity: sha512-e3j8KlaUJd48d2MnL4Q0KlAXH1QTvwAWfklxDpT06AfLqm/oYxcRRTacmrjg1XYjDTGOZDjDsfB7CF+1j+VXIw==}
+  /publib@0.2.811:
+    resolution: {integrity: sha512-6owasReX9iRfcBzVkYmap5CWxStU0ZJZJBPRmHNG3ZfvuvUuUqmKd9wNsMEaisziUuzNd7tR1i3RVAEtrprYwg==}
     hasBin: true
     dependencies:
       '@aws-sdk/client-codeartifact': 3.540.0
@@ -3557,8 +3564,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
     dev: true
 
