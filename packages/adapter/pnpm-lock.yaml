@@ -10,7 +10,7 @@ dependencies:
     version: 2.2.0
   '@middy/core':
     specifier: ^4.4.0
-    version: 4.4.3
+    version: 4.7.0
 
 devDependencies:
   '@types/aws-lambda':
@@ -1064,8 +1064,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@middy/core@4.4.3:
-    resolution: {integrity: sha512-DUXUuM5MvyQfEOu9MBtOE3/+af6SG5xiVqjo/k5jkFFnIXdI879MO5K9E2NCC7ECvRtQrLApSedtzwMbO9tL4g==}
+  /@middy/core@4.7.0:
+    resolution: {integrity: sha512-yI++DmhDQ8+ugvY7+GrEnb2PF0M/6Wzbgu4Tf7QhOlhwKGDd4j6or+Ab7qYPWx+jnKf8F0tqlmh0gV4JLi0yHw==}
     engines: {node: '>=16'}
     dev: false
 
