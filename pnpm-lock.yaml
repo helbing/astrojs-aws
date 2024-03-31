@@ -46,7 +46,7 @@ devDependencies:
     version: 4.2.1(eslint-config-prettier@8.10.0)(eslint@8.57.0)(prettier@2.8.8)
   eslint-plugin-vitest:
     specifier: ^0.4.0
-    version: 0.4.0(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.57.0)(typescript@5.4.3)
+    version: 0.4.1(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.57.0)(typescript@5.4.3)
   husky:
     specifier: ^8.0.3
     version: 8.0.3
@@ -1648,8 +1648,8 @@ packages:
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-vitest@0.4.0(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.57.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-3oWgZIwdWVBQ5plvkmOBjreIGLQRdYb7x54OP8uIRHeZyRVJIdOn9o/qWVb9292fDMC8jn7H7d9TSFBZqhrykQ==}
+  /eslint-plugin-vitest@0.4.1(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-+PnZ2u/BS+f5FiuHXz4zKsHPcMKHie+K+1Uvu/x91ovkCMEOJqEI8E9Tw1Wzx2QRz4MHOBHYf1ypO8N1K0aNAA==}
     engines: {node: ^18.0.0 || >= 20.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '*'
