@@ -31,7 +31,7 @@ devDependencies:
     version: 10.3.0
   jsii:
     specifier: ^5.0.7
-    version: 5.3.31
+    version: 5.3.32
   jsii-docgen:
     specifier: ^8.0.7
     version: 8.0.56
@@ -1895,7 +1895,7 @@ packages:
     dependencies:
       semver: 7.6.0
       shelljs: 0.8.5
-      typescript: 5.5.0-dev.20240330
+      typescript: 5.5.0-dev.20240331
     dev: true
 
   /eastasianwidth@0.2.0:
@@ -2675,7 +2675,7 @@ packages:
       chalk: 4.1.2
       commonmark: 0.31.0
       fast-glob: 3.3.2
-      jsii: 5.3.31
+      jsii: 5.3.32
       semver: 7.6.0
       semver-intersect: 1.5.0
       stream-json: 1.8.0
@@ -2708,8 +2708,8 @@ packages:
       - supports-color
     dev: true
 
-  /jsii@5.3.31:
-    resolution: {integrity: sha512-dIWAKLcaseBDDB3BVjFSbXTfy6qp8hKdUoopkXO4HlMQ/pz0P2SZWHmSP1LLp2XGTSB775QT0LEi3wpWtYVENg==}
+  /jsii@5.3.32:
+    resolution: {integrity: sha512-pnlWWP+bOdQktvvwcxfVaCkTYlOtqdNZn5BgJV3rX7gg6468oJFUBNOTjR4aj3dqScj+DLLO+cuSgo8l+NVyBw==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
@@ -3503,8 +3503,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.5.0-dev.20240330:
-    resolution: {integrity: sha512-N8P34nHmNVcIbh3AsZ3W3rl9TCcvO3R5mHu4HzF1WtL4sUZPy+huGhENKMmwgYS1sxw2l2ts66hQdZmv+jHZxw==}
+  /typescript@5.5.0-dev.20240331:
+    resolution: {integrity: sha512-StCr+/vp6ratgAvX0z51Xz8wKQ5RzUb05sSKXVf4SbZFDPzI5yzxemIhwggAIw9ip0ZxK0kAJl6SBFQLKs8MBw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
