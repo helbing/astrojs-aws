@@ -40,7 +40,7 @@ devDependencies:
     version: 1.96.0
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.3.32
+    version: 5.3.33
   publib:
     specifier: ^0.2.678
     version: 0.2.812
@@ -2656,8 +2656,8 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.3.32:
-    resolution: {integrity: sha512-DWoDRXMhhhXOsWrG5I1HlqTjFWWBS9L0F86sP0r44cH56BBE0neI2clSkZPb+lqFIgJEfkcuAIgp3vDzj8PZTw==}
+  /jsii-rosetta@5.3.33:
+    resolution: {integrity: sha512-nuRovgHFCClkraEfVNMITiJtyeanIm6BgTzXfVDVzdlBLjBzz+XajxPtV2/cvnsl1Nml2vRpvL5ufI9txS7vfw==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
