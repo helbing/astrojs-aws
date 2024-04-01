@@ -40,7 +40,7 @@ devDependencies:
     version: 1.96.0
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.3.32
+    version: 5.3.33
   publib:
     specifier: ^0.2.678
     version: 0.2.812
@@ -1887,7 +1887,7 @@ packages:
     dependencies:
       semver: 7.6.0
       shelljs: 0.8.5
-      typescript: 5.5.0-dev.20240331
+      typescript: 5.5.0-dev.20240401
     dev: true
 
   /eastasianwidth@0.2.0:
@@ -2656,8 +2656,8 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.3.32:
-    resolution: {integrity: sha512-DWoDRXMhhhXOsWrG5I1HlqTjFWWBS9L0F86sP0r44cH56BBE0neI2clSkZPb+lqFIgJEfkcuAIgp3vDzj8PZTw==}
+  /jsii-rosetta@5.3.33:
+    resolution: {integrity: sha512-nuRovgHFCClkraEfVNMITiJtyeanIm6BgTzXfVDVzdlBLjBzz+XajxPtV2/cvnsl1Nml2vRpvL5ufI9txS7vfw==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
@@ -3495,8 +3495,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.5.0-dev.20240331:
-    resolution: {integrity: sha512-StCr+/vp6ratgAvX0z51Xz8wKQ5RzUb05sSKXVf4SbZFDPzI5yzxemIhwggAIw9ip0ZxK0kAJl6SBFQLKs8MBw==}
+  /typescript@5.5.0-dev.20240401:
+    resolution: {integrity: sha512-YeImidiTV9afClWslA8QLyJTTU6PQ5oWyeBSS04yjoVelrK2kpPPtJdnGLooOdzfFRgtZhGIxRIffDen8X93vw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
