@@ -34,7 +34,7 @@
     "bumpp": "^9.1.0",
     "changelogithub": "^0.13.0",
     "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-astro": "^0.33.0",
     "eslint-plugin-import": "^2.27.5",
