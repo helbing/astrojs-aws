@@ -15,7 +15,7 @@ dependencies:
 devDependencies:
   '@types/aws-lambda':
     specifier: ^8.10.115
-    version: 8.10.140
+    version: 8.10.147
   '@types/node':
     specifier: ^18.16.3
     version: 18.19.70
@@ -1106,8 +1106,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@types/aws-lambda@8.10.140:
-    resolution: {integrity: sha512-4Dh3dk2TUcbdfHrX0Al90mNGJDvA9NBiTQPzbrjGi/dLxzKCGOYgT8YQ47jUKNFALkAJAadifq0pzyjIUlhVhg==}
+  /@types/aws-lambda@8.10.147:
+    resolution: {integrity: sha512-nD0Z9fNIZcxYX5Mai2CTmFD7wX7UldCkW2ezCF8D1T5hdiLsnTWDGRpfRYntU6VjTdLQjOvyszru7I1c1oCQew==}
     dev: true
 
   /@types/babel__core@7.20.5:
