@@ -19,6 +19,9 @@ export default function createIntegration(args?: Options): AstroIntegration {
           exports: ["handler"],
           // Options
           args,
+          supportedAstroFeatures: {
+            serverOutput: 'stable'
+          }
         })
       },
     },
