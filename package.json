@@ -39,7 +39,7 @@
     "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vitest": "^0.5.0",
+    "@vitest/eslint-plugin": "^1.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
