@@ -37,10 +37,10 @@ devDependencies:
     version: 8.0.56
   jsii-pacmak:
     specifier: ^1.80.0
-    version: 1.112.0(jsii-rosetta@5.8.7)
+    version: 1.112.0(jsii-rosetta@5.8.11)
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.8.7
+    version: 5.8.11
   publib:
     specifier: ^0.2.678
     version: 0.2.982
@@ -870,14 +870,6 @@ packages:
 
   /@jsii/check-node@1.105.0:
     resolution: {integrity: sha512-7QIzioc9//TwRjLhGMllcTBfIvJ0h6OeGVUEYdXB1DpCNtMbr8Xcj5KaeKHRAF9iRjB1d0IGzKm4A8fRUzIf+Q==}
-    engines: {node: '>= 14.17.0'}
-    dependencies:
-      chalk: 4.1.2
-      semver: 7.7.2
-    dev: true
-
-  /@jsii/check-node@1.111.0:
-    resolution: {integrity: sha512-R3iLYH1gCixDFVhrltoeKuZvcLLx03fCDlQxl3sR0T5ko1fAWBn5zNaP6O6/d0vpXB3QevGcMJ78Xgll2gHvIA==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       chalk: 4.1.2
@@ -2239,7 +2231,7 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-pacmak@1.112.0(jsii-rosetta@5.8.7):
+  /jsii-pacmak@1.112.0(jsii-rosetta@5.8.11):
     resolution: {integrity: sha512-awdZ4Hb9pc8cKp2RVhJntoppgo5KnqP8f9YCmoHPPpPCS1hB3joxpVbNS6t2PYdGt1R+j7EcO7TJdah95cxE3w==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
@@ -2254,7 +2246,7 @@ packages:
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
       jsii-reflect: 1.112.0
-      jsii-rosetta: 5.8.7
+      jsii-rosetta: 5.8.11
       semver: 7.7.1
       spdx-license-list: 6.10.0
       xmlbuilder: 15.1.1
@@ -2308,12 +2300,12 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.8.7:
-    resolution: {integrity: sha512-8Ecl+BcCUXgRvqx9wqnVRqTlADuwdjS35sYSrKuXyAyLntdwlqn1NP3kMLLn20PBGjTkeqbCt8VmRox4hBASNA==}
+  /jsii-rosetta@5.8.11:
+    resolution: {integrity: sha512-wHi5eI8tgTKrGk9dY99a8ZFiYiP9/gPvRECzoX2Vq0so6G5w/R1jd5vb8D6UTX7hDTPSaKChj2Bi0tG1BNod/g==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.111.0
+      '@jsii/check-node': 1.112.0
       '@jsii/spec': 1.112.0
       '@xmldom/xmldom': 0.9.8
       chalk: 4.1.2
