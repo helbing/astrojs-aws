@@ -17,6 +17,9 @@ export default function createIntegration(args?: Options): AstroIntegration {
           name: "@astrojs-aws/adapter",
           serverEntrypoint: "@astrojs-aws/adapter/exports",
           exports: ["handler"],
+          supportedAstroFeatures: {
+            serverOutput: 'stable'
+          },
           // Options
           args,
         })
