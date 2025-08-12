@@ -37,10 +37,10 @@ devDependencies:
     version: 8.0.56
   jsii-pacmak:
     specifier: ^1.80.0
-    version: 1.112.0(jsii-rosetta@5.8.12)
+    version: 1.112.0(jsii-rosetta@5.8.14)
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.8.12
+    version: 5.8.14
   publib:
     specifier: ^0.2.678
     version: 0.2.1004
@@ -2261,7 +2261,7 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-pacmak@1.112.0(jsii-rosetta@5.8.12):
+  /jsii-pacmak@1.112.0(jsii-rosetta@5.8.14):
     resolution: {integrity: sha512-awdZ4Hb9pc8cKp2RVhJntoppgo5KnqP8f9YCmoHPPpPCS1hB3joxpVbNS6t2PYdGt1R+j7EcO7TJdah95cxE3w==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
@@ -2276,7 +2276,7 @@ packages:
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
       jsii-reflect: 1.112.0
-      jsii-rosetta: 5.8.12
+      jsii-rosetta: 5.8.14
       semver: 7.7.1
       spdx-license-list: 6.10.0
       xmlbuilder: 15.1.1
@@ -2330,13 +2330,13 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.8.12:
-    resolution: {integrity: sha512-PZp2C/EdC9FV4bPsHIWFRG2+CTP+cF+A2/5+F7i0UoXH7XhjMc0Cs2R2fWnEmHZhLq1mUvYWu0dfsGa9GmM+iw==}
+  /jsii-rosetta@5.8.14:
+    resolution: {integrity: sha512-ORsag/CQje0sxJYuMjKcXbyWUhO6MiSjFWeNLkdDskJdJQeu6McFUfUujQMuq4xMKjpKBGsyJw3I9cA98Hfvqg==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.112.0
-      '@jsii/spec': 1.112.0
+      '@jsii/check-node': 1.113.0
+      '@jsii/spec': 1.113.0
       '@xmldom/xmldom': 0.9.8
       chalk: 4.1.2
       commonmark: 0.31.2
