@@ -7,10 +7,10 @@ settings:
 devDependencies:
   '@aws-cdk/aws-apigatewayv2-alpha':
     specifier: 2.114.1-alpha.0
-    version: 2.114.1-alpha.0(aws-cdk-lib@2.210.0)(constructs@10.4.2)
+    version: 2.114.1-alpha.0(aws-cdk-lib@2.211.0)(constructs@10.4.2)
   '@aws-cdk/aws-apigatewayv2-integrations-alpha':
     specifier: 2.114.1-alpha.0
-    version: 2.114.1-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0)(aws-cdk-lib@2.210.0)(constructs@10.4.2)
+    version: 2.114.1-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0)(aws-cdk-lib@2.211.0)(constructs@10.4.2)
   '@types/aws-lambda':
     specifier: ^8.10.115
     version: 8.10.152
@@ -21,8 +21,8 @@ devDependencies:
     specifier: ^0.33.0
     version: 0.33.0(vitest@0.34.6)
   aws-cdk-lib:
-    specifier: 2.210.0
-    version: 2.210.0(constructs@10.4.2)
+    specifier: 2.211.0
+    version: 2.211.0(constructs@10.4.2)
   aws-lambda:
     specifier: ^1.0.7
     version: 1.0.7
@@ -69,18 +69,18 @@ packages:
     resolution: {integrity: sha512-7bY3J8GCVxLupn/kNmpPc5VJz8grx+4RKfnnJiO1LG+uxkZfANZG3RMHhE+qQxxwkyQ9/MfPtTpf748UhR425A==}
     dev: true
 
-  /@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0(aws-cdk-lib@2.210.0)(constructs@10.4.2):
+  /@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0(aws-cdk-lib@2.211.0)(constructs@10.4.2):
     resolution: {integrity: sha512-+urpw7rGrtdGvnHQlDXVfpI3TmQJpjuT9jTOeuuG5dNDczLJrUokBvQdj6H6KsngdmBC07WfWU+yL2MBp71ozA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       aws-cdk-lib: ^2.114.1
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.210.0(constructs@10.4.2)
+      aws-cdk-lib: 2.211.0(constructs@10.4.2)
       constructs: 10.4.2
     dev: true
 
-  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.114.1-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0)(aws-cdk-lib@2.210.0)(constructs@10.4.2):
+  /@aws-cdk/aws-apigatewayv2-integrations-alpha@2.114.1-alpha.0(@aws-cdk/aws-apigatewayv2-alpha@2.114.1-alpha.0)(aws-cdk-lib@2.211.0)(constructs@10.4.2):
     resolution: {integrity: sha512-iB7vHoTguDKLeatJS4p/8OBqH4oLCG2xBn1toUFwMD9iWoRGahGiK0pYuq24baab3SuNS1LFThJw5Zu0R+cZGA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -88,8 +88,8 @@ packages:
       aws-cdk-lib: ^2.114.1
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/aws-apigatewayv2-alpha': 2.114.1-alpha.0(aws-cdk-lib@2.210.0)(constructs@10.4.2)
-      aws-cdk-lib: 2.210.0(constructs@10.4.2)
+      '@aws-cdk/aws-apigatewayv2-alpha': 2.114.1-alpha.0(aws-cdk-lib@2.211.0)(constructs@10.4.2)
+      aws-cdk-lib: 2.211.0(constructs@10.4.2)
       constructs: 10.4.2
     dev: true
 
@@ -1526,8 +1526,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /aws-cdk-lib@2.210.0(constructs@10.4.2):
-    resolution: {integrity: sha512-TSXaZLHKak1bk144PblhqBHZwyh9lvlN2yM4g52aR/HCuxlw2nkn+eupjuOtiNe0JJFwSudvO/qke65dN2WlEg==}
+  /aws-cdk-lib@2.211.0(constructs@10.4.2):
+    resolution: {integrity: sha512-wrEPu25572HUJwySzL/qf/fFM+a22X7HYpq1uqcjAn4sVL+h52WjVjnI7rDAuhBp6efX6+Jhmw7jZDMql4/+Cw==}
     engines: {node: '>= 18.0.0'}
     peerDependencies:
       constructs: ^10.0.0
