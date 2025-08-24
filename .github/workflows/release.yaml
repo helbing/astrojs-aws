@@ -20,7 +20,7 @@ jobs:
         version: "latest"
 
     - name: Setup Nodejs
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         cache: "pnpm"
         registry-url: "https://registry.npmjs.org"
