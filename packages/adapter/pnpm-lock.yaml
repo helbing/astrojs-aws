@@ -18,13 +18,13 @@ devDependencies:
     version: 8.10.153
   '@types/node':
     specifier: ^18.16.3
-    version: 18.19.124
+    version: 18.19.129
   '@vitest/coverage-c8':
     specifier: ^0.33.0
     version: 0.33.0(vitest@0.34.6)
   astro:
     specifier: ^2.4.1
-    version: 2.10.15(@types/node@18.19.124)
+    version: 2.10.15(@types/node@18.19.129)
   rimraf:
     specifier: ^5.0.0
     version: 5.0.10
@@ -89,7 +89,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.15(@types/node@18.19.124)
+      astro: 2.10.15(@types/node@18.19.129)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -1189,8 +1189,8 @@ packages:
       '@types/unist': 2.0.10
     dev: true
 
-  /@types/node@18.19.124:
-    resolution: {integrity: sha512-hY4YWZFLs3ku6D2Gqo3RchTd9VRCcrjqp/I0mmohYeUVA5Y8eCXKJEasHxLAJVZRJuQogfd1GiJ9lgogBgKeuQ==}
+  /@types/node@18.19.129:
+    resolution: {integrity: sha512-hrmi5jWt2w60ayox3iIXwpMEnfUvOLJCRtrOPbHtH15nTjvO7uhnelvrdAs0dO0/zl5DZ3ZbahiaXEVb54ca/A==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1362,7 +1362,7 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /astro@2.10.15(@types/node@18.19.124):
+  /astro@2.10.15(@types/node@18.19.129):
     resolution: {integrity: sha512-7jgkCZexxOX541g2kKHGOcDDUVKYc+sGi87GtLOkbWwTsKqEIp9GU0o7DpKe1rhItm9VVEiHz4uxvMh3wGmJdA==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -1425,7 +1425,7 @@ packages:
       typescript: 5.9.2
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.5.3(@types/node@18.19.124)
+      vite: 4.5.3(@types/node@18.19.129)
       vitefu: 0.2.5(vite@4.5.3)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -3891,7 +3891,7 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite-node@0.34.6(@types/node@18.19.124):
+  /vite-node@0.34.6(@types/node@18.19.129):
     resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -3901,7 +3901,7 @@ packages:
       mlly: 1.6.1
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 4.3.4(@types/node@18.19.124)
+      vite: 4.3.4(@types/node@18.19.129)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3912,7 +3912,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.3.4(@types/node@18.19.124):
+  /vite@4.3.4(@types/node@18.19.129):
     resolution: {integrity: sha512-f90aqGBoxSFxWph2b39ae2uHAxm5jFBBdnfueNxZAT1FTpM13ccFQExCaKbR2xFW5atowjleRniQ7onjJ22QEg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3937,7 +3937,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 18.19.129
       esbuild: 0.17.18
       postcss: 8.4.23
       rollup: 3.21.4
@@ -3945,7 +3945,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@4.5.3(@types/node@18.19.124):
+  /vite@4.5.3(@types/node@18.19.129):
     resolution: {integrity: sha512-kQL23kMeX92v3ph7IauVkXkikdDRsYMGTVl5KY2E9OY4ONLvkHf04MDTbnfo6NKxZiDLWzVpP5oTa8hQD8U3dg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3973,7 +3973,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.19.124
+      '@types/node': 18.19.129
       esbuild: 0.18.20
       postcss: 8.4.38
       rollup: 3.29.4
@@ -3989,7 +3989,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.5.3(@types/node@18.19.124)
+      vite: 4.5.3(@types/node@18.19.129)
     dev: true
 
   /vitest-mock-extended@1.3.2(typescript@5.9.2)(vitest@0.34.6):
@@ -4036,7 +4036,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.19.124
+      '@types/node': 18.19.129
       '@vitest/expect': 0.34.6
       '@vitest/runner': 0.34.6
       '@vitest/snapshot': 0.34.6
@@ -4055,8 +4055,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.3.4(@types/node@18.19.124)
-      vite-node: 0.34.6(@types/node@18.19.124)
+      vite: 4.3.4(@types/node@18.19.129)
+      vite-node: 0.34.6(@types/node@18.19.129)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
