@@ -37,10 +37,10 @@ devDependencies:
     version: 8.0.56
   jsii-pacmak:
     specifier: ^1.80.0
-    version: 1.114.1(jsii-rosetta@5.9.4)
+    version: 1.114.1(jsii-rosetta@5.9.7)
   jsii-rosetta:
     specifier: ^5.0.7
-    version: 5.9.4
+    version: 5.9.7
   publib:
     specifier: ^0.2.678
     version: 0.2.1015
@@ -890,14 +890,6 @@ packages:
       semver: 7.7.2
     dev: true
 
-  /@jsii/check-node@1.113.0:
-    resolution: {integrity: sha512-6iPLiQiSVn8/D89ycIpj78cMfmxOIU/F9RUTVYwLqKPw4cxpR+BCC4N83WKyGkZxhOxULLa9f5q+rkWq/vAMpA==}
-    engines: {node: '>= 14.17.0'}
-    dependencies:
-      chalk: 4.1.2
-      semver: 7.7.2
-    dev: true
-
   /@jsii/check-node@1.114.1:
     resolution: {integrity: sha512-SE9H1xBo4D+y259zRWqbrUnWVzCzxZh8ek2G1u5P+wP1n86GcgU+vz8uhJfGagdWFwW1EMW6t4PkPvbYoQG0yw==}
     engines: {node: '>= 14.17.0'}
@@ -923,6 +915,13 @@ packages:
 
   /@jsii/spec@1.114.1:
     resolution: {integrity: sha512-SdjVQaNqLkTUK+2R0/t/MnM/NBvv1vzqxO5sn1nnoFD5Wlih8TFOIjl+Q8npzYmOtN+et3D+BMVYrxmVfq4X0w==}
+    engines: {node: '>= 14.17.0'}
+    dependencies:
+      ajv: 8.17.1
+    dev: true
+
+  /@jsii/spec@1.115.0:
+    resolution: {integrity: sha512-qnicuByM0G5L6ZF2yO/e5cHwT6pb5E0aUvgHBycFPHBkgf5yjtvm+Wtk6q61srNuRASYI25BiTOonyABNeRjlw==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       ajv: 8.17.1
@@ -2261,7 +2260,7 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-pacmak@1.114.1(jsii-rosetta@5.9.4):
+  /jsii-pacmak@1.114.1(jsii-rosetta@5.9.7):
     resolution: {integrity: sha512-Ks/PmxhznYhLIbQIo4fFPgWAa/cQb6RPudvvT08IKVIJE7i9LbzXE3go0hjbDjuhNFF6r8eYOAd1mqtbIyVB2g==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
@@ -2276,7 +2275,7 @@ packages:
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
       jsii-reflect: 1.114.1
-      jsii-rosetta: 5.9.4
+      jsii-rosetta: 5.9.7
       semver: 7.7.2
       spdx-license-list: 6.10.0
       xmlbuilder: 15.1.1
@@ -2330,13 +2329,13 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-rosetta@5.9.4:
-    resolution: {integrity: sha512-UHwCmY2uM1dWlOBsGtq6615bOdmrMzEW2VWc5EwiWCTTFZMpuodc4mlbgZWHkXnZvpEKr5sHpmXP8eJyeUtp/Q==}
+  /jsii-rosetta@5.9.7:
+    resolution: {integrity: sha512-OQbKI0Q1aOAbJ8vR1I+/Jv3cqZisgBBEm0DwSxrRfEeNd67UOYIcsHM0nefsV48R/FZAKIGEGxZYlix9jgAl8Q==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.113.0
-      '@jsii/spec': 1.114.1
+      '@jsii/check-node': 1.114.1
+      '@jsii/spec': 1.115.0
       '@xmldom/xmldom': 0.9.8
       chalk: 4.1.2
       commonmark: 0.31.2
@@ -2345,7 +2344,7 @@ packages:
       semver: 7.7.2
       semver-intersect: 1.5.0
       stream-json: 1.9.1
-      typescript: 5.9.2
+      typescript: 5.9.3
       workerpool: 6.5.1
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -2960,12 +2959,6 @@ packages:
   /typescript@3.9.10:
     resolution: {integrity: sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript@5.9.2:
-    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
-    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
 
