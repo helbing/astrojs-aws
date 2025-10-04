@@ -31,7 +31,7 @@ devDependencies:
     version: 10.4.2
   jsii:
     specifier: ^5.0.7
-    version: 5.9.4
+    version: 5.9.7
   jsii-docgen:
     specifier: ^8.0.7
     version: 8.0.56
@@ -1785,8 +1785,8 @@ packages:
       ms: 2.1.2
     dev: true
 
-  /debug@4.4.1:
-    resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
+  /debug@4.4.3:
+    resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -2341,7 +2341,7 @@ packages:
       chalk: 4.1.2
       commonmark: 0.31.2
       fast-glob: 3.3.3
-      jsii: 5.9.4
+      jsii: 5.9.7
       semver: 7.7.2
       semver-intersect: 1.5.0
       stream-json: 1.9.1
@@ -2374,12 +2374,12 @@ packages:
       - supports-color
     dev: true
 
-  /jsii@5.9.4:
-    resolution: {integrity: sha512-YLNzhSwLyFU6R3DRAykJOM7hTQbRXqPH4/2uBpFJ4y5/Kj/blrK6mKO2W7bG7oRG6crw/Ui5gUTk4/eLuFJguA==}
+  /jsii@5.9.7:
+    resolution: {integrity: sha512-ozdEz7gF5uxlYvC+Ze8IkcpQI6svLvusqNSfhl7l5nzi1gYdPedzEQp0Vl8M4cSDxkOmgh2Bz3/K/d7HkGM2qQ==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.113.0
+      '@jsii/check-node': 1.114.1
       '@jsii/spec': 1.114.1
       case: 1.6.3
       chalk: 4.1.2
@@ -2389,7 +2389,7 @@ packages:
       semver-intersect: 1.5.0
       sort-json: 2.0.1
       spdx-license-list: 6.10.0
-      typescript: 5.9.2
+      typescript: 5.9.3
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
@@ -2434,7 +2434,7 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       date-format: 4.0.14
-      debug: 4.4.1
+      debug: 4.4.3
       flatted: 3.3.3
       rfdc: 1.4.1
       streamroller: 3.1.5
@@ -2863,7 +2863,7 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       date-format: 4.0.14
-      debug: 4.4.1
+      debug: 4.4.3
       fs-extra: 8.1.0
     transitivePeerDependencies:
       - supports-color
@@ -2965,6 +2965,12 @@ packages:
 
   /typescript@5.9.2:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
