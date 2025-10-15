@@ -37,7 +37,7 @@ devDependencies:
     version: 8.0.56
   jsii-pacmak:
     specifier: ^1.80.0
-    version: 1.115.0(jsii-rosetta@5.9.8)
+    version: 1.116.0(jsii-rosetta@5.9.8)
   jsii-rosetta:
     specifier: ^5.0.7
     version: 5.9.8
@@ -912,6 +912,14 @@ packages:
       semver: 7.7.3
     dev: true
 
+  /@jsii/check-node@1.116.0:
+    resolution: {integrity: sha512-Avk6AKggZJcWpDLGH8lb5duyfGIVHCmmeglM3LfmQvKU/zumbRfeg4LvUXGqJflnRB7GAbzbx8iDNo8FMjIWjg==}
+    engines: {node: '>= 14.17.0'}
+    dependencies:
+      chalk: 4.1.2
+      semver: 7.7.3
+    dev: true
+
   /@jsii/check-node@1.96.0:
     resolution: {integrity: sha512-1EZudLi9wMg6d8JYu8t5s0B+WhyAJvOezhdmFv+PTrTc1Eze7NRY7uZuvBRRkBvqvOWlKkCfBByyeZJnLcxNMA==}
     engines: {node: '>= 14.17.0'}
@@ -929,6 +937,13 @@ packages:
 
   /@jsii/spec@1.115.0:
     resolution: {integrity: sha512-qnicuByM0G5L6ZF2yO/e5cHwT6pb5E0aUvgHBycFPHBkgf5yjtvm+Wtk6q61srNuRASYI25BiTOonyABNeRjlw==}
+    engines: {node: '>= 14.17.0'}
+    dependencies:
+      ajv: 8.17.1
+    dev: true
+
+  /@jsii/spec@1.116.0:
+    resolution: {integrity: sha512-BqsOMsE7Md6EwaLammXeCOi20GlsA4lAawIrPN0jHeFjZnEqUsiWRXZw+9EG3lTImW9QLVN1cF9kbQ3t3vAXeQ==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       ajv: 8.17.1
@@ -1720,8 +1735,8 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
-  /codemaker@1.115.0:
-    resolution: {integrity: sha512-OYTghD9XRaXzjByMXEljGeF5Ci9zZnq90O3GEfkMn4nGWyp7IXHOq4by6IiR2ByJSywTcnoQg0NQnDZUgj/YfA==}
+  /codemaker@1.116.0:
+    resolution: {integrity: sha512-o23BKz+Y0Yam/czEbe3UAXVqSY4HFKgUYTffx3YW6yPtAVSX0d50BgIU0RxCUGIWmFD9Go3tXqraRDpo7TxMLg==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       camelcase: 6.3.0
@@ -2267,38 +2282,38 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-pacmak@1.115.0(jsii-rosetta@5.9.8):
-    resolution: {integrity: sha512-YWzF3Km61i0f7e6Qce1VUjUXhlnMllMP4yqNuaGVAYDw5LIJEUf99CYPUbMIVoCZAcoNKNGLJ0PSJCTzB5Bxjw==}
+  /jsii-pacmak@1.116.0(jsii-rosetta@5.9.8):
+    resolution: {integrity: sha512-X3UQouUnp05/CbtZzORrBIDQBb26ChX6Ms5q3dXxsJyk5/DEJaCkd6pAnU3wiya7Tsrd8K09mSiuseMzxFvs8Q==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
     peerDependencies:
       jsii-rosetta: '>=5.7.0'
     dependencies:
-      '@jsii/check-node': 1.115.0
-      '@jsii/spec': 1.115.0
+      '@jsii/check-node': 1.116.0
+      '@jsii/spec': 1.116.0
       clone: 2.1.2
-      codemaker: 1.115.0
+      codemaker: 1.116.0
       commonmark: 0.31.2
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
-      jsii-reflect: 1.115.0
+      jsii-reflect: 1.116.0
       jsii-rosetta: 5.9.8
-      semver: 7.7.2
+      semver: 7.7.3
       spdx-license-list: 6.10.0
       xmlbuilder: 15.1.1
       yargs: 17.7.2
     dev: true
 
-  /jsii-reflect@1.115.0:
-    resolution: {integrity: sha512-svWvulZ8IH035sLR0aEt3UiN4Ejqh99zSBfVTFsr3bjBfDZqcxIlExFI/fMb7O+a7XwT0WdTakTuX/aajQt3cg==}
+  /jsii-reflect@1.116.0:
+    resolution: {integrity: sha512-ZIHznFUMHQinqNLu48JibrnB0O0EeINCUgtkgV+SqEN7wsM1kxT3SBLHEbCQqPzB5ZsQzrdl9JW1vMi14/YqGA==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.115.0
-      '@jsii/spec': 1.115.0
+      '@jsii/check-node': 1.116.0
+      '@jsii/spec': 1.116.0
       chalk: 4.1.2
       fs-extra: 10.1.0
-      oo-ascii-tree: 1.115.0
+      oo-ascii-tree: 1.116.0
       yargs: 17.7.2
     dev: true
 
@@ -2560,8 +2575,8 @@ packages:
       wrappy: 1.0.2
     dev: true
 
-  /oo-ascii-tree@1.115.0:
-    resolution: {integrity: sha512-KbZpipKiCQ5Ws2GryfOUWBxuVpVYosqAi85mtplgMyhQuueOZAO8qeTmNqYYHUxBHOz9O+kKCCjidEkLmCDhLQ==}
+  /oo-ascii-tree@1.116.0:
+    resolution: {integrity: sha512-GI0n8coDIoZPywmZp5l2qPO1tqZxN40/tFPYBxWD2vpPeciKiB/nxZ7blDjp97ejxtmdkNouvAmtg4nCYgZihg==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2786,12 +2801,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
-
-  /semver@7.7.2:
-    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
-    engines: {node: '>=10'}
-    hasBin: true
     dev: true
 
   /semver@7.7.3:
