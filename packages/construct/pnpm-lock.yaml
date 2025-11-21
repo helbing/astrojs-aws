@@ -37,7 +37,7 @@ devDependencies:
     version: 8.0.56
   jsii-pacmak:
     specifier: ^1.80.0
-    version: 1.116.0(jsii-rosetta@5.9.15)
+    version: 1.119.0(jsii-rosetta@5.9.15)
   jsii-rosetta:
     specifier: ^5.0.7
     version: 5.9.15
@@ -913,14 +913,6 @@ packages:
       semver: 7.7.3
     dev: true
 
-  /@jsii/check-node@1.116.0:
-    resolution: {integrity: sha512-Avk6AKggZJcWpDLGH8lb5duyfGIVHCmmeglM3LfmQvKU/zumbRfeg4LvUXGqJflnRB7GAbzbx8iDNo8FMjIWjg==}
-    engines: {node: '>= 14.17.0'}
-    dependencies:
-      chalk: 4.1.2
-      semver: 7.7.3
-    dev: true
-
   /@jsii/check-node@1.119.0:
     resolution: {integrity: sha512-dJ6hz+kpDWC/gAR7X5gmZVWjHX24Nlh2YEYKfY4r/NXrAp+2tdQ1Xhzt1fgOyh0nea+yLdiBLjkOzE1sRIPQFA==}
     engines: {node: '>= 14.17.0'}
@@ -939,13 +931,6 @@ packages:
 
   /@jsii/spec@1.105.0:
     resolution: {integrity: sha512-pLy8JyPT9Vv5UTxtM4ZHm/iisWzU62m3/dn9TPW2oANI5TLiBpjLlJw/iF+KRjYAeQnFASUfXtWTXgbN4xp9Rw==}
-    engines: {node: '>= 14.17.0'}
-    dependencies:
-      ajv: 8.17.1
-    dev: true
-
-  /@jsii/spec@1.116.0:
-    resolution: {integrity: sha512-BqsOMsE7Md6EwaLammXeCOi20GlsA4lAawIrPN0jHeFjZnEqUsiWRXZw+9EG3lTImW9QLVN1cF9kbQ3t3vAXeQ==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       ajv: 8.17.1
@@ -1745,8 +1730,8 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
-  /codemaker@1.116.0:
-    resolution: {integrity: sha512-o23BKz+Y0Yam/czEbe3UAXVqSY4HFKgUYTffx3YW6yPtAVSX0d50BgIU0RxCUGIWmFD9Go3tXqraRDpo7TxMLg==}
+  /codemaker@1.119.0:
+    resolution: {integrity: sha512-2l3t8Dc2y/jDVk0munVT3K5bPeanEpKsgCEwO0KsBY87MCxnTTzJCQxVyd7+AeVIy7LRMNkXfNAziVP53r6e9g==}
     engines: {node: '>= 14.17.0'}
     dependencies:
       camelcase: 6.3.0
@@ -2292,21 +2277,21 @@ packages:
       - supports-color
     dev: true
 
-  /jsii-pacmak@1.116.0(jsii-rosetta@5.9.15):
-    resolution: {integrity: sha512-X3UQouUnp05/CbtZzORrBIDQBb26ChX6Ms5q3dXxsJyk5/DEJaCkd6pAnU3wiya7Tsrd8K09mSiuseMzxFvs8Q==}
+  /jsii-pacmak@1.119.0(jsii-rosetta@5.9.15):
+    resolution: {integrity: sha512-XKDGt7NmeyUWMj6T251cUTydv+q0Z9SIDHNPExALAjG1x23fJQKPMZ8NgvCPVcxcNN+UUyMgfXKzAvsE3dmF3g==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
     peerDependencies:
       jsii-rosetta: '>=5.7.0'
     dependencies:
-      '@jsii/check-node': 1.116.0
-      '@jsii/spec': 1.116.0
+      '@jsii/check-node': 1.119.0
+      '@jsii/spec': 1.119.0
       clone: 2.1.2
-      codemaker: 1.116.0
+      codemaker: 1.119.0
       commonmark: 0.31.2
       escape-string-regexp: 4.0.0
       fs-extra: 10.1.0
-      jsii-reflect: 1.116.0
+      jsii-reflect: 1.119.0
       jsii-rosetta: 5.9.15
       semver: 7.7.3
       spdx-license-list: 6.10.0
@@ -2314,16 +2299,16 @@ packages:
       yargs: 17.7.2
     dev: true
 
-  /jsii-reflect@1.116.0:
-    resolution: {integrity: sha512-ZIHznFUMHQinqNLu48JibrnB0O0EeINCUgtkgV+SqEN7wsM1kxT3SBLHEbCQqPzB5ZsQzrdl9JW1vMi14/YqGA==}
+  /jsii-reflect@1.119.0:
+    resolution: {integrity: sha512-wESVnE8TtwGqX+EEEOBsXVFZdK4Q6dVU7GcRW1JsCYWQzduKcisgF1xlR9TQK95zCJmrNhjOp/4/5UzVJyBahQ==}
     engines: {node: '>= 14.17.0'}
     hasBin: true
     dependencies:
-      '@jsii/check-node': 1.116.0
-      '@jsii/spec': 1.116.0
+      '@jsii/check-node': 1.119.0
+      '@jsii/spec': 1.119.0
       chalk: 4.1.2
       fs-extra: 10.1.0
-      oo-ascii-tree: 1.116.0
+      oo-ascii-tree: 1.119.0
       yargs: 17.7.2
     dev: true
 
@@ -2585,8 +2570,8 @@ packages:
       wrappy: 1.0.2
     dev: true
 
-  /oo-ascii-tree@1.116.0:
-    resolution: {integrity: sha512-GI0n8coDIoZPywmZp5l2qPO1tqZxN40/tFPYBxWD2vpPeciKiB/nxZ7blDjp97ejxtmdkNouvAmtg4nCYgZihg==}
+  /oo-ascii-tree@1.119.0:
+    resolution: {integrity: sha512-4Aj3mBl0nM/YsUWEoUGPtO8gQ/tUJqaLyTGV63vag1plJuQuJShWHKEXcS0k8r70EDoOcx3q3Dql0U6YuMW2kw==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
